@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import SplashNavBar from '../widgets/SplashNavBar'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -8,6 +9,10 @@ export default function Home() {
         <title>Carta</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <header className={styles.header}>
+        <SplashNavBar />
+      </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
