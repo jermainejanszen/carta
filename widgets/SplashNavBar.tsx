@@ -1,3 +1,4 @@
+import Button from '../components/Button';
 import styles from '../styles/widgets/SplashNavBar.module.css';
 
 interface Props {
@@ -11,11 +12,11 @@ const SplashNavBar = (props: Props) => {
                 <img src="./logo.svg" />
             </div>
             <div className={styles.buttons}>
-                <button>Home</button>
-                <button>Contact</button>
-                <button>About</button>
-                <button>Log in</button>
-                <button>Register</button>
+                <Button>Home</Button>
+                <Button>Contact</Button>
+                <Button>About</Button>
+                <Button>Log in</Button>
+                <Button>Register</Button>
             </div>
         </div>
     )
