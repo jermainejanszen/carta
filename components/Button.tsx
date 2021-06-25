@@ -1,12 +1,46 @@
 import styles from '../styles/components/Button.module.css';
 
 interface Props {
-    children : string
+    children : string,
+    palette? : "primary" | "secondary" | "success" | "danger" | "warning",
+    variant? : "outlined" | "ghost" | "link",
 }
 
 const Button = (props: Props) => {
+
+    var className = `${styles.default} `
+    switch (props.palette) {
+        case "secondary":
+            className += `${styles.secondary} `
+            break;
+        case "success":
+            className += `${styles.success} `
+            break;
+        case "danger":
+            className += `${styles.danger} `
+            break;
+        case "warning":
+            className += `${styles.warning} `
+            break;
+        default:
+            className += `${styles.primary} `
+    }
+    switch (props.variant) {
+        case "outlined":
+            className += `${styles.outlined} `
+            break;
+        case "ghost":
+            className += `${styles.ghost} `
+            break;
+        case "link":
+            className += `${styles.link} `
+            break;
+        default:
+            break;
+    }
+
     return (
-        <button>
+        <button className={className}>
             {props.children}
         </button>
     )

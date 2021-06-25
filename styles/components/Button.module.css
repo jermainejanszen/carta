@@ -1,0 +1,60 @@
+.default {
+    padding: 0.8rem;
+    background: none;
+    border-radius: 8px;
+    border: 1px solid black;
+    color: black;
+    font: inherit;
+}
+
+.primary {
+    background-color: #0070f3;
+    border-color: #0070f3;
+    color: white;
+}
+
+.primary:hover {
+    background-color: #0064d6;
+}
+
+.secondary {
+
+}
+
+.danger {
+
+}
+
+.warning {
+
+}
+
+.outlined {
+    background: none;
+    color: #0070f3;
+}
+
+.outlined:hover {
+    background: #0071f309;
+}
+
+.ghost {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: #0070f3;
+}
+
+.ghost:hover {
+    background: #0071f309;
+}
+
+.link {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: #0070f3;
+}
+
+.link:hover {
+    background: none;
+    text-decoration: underline;
+}
