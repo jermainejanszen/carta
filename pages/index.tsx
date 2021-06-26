@@ -40,20 +40,23 @@ export default function Home() {
               <img src="/icons/clock.svg" alt="ticktok" />
               <h3>Keep Track</h3>
               <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
+              <a>Learn more &#x2192;</a>
             </a>
 
             <a className={styles.card}>
               <img src="/icons/collaborate.svg" alt="2 dudes" />
               <h3>Collaborate</h3>
               <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
+              <a>Learn more &#x2192;</a>
             </a>
 
             <a className={styles.card}>
               <img src="/icons/check.svg" alt="nike" />         
               <h3>Stay On Top </h3>
               <p>
-                By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
+                By setting reminders, time limits, and adding tags, Carta helps you stay fully organized.
               </p>
+              <a>Learn more &#x2192;</a>
             </a>
           </div>
         </div>
