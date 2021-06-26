@@ -28,23 +28,21 @@ export default function Home() {
           Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with. 
         </p>
         <div className={styles.grid}>
+
           <a className={styles.card}>
+            <img src="/clock.svg" alt="ticktok" />
             <h3>keep track </h3>
             <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
           </a>
 
-          <a
-            
-            className={styles.card}
-          >
+          <a className={styles.card}>
+            <img src="/collaborate.svg" alt="2 dudes" />
             <h3>Collaborate</h3>
             <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
           </a>
 
-          <a
-            
-            className={styles.card}
-          >
+          <a className={styles.card}>
+            <img src="/check.svg" alt="nike" />         
             <h3>Stay On Top </h3>
             <p>
               By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
@@ -54,8 +52,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <a
-        >
+        <a>
           Powered by{' '}
     
         </a>
