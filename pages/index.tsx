@@ -15,12 +15,17 @@ export default function Home() {
       </header>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Carta
-        </h1>
-        <h2>
-          Lets change how you get things done.
-        </h2>
+        <div className={styles.titleContainer}>
+          <div>
+            <h1 className={styles.title}>
+              Carta
+            </h1>
+            <h2>
+              Lets change how you get things done.
+            </h2>
+          </div>
+          <img src="/study.svg" alt="study" />
+        </div>
         <h2>
           Collaborate and keep track of time across you projects.
         </h2>
@@ -30,19 +35,19 @@ export default function Home() {
         <div className={styles.grid}>
 
           <a className={styles.card}>
-            <img src="/clock.svg" alt="ticktok" />
-            <h3>keep track </h3>
+            <img src="/icons/clock.svg" alt="ticktok" />
+            <h3>Keep Track</h3>
             <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
           </a>
 
           <a className={styles.card}>
-            <img src="/collaborate.svg" alt="2 dudes" />
+            <img src="/icons/collaborate.svg" alt="2 dudes" />
             <h3>Collaborate</h3>
             <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
           </a>
 
           <a className={styles.card}>
-            <img src="/check.svg" alt="nike" />         
+            <img src="/icons/check.svg" alt="nike" />         
             <h3>Stay On Top </h3>
             <p>
               By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
