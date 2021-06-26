@@ -12,9 +12,9 @@ const SplashNavBar = (props: Props) => {
                 <img src="./logo.svg" />
             </div>
             <div className={styles.buttons}>
-                <Button variant="ghost">Home</Button>
-                <Button variant="ghost">Contact</Button>
-                <Button variant="ghost">About</Button>
+                <Button variant="ghost" palette="primary">Home</Button>
+                <Button variant="ghost" palette="primary">Contact</Button>
+                <Button variant="ghost" palette="primary">About</Button>
                 <Button variant="outlined" palette="primary">Log in</Button>
                 <Button palette="primary">Register</Button>
             </div>
