@@ -39,61 +39,44 @@
 }
 
 .titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0 20vh 0;
+
+  div {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 0 20vh 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  h1 {
+    text-align: start;
+    font-size: 5rem;
+    margin: 0;
+  }
 
-    h1 {
-        text-align: start;
-        font-size: 5rem;
-    }
+  h2 {
+    color: $beta200;
+    font-size: 3rem;
+    margin: 1rem 0;
+  }
 
-    h2 {
-        color: $beta200;
-        font-size: 3rem;
-    }
-
-    img, div {
-        margin: 0 8rem;
-        max-width: 500px;
-    }
+  img, div {
+    margin: 0 8rem;
+    max-width: 500px;
+  }
 }
 
 .title {
   color: $red500;
-  margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
-
-  a {
-    text-decoration: none;
-  }
 }
 
-.title,
 .description {
   text-align: center;
-}
-
-.description {
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .grid {
@@ -127,8 +110,14 @@
   
   img {
     max-width: 2rem;
+    margin-bottom: 0.5rem;
     align-self: center;
+  }
 
+  p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
 }
 
@@ -138,17 +127,6 @@
 .card:active {
   color: $aqua400;
   border-color: $aqua500;
-}
-
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
 }
 
 @media (max-width: 600px) {
