@@ -1,60 +1,181 @@
+@import '../colors';
+
 .default {
-    padding: 0.8rem;
-    background: none;
-    border-radius: 8px;
-    border: 1px solid black;
-    color: black;
-    font: inherit;
+  padding: 0.8rem;
+  background: none;
+  border-radius: 8px;
+  border: 1px solid black;
+  color: black;
+  font: inherit;
+  font-weight: bold;
 }
 
 .primary {
-    background-color: #0070f3;
-    border-color: #0070f3;
-    color: white;
+  background-color: $red400;
+  border-color: $red500;
+  color: white;
 }
 
 .primary:hover {
-    background-color: #0064d6;
+  background-color: $red500;
 }
 
 .secondary {
-
+  background-color: $aqua300;
+  border-color: $aqua400;
+  color: white;
 }
 
-.danger {
+.secondary:hover {
+  background-color: $aqua400;
+}
 
+.success {
+  background-color: $blue400;
+  border-color: $blue300;
+  color: white;
+}
+
+.success:hover {
+  background-color: $blue300;
 }
 
 .warning {
+  background-color: $orange400;
+  border-color: $orange300;
+  color: $orange100;
+}
 
+.warning:hover {
+  background-color: $orange500;
+}
+
+.danger {
+  background-color: $yellow400;
+  border-color: $yellow300;
+  color: $yellow100;
+}
+
+.danger:hover {
+  background-color: $yellow500;
 }
 
 .outlined {
-    background: none;
-    color: #0070f3;
+  background: none;
 }
 
-.outlined:hover {
-    background: #0071f309;
+.outlined.primary {
+  color: $red300;
+}
+
+.outlined.primary:hover {
+  background: $red600;
+}
+
+.outlined.secondary {
+  color: $aqua300;
+}
+
+.outlined.secondary:hover {
+  background: $aqua600;
+}
+
+.outlined.success {
+  color: $blue300;
+}
+
+.outlined.success:hover {
+  background: $blue600;
+}
+
+.outlined.warning {
+  color: $orange300;
+}
+
+.outlined.warning:hover {
+  background: $orange600;
+}
+
+.outlined.danger {
+  color: $yellow300;
+}
+
+.outlined.danger:hover {
+  background: $yellow600;
 }
 
 .ghost {
-    background: none;
-    border: 1px solid rgba(0, 0, 0, 0);
-    color: #0070f3;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
-.ghost:hover {
-    background: #0071f309;
+.ghost.primary {
+  color: $red300;
+}
+
+.ghost.primary:hover {
+  background: $red600;
+}
+
+.ghost.secondary {
+  color: $aqua300;
+}
+
+.ghost.secondary:hover {
+  background: $aqua600;
+}
+
+.ghost.success {
+  color: $blue300;
+}
+
+.ghost.success:hover {
+  background: $blue600;
+}
+
+.ghost.warning {
+  color: $orange300;
+}
+
+.ghost.warning:hover {
+  background: $orange600;
+}
+
+.ghost.danger {
+  color: $yellow300;
+}
+
+.ghost.danger:hover {
+  background: $yellow600;
 }
 
 .link {
-    background: none;
-    border: 1px solid rgba(0, 0, 0, 0);
-    color: #0070f3;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  color: $red300;
 }
 
 .link:hover {
-    background: none;
-    text-decoration: underline;
+  background: none;
+  text-decoration: underline;
+}
+
+.link.primary {
+  color: $red300;
+}
+
+.link.secondary {
+  color: $aqua300;
+}
+
+.link.success {
+  color: $blue300;
+}
+
+.link.warning {
+  color: $orange300;
+}
+
+.link.danger {
+  color: $yellow300;
 }

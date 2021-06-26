@@ -24,8 +24,8 @@ const SplashNavBar = (props: Props) => {
         <Button variant="ghost">Home</Button>
         <Button variant="ghost">Contact</Button>
         <Button variant="ghost">About</Button>
-        <Button variant="outlined" palette="primary" onClick={handleLoginClick}>Log in</Button>
-        <Button palette="primary">Register</Button>
+        <Button variant="outlined" onClick={handleLoginClick}>Log in</Button>
+        <Button>Register</Button>
       </div>
     </div>
   )
