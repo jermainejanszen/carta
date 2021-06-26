@@ -1,5 +1,5 @@
 import Button from '../components/Button';
-import styles from '../styles/widgets/SplashNavBar.module.css';
+import styles from '../styles/widgets/SplashNavBar.module.scss';
 
 interface Props {
     
