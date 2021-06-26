@@ -26,40 +26,42 @@ export default function Home() {
           </div>
           <img src="/study.svg" alt="study" />
         </div>
-        <h2>
-          Collaborate and keep track of time across you projects.
-        </h2>
-        <p>
-          Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with. 
-        </p>
-        <div className={styles.grid}>
 
-          <a className={styles.card}>
-            <img src="/icons/clock.svg" alt="ticktok" />
-            <h3>Keep Track</h3>
-            <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
-          </a>
+        <div className={styles.descriptionContainer} >
+          <h2>
+            Collaborate and keep track of time across you projects.
+          </h2>
+          <p>
+            Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with. 
+          </p>
+          <div className={styles.grid}>
 
-          <a className={styles.card}>
-            <img src="/icons/collaborate.svg" alt="2 dudes" />
-            <h3>Collaborate</h3>
-            <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
-          </a>
+            <a className={styles.card}>
+              <img src="/icons/clock.svg" alt="ticktok" />
+              <h3>Keep Track</h3>
+              <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
+            </a>
 
-          <a className={styles.card}>
-            <img src="/icons/check.svg" alt="nike" />         
-            <h3>Stay On Top </h3>
-            <p>
-              By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
-            </p>
-          </a>
+            <a className={styles.card}>
+              <img src="/icons/collaborate.svg" alt="2 dudes" />
+              <h3>Collaborate</h3>
+              <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
+            </a>
+
+            <a className={styles.card}>
+              <img src="/icons/check.svg" alt="nike" />         
+              <h3>Stay On Top </h3>
+              <p>
+                By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
+              </p>
+            </a>
+          </div>
         </div>
       </main>
 
       <footer className={styles.footer}>
         <a>
-          Powered by{' '}
-    
+          Alex and Jermaine
         </a>
       </footer>
     </div>
