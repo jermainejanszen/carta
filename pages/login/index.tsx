@@ -8,7 +8,7 @@ interface Props {
 const Login = (props: Props) => {
     return (
         
-        <div>
+        <div className={styles.container}>
         <header className={styles.header}>
         <SplashNavBar />
         </header>
@@ -17,13 +17,16 @@ const Login = (props: Props) => {
             
             <h2>Log in</h2>
             
-            <form action="">
+            <form className={styles.form} action="">
             <input placeholder="Username" type="text" name="Username" id="name"></input>
+            <br/>
+            <br/>
             <input placeholder="Password" type="text" name="Password" id="name"></input>
+            
             </form>
-            <p>forgot password</p>
+            <p className={styles.forgotPass}>forgot password?</p>
 
-            <button>Log in</button>
+            <button className={styles.button}>Log in</button>
         </div>
 
         </div>
