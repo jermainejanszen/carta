@@ -1,19 +1,19 @@
-import SplashNavBar from '../../widgets/SplashNavBar';
-import styles from '../../styles/Login.module.scss';
+import SplashNavBar from "../../widgets/SplashNavBar";
+import styles from "../../styles/Register.module.scss";
 
 interface Props {
     
 }
 
-const Login = (props: Props) => {
+const Register = (props: Props) => {
     return (
-    <div className={styles.container}>
+        <div className={styles.container}>
       <header className={styles.header}>
         <SplashNavBar />
       </header>
       
       <div className={styles.card}>
-          <h2>Log in</h2>
+          <h2>Register</h2>
           
           <form className={styles.form} action="">
             <input placeholder="Username" type="text" name="Username" id="name"></input>
@@ -25,7 +25,8 @@ const Login = (props: Props) => {
           <button className={styles.button}>Log in</button>
       </div>
     </div>
-  )
+    )
 }
 
-export default Login
+export default Register
+
