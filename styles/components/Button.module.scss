@@ -10,6 +10,10 @@
   font-weight: bold;
 }
 
+.default:hover {
+  background: $beta500;
+}
+
 .primary {
   background-color: $red400;
   border-color: $red500;

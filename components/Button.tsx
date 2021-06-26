@@ -12,6 +12,9 @@ const Button = (props: Props) => {
 
     var className = `${styles.default} `
     switch (props.palette) {
+        case "primary":
+            className += `${styles.primary} `
+            break;
         case "secondary":
             className += `${styles.secondary} `
             break;
@@ -25,7 +28,7 @@ const Button = (props: Props) => {
             className += `${styles.warning} `
             break;
         default:
-            className += `${styles.primary} `
+            break;
     }
     switch (props.variant) {
         case "outlined":
