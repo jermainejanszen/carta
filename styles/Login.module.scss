@@ -8,6 +8,9 @@
     align-items: center;
     height: 100vh;
     justify-content: center;
+    background-image: url('../public/background.svg');
+    background-repeat: no-repeat;
+    background-position-y: 12vh;
 }
 
 .header {
@@ -33,6 +36,8 @@
     max-height: 15rem;
     min-width: 300px;
     align-items: center;
+    background-color: rgba($color: #ffffff, $alpha: .5);
+
     h2{
         color: linear-gradient(to right, $orange500, $red500);
     }
