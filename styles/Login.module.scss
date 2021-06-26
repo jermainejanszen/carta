@@ -1,8 +1,21 @@
 
+@import "./colors";
 
-.header {
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
 }
 
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    justify-self: flex-start;
+}
 
 .card {
     display: flex;
@@ -16,5 +29,49 @@
     border: 1px solid #eaeaea;
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
-    max-width: 300px;
+    max-width: 400px;
+    max-height: 15rem;
+    min-width: 300px;
+    align-items: center;
+    h2{
+        color: linear-gradient(to right, $orange500, $red500);
+    }
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+    color: $aqua300;
+    border-color: $aqua500;
+}
+
+.button{
+    width:5rem;
+    height: 5rem;
+    color: white;
+    background-color: $red500;
+    border: none;
+    border-radius: 3px;
+    font-weight: lighter;
+    font-size: 1.2rem;
+    background-image: linear-gradient(to right, $orange500, $red500);
+}
+
+.form{
+    align-self: flex-start;
+    width: 10rem;
+    input{
+        width: 15rem;
+        border-radius: 5px;
+        border-width: 1px;
+        font-size: .6rem;
+        padding: .3rem;
+    }
+    
+}
+
+.forgotPass{
+    font-size: .5rem;
+    align-self: flex-end;
+    
 }
