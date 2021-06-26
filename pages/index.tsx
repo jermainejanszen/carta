@@ -16,39 +16,38 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Carta!</a>
+          Carta
         </h1>
-
-        <p className={styles.description}>
-          The Productivity Timekeeper
+        <h2>
+          Lets change how you get things done.
+        </h2>
+        <h2>
+          Collaborate and keep track of time across you projects.
+        </h2>
+        <p>
+          Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with. 
         </p>
-
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a className={styles.card}>
+            <h3>keep track </h3>
+            <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
           </a>
 
           <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
+            
             className={styles.card}
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <h3>Collaborate</h3>
+            <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            
             className={styles.card}
           >
-            <h3>Deploy &rarr;</h3>
+            <h3>Stay On Top </h3>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              By setting reminders, time limits, and adding tags, Carrta helps you stay fully organized.
             </p>
           </a>
         </div>
@@ -56,12 +55,9 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+    
         </a>
       </footer>
     </div>
