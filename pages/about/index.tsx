@@ -13,36 +13,36 @@ const About = (props: Props) => {
       </header>
       
       <main className={styles.main}>
-        <div id="title">
+        <div className={styles.aboutSection} id="title">
           <h1>
             Carta
           </h1>
           <p>
-            Description
+            Lets change how you get things done. Collaborate and keep track of time across you projects. Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with.
           </p>
         </div>
-        <div id="keep-track">
+        <div className={styles.aboutSection} id="keep-track">
           <h2>
             Keep Track
           </h2>
           <p>
-            Description
+            Effortlessly keep track of time worked on a project with the press of a button.
           </p>
         </div>
-        <div id="collaborate">
+        <div className={styles.aboutSection} id="collaborate">
           <h2>
             Collaborate
           </h2>
           <p>
-            Description
+            Clearly view the time spent by yourself and other teammates on different tasks for a given project
           </p>
         </div>
-        <div id="stay-on-top">
+        <div className={styles.aboutSection} id="stay-on-top">
           <h2>
             Stay On Top
           </h2>
           <p>
-            Description
+            By setting reminders, time limits, and adding tags, Carta helps you stay fully organized.
           </p>
         </div>
       </main>

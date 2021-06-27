@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('../public/background.svg');
+  background-position: bottom -30rem right 0;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .header {
@@ -14,9 +18,25 @@
 .main {
   display: flex;
   flex-direction: column;
-  min-width: 80rem;
+  width: 100%;
+  max-width: 81rem;
+  padding: 0 1rem;
+}
 
-  div {
-    padding: 12rem 0;
-  }
+.aboutSection {
+  margin: 2rem 0;
+
+    h1 {
+      font-size: 5rem;
+      color: $red500;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
 }
