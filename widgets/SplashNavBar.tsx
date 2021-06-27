@@ -14,7 +14,11 @@ const SplashNavBar = (props: Props) => {
     e.preventDefault();
     router.push('/login');
   }
-
+ 
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    router.push('/register');
+  }
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -25,7 +29,7 @@ const SplashNavBar = (props: Props) => {
         <Button variant="ghost">Contact</Button>
         <Button variant="ghost">About</Button>
         <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
-        <Button palette="primary">Register</Button>
+        <Button palette="primary" onClick={handleRegisterClick}>Register</Button>
       </div>
     </div>
   )

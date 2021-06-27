@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Login = (props: Props) => {
-  return (
+    return (
     <div className={styles.container}>
       <header className={styles.header}>
         <SplashNavBar />
