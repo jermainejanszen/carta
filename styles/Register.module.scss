@@ -38,6 +38,10 @@
         color: linear-gradient(to right, $orange500, $red500);
         font-size: 3rem;
     }
+
+    p {
+        padding: 0 1rem;
+    }
 }
 
 .button {
@@ -77,6 +81,15 @@
     input:focus {
         outline: none;
         box-shadow: 1px 0px 6px $aqua500;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    div > input {
+        width: 48%;
     }
 }
 

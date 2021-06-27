@@ -15,14 +15,19 @@ const Register = (props: Props) => {
       <div className={styles.card}>
           <h2>Register</h2>
           
-          <form className={styles.form} action="">
-            <input placeholder="Username" type="text" name="Username" id="name"></input>
-            <input placeholder="Password" type="text" name="Password" id="name"></input>
+          <form className={styles.form} action="" id="register-form">
+            <div>
+              <input placeholder="First Name" type="text" name="firstname"></input>
+              <input placeholder="Last Name" type="text" name="lastname"></input>
+            </div>
+            <input placeholder="Email Address" type="email" name="email"></input>
+            <input placeholder="Password" type="password" name="password"></input>
+            <input placeholder="Confirm Password" type="password" name="confirmpassword"></input>
           </form>
           
           <p className={styles.forgotPass}>forgot password?</p>
           
-          <button className={styles.button}>Log in</button>
+          <input className={styles.button} type="button" form="register-form" value="Log in" />
       </div>
     </div>
     )
