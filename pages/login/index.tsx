@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import SplashNavBar from '../../widgets/SplashNavBar';
 import styles from '../../styles/Login.module.scss';
 
@@ -6,7 +7,14 @@ interface Props {
 }
 
 const Login = (props: Props) => {
-    return (
+
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push('/projects');
+  }
+
+  return (
     <div className={styles.container}>
       <header className={styles.header}>
         <SplashNavBar />
@@ -22,7 +30,12 @@ const Login = (props: Props) => {
         
         <p className={styles.forgotPass}>forgot password?</p>
         
-        <input className={styles.button} type="button" form="login-form" value="Log in" />
+        <input 
+          className={styles.button} 
+          type="button" 
+          form="login-form" 
+          value="Log in"
+          onClick={handleLogin} />
       </div>
     </div>
   )
