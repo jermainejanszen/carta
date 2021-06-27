@@ -9,20 +9,20 @@ const Login = (props: Props) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-          <SplashNavBar />
+        <SplashNavBar />
       </header>
       
       <div className={styles.card}>
-          <h2>Log in</h2>
-          
-          <form className={styles.form} action="">
-            <input placeholder="Username" type="text" name="Username" id="name"></input>
-            <input placeholder="Password" type="text" name="Password" id="name"></input>
-          </form>
-          
-          <p className={styles.forgotPass}>forgot password?</p>
-          
-          <button className={styles.button}>Log in</button>
+        <h2>Log in</h2>
+        
+        <form className={styles.form} action="" id="login-form">
+          <input placeholder="Username" type="text" name="username" />
+          <input placeholder="Password" type="password" name="password" />
+        </form>
+        
+        <p className={styles.forgotPass}>forgot password?</p>
+        
+        <input className={styles.button} type="button" form="login-form" value="Log in" />
       </div>
     </div>
   )
