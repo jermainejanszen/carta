@@ -10,6 +10,11 @@ const SplashNavBar = (props: Props) => {
 
   const router = useRouter();
 
+  const handleHomeClick = (e) => {
+      e.preventDefault();
+      router.push('/');
+  }
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     router.push('/login');
@@ -19,13 +24,14 @@ const SplashNavBar = (props: Props) => {
     e.preventDefault();
     router.push('/register');
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="./logo.svg" />
+        <img src="./logo.svg" alt="logo" onClick={handleHomeClick} />
       </div>
       <div className={styles.buttons}>
-        <Button variant="ghost">Home</Button>
+        <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
         <Button variant="ghost">Contact</Button>
         <Button variant="ghost">About</Button>
         <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
