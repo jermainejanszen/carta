@@ -1,8 +1,12 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import SplashNavBar from '../widgets/SplashNavBar'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,21 +40,24 @@ export default function Home() {
           </p>
           <div className={styles.grid}>
 
-            <div className={styles.card}>
+            <div className={styles.card}
+              onClick={e => router.push('/about#keep-track')}>
               <img src="/icons/clock.svg" alt="ticktok" />
               <h3>Keep Track</h3>
               <p>Effortlessly keep track of time worked on a project with the press of a button.</p>
               <a>Learn more &#x2192;</a>
             </div>
 
-            <div className={styles.card}>
+            <div className={styles.card}
+              onClick={e => router.push('/about#collaborate')}>
               <img src="/icons/collaborate.svg" alt="2 dudes" />
               <h3>Collaborate</h3>
               <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
               <a>Learn more &#x2192;</a>
             </div>
 
-            <div className={styles.card}>
+            <div className={styles.card}
+              onClick={e => router.push('/about#stay-on-top')}>
               <img src="/icons/check.svg" alt="nike" />         
               <h3>Stay On Top </h3>
               <p>
