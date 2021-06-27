@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Carta</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.svg" />
       </Head>
 
       <header className={styles.header}>
