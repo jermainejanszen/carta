@@ -18,7 +18,10 @@
     }
 }
 
-.buttons {  
+.buttons {
+  display: flex;
+  align-items: center;
+
   > * {
     margin: 0rem 1rem;
   }
@@ -29,11 +32,16 @@
     font-weight: 800;
     border: 1px solid $beta400;
     border-radius: 8px;
+    height: 2.5rem;
     width: 14rem;
   }
 
   input:focus {
     outline: none;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    cursor: pointer;
   }
 }

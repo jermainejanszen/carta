@@ -27,7 +27,9 @@ const ProfileNavBar = (props: Props) => {
       </div>
       <div className={styles.buttons}>
         <input type="text" placeholder="Search Projects..." />
-        <Button variant="ghost" onClick={handleProfileClick}>Profile</Button>
+        <div>
+          <img src="./avatar.svg" alt="logo" onClick={handleProfileClick} />
+        </div>
       </div>
     </div>
   )
