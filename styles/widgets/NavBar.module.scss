@@ -91,6 +91,9 @@
     background-color: $beta600;
   }
 
+  > a:last-child {
+    border-radius: 0 0 12px 12px;
+  }
 }
 
 .dropdown:hover {
