@@ -41,6 +41,10 @@ const Projects = (props: Props) => {
         <h1 className={styles.title}>Projects</h1>
 
         <div className={styles.grid}>
+          <div className={styles.newProject}>
+            <h1>New Project</h1>
+            <img src='/icons/plus.svg' alt='plus' />
+          </div>
           {mockData.map((value, index) => <ProjectCard data={value} key={index} />)}
         </div>
       </main>

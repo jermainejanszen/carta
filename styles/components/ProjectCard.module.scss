@@ -1,14 +1,17 @@
 @use '../colors';
 
 .container {
+  flex-basis: 25%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 20rem;
+  max-width: 20rem;
+  min-width: 20rem;
   border-radius: 12px;
   box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
   background: white;
   max-height: 28rem;
+  cursor: pointer;
 }
 
 .container:hover {
@@ -27,7 +30,7 @@
   div {
     height: 3rem;
     width: 100%;
-    background: colors.$aqua600;
+    background: colors.$orange600;
     border-radius: 12px 12px 0 0;
   }
 
