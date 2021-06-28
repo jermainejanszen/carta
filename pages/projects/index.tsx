@@ -45,7 +45,7 @@ const Projects = (props: Props) => {
             <h1>New Project</h1>
             <img src='/icons/plus.svg' alt='plus' />
           </div>
-          {mockData.map((value, index) => <ProjectCard data={value} key={index} />)}
+          {mockData.map((value, index) => <ProjectCard data={value} color={index} key={index} />)}
         </div>
       </main>
       

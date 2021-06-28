@@ -9,13 +9,17 @@ interface Data {
 
 interface Props {
   data: Data,
+  color: number,
 }
 
 const ProjectCard = (props: Props) => {
+
+  const colors = ["#BAE7ED", "#B0FF94", "#638695", "#F98E8E"];
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div></div>
+        <div style={{background: colors[props.color % colors.length]}}></div>
         <h2>{props.data.name}</h2>
       </div>
       <div className={styles.main}>
