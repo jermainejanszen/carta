@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Button from '../components/Button';
-import styles from '../styles/widgets/SplashNavBar.module.scss';
+import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
     
