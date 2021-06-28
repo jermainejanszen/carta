@@ -26,6 +26,11 @@
     margin: 0rem 1rem;
   }
 
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
   input {
     padding: 0.5rem 0.6rem 0.5rem 0.6rem;
     font: inherit;
@@ -41,7 +46,60 @@
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   }
 
-  img {
+  > img {
     cursor: pointer;
   }
 }
+
+.dropdown {
+  margin: 0 0 0 1rem;
+
+  img {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+  }
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  right: 4.5rem;
+  background-color: white;
+  min-width: 10rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  > * {
+    padding: 1rem 1rem;
+  }
+
+  > p {
+    padding: 0.3rem 1rem;
+    font-weight: bold;
+  }
+
+  > a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    border-top: 1px solid $beta600;
+  }
+
+  > a:hover {
+    background-color: $beta600;
+  }
+
+}
+
+.dropdown:hover {
+  .dropdownContent {
+    display: block;
+  }
+
+  > img {
+    background-color: $beta600;
+  }
+}
+

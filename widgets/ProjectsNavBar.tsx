@@ -29,6 +29,18 @@ const ProfileNavBar = (props: Props) => {
         <input type="text" placeholder="Search Projects..." />
         <div>
           <img src="./avatar.svg" alt="logo" onClick={handleProfileClick} />
+          <div className={styles.dropdown}>
+            <img
+              src="./icons/expand-arrow.svg" 
+              alt="dropdown" />
+            <div className={styles.dropdownContent}>
+              <p>Jerchael</p>
+              <a href="/profile">My Profile</a>
+              <a href="/projects">My Project</a>
+              <a href="/settings">Settings</a>
+              <a href="/">Sign Out</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
