@@ -28,7 +28,10 @@ const ProfileNavBar = (props: Props) => {
       <div className={styles.buttons}>
         <input type="text" placeholder="Search Projects..." />
         <div>
-          <img src="./avatar.svg" alt="logo" onClick={handleProfileClick} />
+          <img
+            src="./avatar.svg" 
+            alt="logo" 
+            onClick={handleProfileClick} />
           <div className={styles.dropdown}>
             <img
               src="./icons/expand-arrow.svg" 
@@ -36,7 +39,7 @@ const ProfileNavBar = (props: Props) => {
             <div className={styles.dropdownContent}>
               <p>Jerchael</p>
               <a href="/profile">My Profile</a>
-              <a href="/projects">My Project</a>
+              <a href="/projects">My Projects</a>
               <a href="/settings">Settings</a>
               <a href="/">Sign Out</a>
             </div>
