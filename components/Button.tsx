@@ -5,7 +5,8 @@ interface Props {
     children : string,
     palette? : "primary" | "secondary" | "success" | "danger" | "warning",
     variant? : "outlined" | "ghost" | "link",
-    onClick?
+    onClick?,
+    type? : "button" | "submit" | "reset",
 }
 
 const Button = (props: Props) => {
@@ -45,7 +46,7 @@ const Button = (props: Props) => {
     }
 
     return (
-        <button className={className} onClick={props.onClick}>
+        <button type={props.type} className={className} onClick={props.onClick}>
             {props.children}
         </button>
     )

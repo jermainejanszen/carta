@@ -75,17 +75,20 @@ const New = (props: Props) => {
               )
             })}
           </div>
-          <div className={styles.taskInput}>
+          <form 
+            className={styles.taskInput} 
+            onSubmit={(e) => e.preventDefault()}>
             <input
               type="text"
               name="task"
               maxLength={300}
               ref={taskInput} />
-            <Button 
+            <Button
+              type="submit"
               palette="secondary" 
               variant="outlined"
               onClick={handleAddTaskClick}>Add task</Button>
-          </div>
+          </form>
         </div>
         <div>
           <Button palette="secondary">Create project</Button>
