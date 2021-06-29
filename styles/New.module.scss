@@ -7,7 +7,7 @@
   align-items: center;
   background-image: url('../public/background.svg');
   background-attachment: fixed;
-  background-position: bottom -30rem right 0;
+  background-position: bottom -50rem right 0;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -25,11 +25,15 @@
   > * {
     margin-top: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid $beta500;
+    border-bottom: 2px solid $beta600;
   }
 
   > div:last-child {
     border: none;
+
+    > * {
+      float: right;
+    }
   }
 }
 
@@ -53,7 +57,7 @@
   .projectName {
     font: inherit;
     border: none;
-    border-bottom: 2px solid $beta400;
+    border-bottom: 3px solid $beta400;
     font-size: 2rem;
     padding: 1rem 0.3rem 0.3rem 0.3rem;
     transition: border-color 0.15s ease;
@@ -61,12 +65,48 @@
 
   .projectName:focus {
     outline: none;
-    border-bottom: 2px solid $aqua300;
+    border-bottom: 3px solid $aqua300;
   }
 
   .projectDescription {
     font: inherit;
     margin: 1rem 0;
     padding: 0.3rem;
+  }
+}
+
+.taskInput {
+  display: flex;
+  align-items: center;
+  height: min-content;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 12px;
+
+  > input {
+    font: inherit;
+    margin-right: 2rem;
+    padding: 0.3rem;
+    flex-grow: 1;
+  }
+}
+
+.taskCard {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0 1.5rem 0;
+  padding: 0.1rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px $beta400;
+  background: white;
+
+  > p {
+    flex-grow: 1;
+  }
+
+  > img {
+    height: 2rem;
+    opacity: 60%;
+    cursor: pointer;
   }
 }

@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import ProfileNavBar from '../../../widgets/ProjectsNavBar';
 import Button from '../../../components/Button';
 
@@ -8,6 +9,21 @@ interface Props {
 }
 
 const New = (props: Props) => {
+
+  const [tasks, setTasks] = useState([]);
+  const taskInput = useRef(null);
+
+  const handleAddTaskClick = () => {
+    if(taskInput.current) {
+      const newTask : string = taskInput.current.value.trim();
+      if(newTask.length > 0) {
+        setTasks(tasks.concat([newTask]))
+      }
+      taskInput.current.value = "";
+      taskInput.current.focus();
+    }
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -44,7 +60,32 @@ const New = (props: Props) => {
           <h2>
             Add initial tasks
           </h2>
-          <Button palette="secondary" variant="outlined">Add task</Button>
+          <div>
+            {tasks.map((value, index) => {
+              return (
+                <div className={styles.taskCard} key={index}>
+                  <p>{value}</p>
+                  <img src="/icons/cancel.svg" alt="remove"
+                    onClick={() => {
+                      let newTasks = [...tasks];
+                      newTasks.splice(index, 1);
+                      setTasks(newTasks);
+                    }} />
+                </div>
+              )
+            })}
+          </div>
+          <div className={styles.taskInput}>
+            <input
+              type="text"
+              name="task"
+              maxLength={300}
+              ref={taskInput} />
+            <Button 
+              palette="secondary" 
+              variant="outlined"
+              onClick={handleAddTaskClick}>Add task</Button>
+          </div>
         </div>
         <div>
           <Button palette="secondary">Create project</Button>
