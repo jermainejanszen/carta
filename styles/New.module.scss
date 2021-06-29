@@ -20,6 +20,53 @@
 .main {
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 7rem 6rem 2rem 6rem;
+
+  > * {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $beta500;
+  }
+
+  > div:last-child {
+    border: none;
+  }
+}
+
+.title {
+  margin-top: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  > label {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  > p {
+    align-self: flex-end;
+  }
+
+  .projectName {
+    font: inherit;
+    border: none;
+    border-bottom: 2px solid $beta400;
+    font-size: 2rem;
+    padding: 1rem 0.3rem 0.3rem 0.3rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .projectName:focus {
+    outline: none;
+    border-bottom: 2px solid $aqua300;
+  }
+
+  .projectDescription {
+    font: inherit;
+    margin: 1rem 0;
+    padding: 0.3rem;
+  }
 }
