@@ -12,6 +12,7 @@
   background: white;
   max-height: 28rem;
   cursor: pointer;
+  transition: box-shadow 0.15s ease;
 }
 
 .container:hover {
