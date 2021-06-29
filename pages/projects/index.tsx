@@ -1,5 +1,8 @@
+import { useRouter } from 'next/router';
+
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
+
 import styles from '../../styles/Projects.module.scss';
 
 const mockData = [
@@ -31,6 +34,9 @@ interface Props {
 }
 
 const Projects = (props: Props) => {
+
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -41,7 +47,9 @@ const Projects = (props: Props) => {
         <h1 className={styles.title}>Projects</h1>
 
         <div className={styles.grid}>
-          <div className={styles.newProject}>
+          <div 
+            className={styles.newProject}
+            onClick={() => router.push('/projects/new')}>
             <h1>New Project</h1>
             <img src='/icons/plus.svg' alt='plus' />
           </div>

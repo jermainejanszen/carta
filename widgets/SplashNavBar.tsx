@@ -38,7 +38,7 @@ const SplashNavBar = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="./logo.svg" alt="logo" onClick={handleHomeClick} />
+        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
       </div>
       <div className={styles.buttons}>
         <Button variant="ghost" onClick={handleHomeClick}>Home</Button>

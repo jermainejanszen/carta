@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Button from '../components/Button';
 import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
@@ -23,18 +22,18 @@ const ProfileNavBar = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="./logo.svg" alt="logo" onClick={handleHomeClick} />
+        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
       </div>
       <div className={styles.buttons}>
         <input type="text" placeholder="Search Projects..." />
         <div>
           <img
-            src="./avatar.svg" 
+            src="/avatar.svg" 
             alt="logo" 
             onClick={handleProfileClick} />
           <div className={styles.dropdown}>
             <img
-              src="./icons/expand-arrow.svg" 
+              src="/icons/expand-arrow.svg" 
               alt="dropdown" />
             <div className={styles.dropdownContent}>
               <p>Jerchael</p>
