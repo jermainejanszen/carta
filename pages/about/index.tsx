@@ -2,7 +2,7 @@ import SplashNavBar from '../../widgets/SplashNavBar';
 import styles from '../../styles/About.module.scss';
 
 interface Props {
-    
+
 }
 
 const About = (props: Props) => {
@@ -11,14 +11,14 @@ const About = (props: Props) => {
       <header className={styles.header}>
         <SplashNavBar />
       </header>
-      
+
       <main className={styles.main}>
         <div className={styles.aboutSection} id="title">
           <h1>
             Carta
           </h1>
           <p>
-            Lets change how you get things done. Collaborate and keep track of time across you projects. Carta allows users to timekeep on projects with other collegues, friends, classmates, or anybody you work with.
+            Carta's main objective is to help you achieve your goals in the most efficient and informed way possible. Carta was born out of necessity, we needed a way to keep track of where we were spending our time while working on various projects. While brainstorming on what product would be most benifical to users, it became clear that there were three core elements that needed to be addressed. Firstly there needed to be a clear and simple way to accurately log time spent on specific tasks within a given project. Second was finding a way to intergrate a collaborative aspect by allowing users to delegate specific tasks to one another while also being able to view how much time was being spent on those tasks. Third was helping users organize themselves by providing the option to add tags, reminders, and deadlines to tasks to help ensure an efficient workflow.
           </p>
         </div>
         <div className={styles.aboutSection} id="keep-track">
@@ -46,7 +46,7 @@ const About = (props: Props) => {
           </p>
         </div>
       </main>
-            
+
     </div>
   )
 }
