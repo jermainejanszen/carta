@@ -27,7 +27,7 @@ const New = (props: Props) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <ProfileNavBar />
+        <ProfileNavBar hideSearch />
       </header>
         
       <main className={styles.main}>

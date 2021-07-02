@@ -38,7 +38,7 @@ const Project = (props: Props) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <ProjectsNavBar />
+        <ProjectsNavBar hideSearch />
       </header>
 
       <main className={styles.main}>
