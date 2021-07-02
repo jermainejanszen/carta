@@ -1,4 +1,4 @@
-@import '../colors';
+@use '../colors' as *;
 
 .default {
   padding: 0.8rem;
@@ -67,7 +67,7 @@
 }
 
 .outlined {
-  background: none;
+  background: white;
   border: 1px solid black;
 }
 

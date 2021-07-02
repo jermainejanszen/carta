@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
@@ -35,6 +36,16 @@ const Project = (props: Props) => {
 
   const router = useRouter();
 
+  const id = router.query.id;
+  const [name, setName] = useState(mockData.name);
+  const [description, setDescription] = useState(mockData.description);
+  const [tasks, setTasks] = useState(mockData.tasks);
+
+  const handleAddTaskClick = (e) => {
+    e.preventDefault();
+    setTasks([...tasks].concat([{name: "New Task", time: 0}]));
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -43,8 +54,8 @@ const Project = (props: Props) => {
 
       <main className={styles.main}>
         <div>
-          <h1 className={styles.title}>{mockData.name}</h1>
-          <p>{mockData.description}</p>
+          <h1 className={styles.title}>{name}</h1>
+          <p>{description}</p>
         </div>
         
         <div>
@@ -52,9 +63,12 @@ const Project = (props: Props) => {
         </div>
         
         <div className={styles.taskContainer}>
-          <Button palette="secondary">Add Task</Button>
           <div className={styles.taskList}>
-            {mockData.tasks.map((value, index) => <TaskItem name={value.name} time={value.time} key={index}/>)}
+            {tasks.map((value, index) => <TaskItem name={value.name} time={value.time} key={index}/>)}
+          </div>
+          <div className={styles.taskActions}>
+            <Button onClick={handleAddTaskClick} palette="secondary" variant="outlined">Add Task</Button>
+            <Button variant="outlined">Edit</Button>
           </div>
         </div>
       </main>

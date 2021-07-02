@@ -29,19 +29,22 @@
     border-radius: 10px;
     background: $aqua600;
   }
-
 }
-
 
 .taskContainer {
 
   > * {
-    margin: 0.5rem 1rem;
+    margin: 1rem 1rem;
   }
 
   .taskList {
     box-shadow: 0 0px 6px $beta400;
     border-radius: 12px;
     background-color: white;
+  }
+
+  .taskActions {
+    display: flex;
+    justify-content: space-between;
   }
 }
