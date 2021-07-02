@@ -1,0 +1,44 @@
+@use '../colors' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid $beta500;
+  border-bottom: none;
+  padding-left: 2rem;
+
+  > h3 {
+    flex-grow: 1;
+  }
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        margin: 0 1rem;
+        flex-basis: 33%;
+    }
+  }
+}
+
+.container:first-child {
+  border-radius: 12px 12px 0 0;
+  border: none;
+}
+
+.container:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 6rem;
+  border: 1px solid $beta200;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}

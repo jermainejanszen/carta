@@ -1,0 +1,47 @@
+@use 'colors' as *;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../public/background.svg');
+  background-attachment: fixed;
+  background-position: bottom -30rem right 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+  
+.header {
+  width: 100%;
+  position: fixed;
+}
+  
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 7rem 6rem 2rem 6rem;
+
+  .title {
+    width: max-content;
+    padding: 0.8rem;
+    border-radius: 10px;
+    background: $aqua600;
+  }
+
+}
+
+
+.taskContainer {
+
+  > * {
+    margin: 0.5rem 1rem;
+  }
+
+  .taskList {
+    box-shadow: 0 0px 6px $beta400;
+    border-radius: 12px;
+    background-color: white;
+  }
+}
