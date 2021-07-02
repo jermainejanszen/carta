@@ -43,7 +43,13 @@ const Project = (props: Props) => {
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
-    setTasks([...tasks].concat([{name: "New Task", time: 0}]));
+    setTasks(tasks.concat([{name: "New Task", time: 0}]));
+  }
+
+  const handleEditTaskName = (index: number, newName: string) => {
+    let newTasks = [...tasks];
+    newTasks[index] = {...newTasks[index], name: newName};
+    setTasks(newTasks);
   }
 
   return (
@@ -64,7 +70,7 @@ const Project = (props: Props) => {
         
         <div className={styles.taskContainer}>
           <div className={styles.taskList}>
-            {tasks.map((value, index) => <TaskItem name={value.name} time={value.time} key={index}/>)}
+            {tasks.map((value, index) => <TaskItem name={value.name} time={value.time} key={index} index={index} editName={handleEditTaskName} />)}
           </div>
           <div className={styles.taskActions}>
             <Button onClick={handleAddTaskClick} palette="secondary" variant="outlined">Add Task</Button>
