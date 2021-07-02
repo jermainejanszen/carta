@@ -17,13 +17,13 @@
 }
 
 .primary {
-  background-color: $red400;
-  border-color: $red500;
+  background: linear-gradient(to right, $orange400, $red400);
   color: white;
+  border: none;
 }
 
 .primary:hover {
-  background-color: $red500;
+  background: linear-gradient(to right, $orange500, $red500);
 }
 
 .secondary {
@@ -37,13 +37,13 @@
 }
 
 .success {
-  background-color: $blue400;
-  border-color: $blue300;
+  background-color: $green200;
+  border-color: $green200;
   color: white;
 }
 
 .success:hover {
-  background-color: $blue300;
+  background-color: $green300;
 }
 
 .warning {
@@ -68,10 +68,12 @@
 
 .outlined {
   background: none;
+  border: 1px solid black;
 }
 
 .outlined.primary {
   color: $red300;
+  border-color: $red300;
 }
 
 .outlined.primary:hover {
@@ -80,6 +82,7 @@
 
 .outlined.secondary {
   color: $aqua300;
+  border-color: $aqua300;
 }
 
 .outlined.secondary:hover {
@@ -87,15 +90,17 @@
 }
 
 .outlined.success {
-  color: $blue300;
+  color: $green200;
+  border-color: $green200;
 }
 
 .outlined.success:hover {
-  background: $blue600;
+  background: $green600;
 }
 
 .outlined.warning {
   color: $orange300;
+  border-color: $orange300;
 }
 
 .outlined.warning:hover {
@@ -104,6 +109,7 @@
 
 .outlined.danger {
   color: $yellow300;
+  border-color: $yellow300;
 }
 
 .outlined.danger:hover {
@@ -132,11 +138,11 @@
 }
 
 .ghost.success {
-  color: $blue300;
+  color: $green200;
 }
 
 .ghost.success:hover {
-  background: $blue600;
+  background: $green600;
 }
 
 .ghost.warning {
@@ -175,7 +181,7 @@
 }
 
 .link.success {
-  color: $blue300;
+  color: $green200;
 }
 
 .link.warning {

@@ -18,8 +18,8 @@ const TaskItem = (props: Props) => {
     <div className={styles.container}>
       <h3>{props.name}</h3>
       <div>
-        <Button palette="primary" variant="outlined">Start</Button>
-        <Button palette="primary" variant="outlined">Stop</Button>
+        <Button palette="success" variant="ghost">Start</Button>
+        <Button palette="primary" variant="ghost">Stop</Button>
         <p className={styles.time}>{secondsToHours(props.time)}</p>
       </div>
     </div>
