@@ -1,6 +1,7 @@
 import styles from '../styles/components/ProjectCard.module.scss';
 
 interface Data {
+  id: string,
   name: string,
   hours: number,
   tasks: number,
@@ -17,7 +18,7 @@ const ProjectCard = (props: Props) => {
   const colors = ["#BAE7ED", "#B0FF94", "#638695", "#F98E8E"];
 
   return (
-    <div className={styles.container}>
+    <a className={styles.container} href={`/projects/${props.data.id}`}>
       <div className={styles.header}>
         <div style={{background: colors[props.color % colors.length]}}></div>
         <h2>{props.data.name}</h2>
@@ -29,7 +30,7 @@ const ProjectCard = (props: Props) => {
           {props.data.description.substring(0, 120)}
           {props.data.description.length > 120 ? "..." : ""}</p>
       </div>
-    </div>
+    </a>
   )
 }
 

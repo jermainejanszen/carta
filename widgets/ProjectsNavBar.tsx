@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
-    
+  hideSearch? : boolean,
 }
 
 const ProfileNavBar = (props: Props) => {
@@ -25,7 +25,7 @@ const ProfileNavBar = (props: Props) => {
         <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
       </div>
       <div className={styles.buttons}>
-        <input type="text" placeholder="Search Projects..." />
+        {props.hideSearch ?? <input type="text" placeholder="Search Projects..." />}
         <div>
           <img
             src="/avatar.svg" 
