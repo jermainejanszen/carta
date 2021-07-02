@@ -52,7 +52,8 @@ export default function Home() {
               onClick={e => router.push('/about#collaborate')}>
               <img src="/icons/collaborate.svg" alt="2 dudes" />
               <h3>Collaborate</h3>
-              <p>Clearly view the time spent by yourself and other teammates on different tasks for a given project</p>
+              <p>Clearly view the time spent by yourself and others on different tasks for a given project.
+              </p>
               <a>Learn more &#x2192;</a>
             </div>
 
