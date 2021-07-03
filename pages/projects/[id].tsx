@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
@@ -16,15 +16,19 @@ const mockData = {
   hours: 43,
   tasks: [
     {
+      id: 1,
       name: "Tensor Flow",
       time: 37368,
     },{
+      id: 2,
       name: "Integrating Matrix Solver",
       time: 15132,
     },{
+      id: 3,
       name: "Writing Matrix Solver",
       time: 10440,
     },{
+      id: 4,
       name: "UI Design",
       time: 24408,
     },
@@ -43,9 +47,28 @@ const Project = (props: Props) => {
   const [editMode, setEditMode] = useState(false);
   const [isCounting, setIsCounting] = useState(false);
 
+  const nameRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  const handleNameChange = () => {
+    if (nameRef.current) {
+      setName(nameRef.current.value);
+    }
+  }
+
+  const handleDescriptionChange = () => {
+    if (descriptionRef.current) {
+      setDescription(descriptionRef.current.value);
+    }
+  }
+
   const handleAddTaskClick = (e) => {
     e.preventDefault();
-    setTasks(tasks.concat([{name: "New Task", time: 0}]));
+    setTasks(tasks.concat([{
+      id: Date.now(), 
+      name: `Task ${tasks.length + 1}`, 
+      time: 0,
+    }]));
   }
 
   const handleEditTaskName = (index: number, newName: string) => {
@@ -61,6 +84,10 @@ const Project = (props: Props) => {
   }
 
   const handleEditModeClick = (e) => {
+    if (editMode) {
+      setName(name.trim());
+      setDescription(description.trim());
+    }
     setEditMode(!editMode);
   }
 
@@ -77,10 +104,24 @@ const Project = (props: Props) => {
       </header>
 
       <main className={styles.main}>
-        <div>
+        {!editMode ? 
+        <div className={styles.titleContainer}>
           <h1 className={styles.title}>{name}</h1>
           <p>{description}</p>
-        </div>
+        </div> :
+        <div className={styles.titleContainer}>
+          <input 
+            className={styles.title}
+            type="text"
+            value={name}
+            ref={nameRef}
+            onChange={handleNameChange} />
+          <textarea 
+            value={description}
+            ref={descriptionRef}
+            onChange={handleDescriptionChange} />
+        </div> 
+        }
         
         <div>
 
@@ -88,9 +129,10 @@ const Project = (props: Props) => {
         
         <div className={styles.taskContainer}>
           <div className={styles.taskList}>
+            {tasks.length === 0 && <h3>No Tasks</h3>}
             {tasks.map((value, index) => {
               return (
-              <div key={`${value.name}${index}`} >
+              <div key={value.id} >
                 <TaskItem 
                   name={value.name} 
                   time={value.time}
@@ -117,7 +159,7 @@ const Project = (props: Props) => {
             <Button 
               onClick={handleEditModeClick}
               variant="outlined">
-                Edit
+                {editMode ? "Done" : "Edit"}
             </Button>
           </div>
         </div>
