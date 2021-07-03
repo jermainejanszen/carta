@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
@@ -47,6 +47,21 @@ const Project = (props: Props) => {
   const [editMode, setEditMode] = useState(false);
   const [isCounting, setIsCounting] = useState(false);
 
+  const nameRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  const handleNameChange = () => {
+    if (nameRef.current) {
+      setName(nameRef.current.value);
+    }
+  }
+
+  const handleDescriptionChange = () => {
+    if (descriptionRef.current) {
+      setDescription(descriptionRef.current.value);
+    }
+  }
+
   const handleAddTaskClick = (e) => {
     e.preventDefault();
     setTasks(tasks.concat([{
@@ -69,6 +84,10 @@ const Project = (props: Props) => {
   }
 
   const handleEditModeClick = (e) => {
+    if (editMode) {
+      setName(name.trim());
+      setDescription(description.trim());
+    }
     setEditMode(!editMode);
   }
 
@@ -85,10 +104,24 @@ const Project = (props: Props) => {
       </header>
 
       <main className={styles.main}>
-        <div>
+        {!editMode ? 
+        <div className={styles.titleContainer}>
           <h1 className={styles.title}>{name}</h1>
           <p>{description}</p>
-        </div>
+        </div> :
+        <div className={styles.titleContainer}>
+          <input 
+            className={styles.title}
+            type="text"
+            value={name}
+            ref={nameRef}
+            onChange={handleNameChange} />
+          <textarea 
+            value={description}
+            ref={descriptionRef}
+            onChange={handleDescriptionChange} />
+        </div> 
+        }
         
         <div>
 
