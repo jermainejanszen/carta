@@ -3,7 +3,7 @@ import styles from '../styles/components/Button.module.scss';
 
 interface Props {
     children : string,
-    palette? : "primary" | "secondary" | "success" | "danger" | "warning",
+    palette? : "primary" | "secondary" | "success" | "danger" | "warning" | "",
     variant? : "outlined" | "ghost" | "link",
     onClick?,
     type? : "button" | "submit" | "reset",

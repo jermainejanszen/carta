@@ -59,7 +59,7 @@
   border-radius: 0 0 12px 12px;
 }
 
-.container:hover {
+.taskName:hover {
   img {
     opacity: 100%;
   }
@@ -70,7 +70,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 6rem;
+  width: 9rem;
   border: 1px solid $beta200;
   border-radius: 10px;
   font-size: 1.2rem;

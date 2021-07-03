@@ -7,13 +7,18 @@ interface Props {
   time: number,
   index: number,
   editName: (index: number, newName: string) => void,
+  editTime: (index: number, newTime: number) => void,
 }
 
 const TaskItem = (props: Props) => {
 
   const nameInput = useRef(null);
+  const countRef = useRef(null);
+
   const [editMode, setEditMode] = useState(false);
+  const [isCounting, setIsCounting] = useState(false);
   const [name, setName] = useState(props.name);
+  const [time, setTime] = useState(props.time);
 
   // Focuses on the name input field when edit mode is entered
   useEffect(() => {
@@ -22,13 +27,20 @@ const TaskItem = (props: Props) => {
     }
   }, [editMode])
 
-  const secondsToHours = (seconds : number) : string => {
-      const hours = Math.floor(seconds / 3600);
-      let minutes = Math.floor((seconds % 3600) / 60).toString();
+  const secondsToHours = (time : number) : string => {
+      const hours = Math.floor(time / 3600);
+      
+      let minutes = Math.floor((time % 3600) / 60).toString();
       if (minutes.length < 2) {
         minutes = '0' + minutes;
       }
-      return `${hours}:${minutes}`;
+
+      let seconds = Math.floor((time % 3600) % 60).toString();
+      if (seconds.length < 2) {
+        seconds = '0' + seconds;
+      }
+
+      return `${hours}:${minutes}:${seconds}`;
   }
 
   const handleEditClick = (e) => {
@@ -50,6 +62,23 @@ const TaskItem = (props: Props) => {
     }
   }
 
+  const handleTimeStartClick = (e) => {
+    if (!isCounting) {
+      setIsCounting(true);
+      countRef.current = setInterval(() => {
+        setTime((time) => time + 1)
+      }, 1000);
+    }
+  }
+
+  const handleTimeStopClick = (e) => {
+    if (isCounting) {
+      clearInterval(countRef.current);
+      props.editTime(props.index, time);
+      setIsCounting(false);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.taskName}>
@@ -67,9 +96,19 @@ const TaskItem = (props: Props) => {
           onClick={handleEditClick} />
       </div>
       <div className={styles.taskTime}>
-        <Button palette="success" variant="ghost">Start</Button>
-        <Button palette="primary" variant="ghost">Stop</Button>
-        <p className={styles.time}>{secondsToHours(props.time)}</p>
+        <Button 
+          palette={!isCounting ? "success" : ""}
+          variant="ghost"
+          onClick={handleTimeStartClick} >
+            Start
+        </Button>
+        <Button 
+          palette={isCounting ? "primary" : ""} 
+          variant="ghost"
+          onClick={handleTimeStopClick} >
+            Stop
+        </Button>
+        <p className={styles.time}>{secondsToHours(time)}</p>
       </div>
     </div>
   )

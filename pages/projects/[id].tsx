@@ -20,7 +20,7 @@ const mockData = {
       time: 37368,
     },{
       name: "Integrating Matrix Solver",
-      time: 15120,
+      time: 15132,
     },{
       name: "Writing Matrix Solver",
       time: 10440,
@@ -52,6 +52,12 @@ const Project = (props: Props) => {
     setTasks(newTasks);
   }
 
+  const handleEditTaskTime = (index: number, newTime: number) => {
+    let newTasks = [...tasks];
+    newTasks[index] = {...newTasks[index], time: newTime};
+    setTasks(newTasks);
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -70,7 +76,16 @@ const Project = (props: Props) => {
         
         <div className={styles.taskContainer}>
           <div className={styles.taskList}>
-            {tasks.map((value, index) => <TaskItem name={value.name} time={value.time} key={index} index={index} editName={handleEditTaskName} />)}
+            {tasks.map((value, index) => {
+              return <TaskItem 
+                name={value.name} 
+                time={value.time} 
+                key={index} 
+                index={index} 
+                editName={handleEditTaskName}
+                editTime={handleEditTaskTime} />
+                }
+            )}
           </div>
           <div className={styles.taskActions}>
             <Button onClick={handleAddTaskClick} palette="secondary" variant="outlined">Add Task</Button>
