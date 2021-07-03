@@ -14,37 +14,22 @@ const Profile = (props: Props) => {
 
         <main className={styles.main}>
         <div className={styles.grid}>
-          <div>
+          <div className={styles.row1}>
             <div className={styles.profilePic}>
               <img src="/cofounder1.jpg" alt="pog" />
             </div>
-
-            <div className={styles.userInfo}>
-              <h2>
-                Alexcrocrox
-              </h2>
-              <div className={styles.company}>
-                <img src="/icons/job.svg" alt="company" />
-                <h4>
-                  Carta
-                </h4>
+              <div>
+                <div className={styles.bio}>
+                  <h2>
+                    Alexcrocrox
+                  </h2>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo maxime distinctio debitis voluptate incidunt corporis earum quod iure.
+                  </p>
+                </div>
+                
               </div>
-              <div className={styles.website}>
-                <img src="/icons/website.svg" alt="website" />
-                <h4>
-                  Carta.co
-                </h4>
-              </div>
-              <div className={styles.twitter}>
-                <img src="/icons/twitter.svg" alt="website" />
-              <h4>
-                alexcrocrox@twitter.com
-              </h4>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.stats}>
+              <div className={styles.stats}>
             <div className={styles.statsGroup}>
               <div>
                 <h2>
@@ -80,7 +65,39 @@ const Profile = (props: Props) => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+
+          <div className={styles.row2}>
+            <div className={styles.userInfo}>
+                <h3>
+                  Links
+                </h3>
+                <div className={styles.company}>
+                  <img src="/icons/job.svg" alt="company" />
+                  <h4>
+                    Carta
+                  </h4>
+                </div>
+                <div className={styles.website}>
+                  <img src="/icons/website.svg" alt="website" />
+                  <h4>
+                    Carta.co
+                  </h4>
+                </div>
+                <div className={styles.twitter}>
+                  <img src="/icons/twitter.svg" alt="website" />
+                <h4>
+                  alexcrocrox@twitter.com
+                </h4>
+                </div>
+              </div>
+              <div className={styles.graph}>
+                <h3>
+                  Insights
+                </h3>
+              </div>
+          </div>
+          </div>
         </main>
     </div>
   )
