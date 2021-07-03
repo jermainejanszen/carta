@@ -40,6 +40,7 @@ const Project = (props: Props) => {
   const [name, setName] = useState(mockData.name);
   const [description, setDescription] = useState(mockData.description);
   const [tasks, setTasks] = useState(mockData.tasks);
+  const [editMode, setEditMode] = useState(false);
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
@@ -77,19 +78,31 @@ const Project = (props: Props) => {
         <div className={styles.taskContainer}>
           <div className={styles.taskList}>
             {tasks.map((value, index) => {
-              return <TaskItem 
-                name={value.name} 
-                time={value.time} 
-                key={index} 
-                index={index} 
-                editName={handleEditTaskName}
-                editTime={handleEditTaskTime} />
-                }
+              return (
+              <div key={index} >
+                <TaskItem 
+                  name={value.name} 
+                  time={value.time}
+                  index={index} 
+                  editName={handleEditTaskName}
+                  editTime={handleEditTaskTime} />
+                  {editMode && <img src="/icons/cancel.svg" alt="cancel" />}
+              </div>
+              )}
             )}
           </div>
           <div className={styles.taskActions}>
-            <Button onClick={handleAddTaskClick} palette="secondary" variant="outlined">Add Task</Button>
-            <Button variant="outlined">Edit</Button>
+            <Button 
+              onClick={handleAddTaskClick} 
+              palette="secondary" 
+              variant="outlined">
+                Add Task
+            </Button>
+            <Button 
+              onClick={() => setEditMode(!editMode)}
+              variant="outlined">
+                Edit
+            </Button>
           </div>
         </div>
       </main>

@@ -4,10 +4,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid $beta500;
-  border-bottom: none;
   padding-left: 2rem;
   height: 4rem;
+  flex-grow: 1;
 
   .taskName {
     display: flex;
@@ -48,15 +47,6 @@
         flex-basis: 33%;
     }
   }
-}
-
-.container:first-child {
-  border-radius: 12px 12px 0 0;
-  border: none;
-}
-
-.container:last-child {
-  border-radius: 0 0 12px 12px;
 }
 
 .taskName:hover {
