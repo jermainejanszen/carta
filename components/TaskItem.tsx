@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Button from './Button';
 import styles from '../styles/components/TaskItem.module.scss';
 
@@ -14,6 +14,13 @@ const TaskItem = (props: Props) => {
   const nameInput = useRef(null);
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState(props.name);
+
+  // Focuses on the name input field when edit mode is entered
+  useEffect(() => {
+    if (editMode && nameInput.current) {
+      nameInput.current.focus();
+    }
+  }, [editMode])
 
   const secondsToHours = (seconds : number) : string => {
       const hours = Math.floor(seconds / 3600);
@@ -37,10 +44,23 @@ const TaskItem = (props: Props) => {
     }
   }
 
+  const handleNameKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      handleEditClick(null);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.taskName}>
-        {!editMode ? <h3>{name}</h3> : <input ref={nameInput} type="text" value={name} onChange={handleNameChange} />}
+        {!editMode ? 
+          <h3>{name}</h3> : 
+          <input 
+            ref={nameInput} 
+            type="text" 
+            value={name} 
+            onChange={handleNameChange}
+            onKeyUp={handleNameKeyUp} />}
         <img 
           src={editMode ? "/icons/checkmark.svg" : "/icons/edit.svg"} 
           alt="edit"
