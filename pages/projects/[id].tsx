@@ -16,15 +16,19 @@ const mockData = {
   hours: 43,
   tasks: [
     {
+      id: 1,
       name: "Tensor Flow",
       time: 37368,
     },{
+      id: 2,
       name: "Integrating Matrix Solver",
       time: 15132,
     },{
+      id: 3,
       name: "Writing Matrix Solver",
       time: 10440,
     },{
+      id: 4,
       name: "UI Design",
       time: 24408,
     },
@@ -45,7 +49,10 @@ const Project = (props: Props) => {
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
-    setTasks(tasks.concat([{name: "New Task", time: 0}]));
+    setTasks(tasks.concat([{
+      id: Date.now(), 
+      name: `Task ${tasks.length + 1}`, 
+      time: 0}]));
   }
 
   const handleEditTaskName = (index: number, newName: string) => {
@@ -88,9 +95,10 @@ const Project = (props: Props) => {
         
         <div className={styles.taskContainer}>
           <div className={styles.taskList}>
+            {tasks.length === 0 && <h3>No Tasks</h3>}
             {tasks.map((value, index) => {
               return (
-              <div key={`${value.name}${index}`} >
+              <div key={value.id} >
                 <TaskItem 
                   name={value.name} 
                   time={value.time}
