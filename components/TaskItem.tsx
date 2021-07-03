@@ -8,6 +8,7 @@ interface Props {
   index: number,
   editName: (index: number, newName: string) => void,
   editTime: (index: number, newTime: number) => void,
+  setIsCounting: (isCounting: boolean) => void,
 }
 
 const TaskItem = (props: Props) => {
@@ -27,19 +28,22 @@ const TaskItem = (props: Props) => {
     }
   }, [editMode])
 
+  useEffect(() => {
+    return () => {
+      clearInterval(countRef.current);
+    }
+  }, [])
+
   const secondsToHours = (time : number) : string => {
       const hours = Math.floor(time / 3600);
-      
       let minutes = Math.floor((time % 3600) / 60).toString();
       if (minutes.length < 2) {
         minutes = '0' + minutes;
       }
-
       let seconds = Math.floor((time % 3600) % 60).toString();
       if (seconds.length < 2) {
         seconds = '0' + seconds;
       }
-
       return `${hours}:${minutes}:${seconds}`;
   }
 
@@ -65,6 +69,7 @@ const TaskItem = (props: Props) => {
   const handleTimeStartClick = (e) => {
     if (!isCounting) {
       setIsCounting(true);
+      props.setIsCounting(true);
       countRef.current = setInterval(() => {
         setTime((time) => time + 1)
       }, 1000);
@@ -76,6 +81,7 @@ const TaskItem = (props: Props) => {
       clearInterval(countRef.current);
       props.editTime(props.index, time);
       setIsCounting(false);
+      props.setIsCounting(false);
     }
   }
 

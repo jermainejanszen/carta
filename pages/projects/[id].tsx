@@ -41,6 +41,7 @@ const Project = (props: Props) => {
   const [description, setDescription] = useState(mockData.description);
   const [tasks, setTasks] = useState(mockData.tasks);
   const [editMode, setEditMode] = useState(false);
+  const [isCounting, setIsCounting] = useState(false);
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
@@ -56,6 +57,16 @@ const Project = (props: Props) => {
   const handleEditTaskTime = (index: number, newTime: number) => {
     let newTasks = [...tasks];
     newTasks[index] = {...newTasks[index], time: newTime};
+    setTasks(newTasks);
+  }
+
+  const handleEditModeClick = (e) => {
+    setEditMode(!editMode);
+  }
+
+  const handleDeleteItemClick = (index: number) => {
+    let newTasks = [...tasks];
+    newTasks.splice(index, 1)
     setTasks(newTasks);
   }
 
@@ -79,14 +90,19 @@ const Project = (props: Props) => {
           <div className={styles.taskList}>
             {tasks.map((value, index) => {
               return (
-              <div key={index} >
+              <div key={`${value.name}${index}`} >
                 <TaskItem 
                   name={value.name} 
                   time={value.time}
                   index={index} 
                   editName={handleEditTaskName}
-                  editTime={handleEditTaskTime} />
-                  {editMode && <img src="/icons/cancel.svg" alt="cancel" />}
+                  editTime={handleEditTaskTime}
+                  setIsCounting={setIsCounting} />
+                  {editMode && 
+                    <img 
+                      src="/icons/cancel.svg" 
+                      alt="cancel"
+                      onClick={(e) => handleDeleteItemClick(index)} />}
               </div>
               )}
             )}
@@ -99,7 +115,7 @@ const Project = (props: Props) => {
                 Add Task
             </Button>
             <Button 
-              onClick={() => setEditMode(!editMode)}
+              onClick={handleEditModeClick}
               variant="outlined">
                 Edit
             </Button>
