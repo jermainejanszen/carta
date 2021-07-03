@@ -50,13 +50,14 @@ const TaskItem = (props: Props) => {
   const handleEditClick = (e) => {
     setEditMode(!editMode);
     if (editMode) {
-      props.editName(props.index, name);
+      props.editName(props.index, name.trim());
+      setName(name.trim());
     }
   }
 
   const handleNameChange = () => {
     if (nameInput.current) {
-      setName(nameInput.current.value.trim());
+      setName(nameInput.current.value);
     }
   }
 

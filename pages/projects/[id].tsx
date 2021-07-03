@@ -52,7 +52,8 @@ const Project = (props: Props) => {
     setTasks(tasks.concat([{
       id: Date.now(), 
       name: `Task ${tasks.length + 1}`, 
-      time: 0}]));
+      time: 0,
+    }]));
   }
 
   const handleEditTaskName = (index: number, newName: string) => {
@@ -125,7 +126,7 @@ const Project = (props: Props) => {
             <Button 
               onClick={handleEditModeClick}
               variant="outlined">
-                Edit
+                {editMode ? "Done" : "Edit"}
             </Button>
           </div>
         </div>
