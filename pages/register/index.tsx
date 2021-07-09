@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { 
   Text, 
@@ -16,7 +15,6 @@ interface Props {
 const Register = (props: Props) => {
 
   const router = useRouter();
-  const [showPass, setShowPass] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
