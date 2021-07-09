@@ -5,11 +5,10 @@ import {
   Flex, 
   Spacer, 
   Grid, 
-  Image} from '@chakra-ui/react';
+  Image } from '@chakra-ui/react';
 import { createIcon } from '@chakra-ui/icon';
 import { TimeIcon, CheckCircleIcon } from '@chakra-ui/icons';
 import SplashNavBar from '../widgets/SplashNavBar';
-import styles from '../styles/Home.module.scss';
 
 interface CardProps {
   icon: string,
