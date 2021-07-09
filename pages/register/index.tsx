@@ -1,17 +1,12 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { 
   Text, 
   Flex, 
   VStack,
-  HStack, 
-  Input,
-  InputGroup,
-  InputRightElement, 
   Button,
-  useColorModeValue,
-  FormControl,
-  FormLabel,
-  FormHelperText} from '@chakra-ui/react';
+  useColorModeValue} from '@chakra-ui/react';
+import { FaGoogle, FaFacebook, FaGithub, FaApple } from 'react-icons/fa';
 import SplashNavBar from "../../widgets/SplashNavBar";
 
 interface Props {
@@ -20,10 +15,12 @@ interface Props {
 
 const Register = (props: Props) => {
 
+  const router = useRouter();
   const [showPass, setShowPass] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
+    router.push('/projects');
   }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");
@@ -46,48 +43,47 @@ const Register = (props: Props) => {
               border="1px solid gray"
               borderRadius="xl"
               bg={bg}>
-                <Text fontSize="5xl">
-                  Register
+                <Text fontSize="4xl">
+                  Welcome to Carta
                 </Text>
               
-                <form>
-
-                  <Flex direction="column">
-                    <VStack spacing="6" my="2rem">
-                      <HStack>
-                        <Input
-                          placeholder="First Name"
-                          type="text"
-                          name="firstname"
-                          autoCorrect="off" />
-                        <Input
-                          placeholder="Last Name"
-                          type="text"
-                          name="lastname"
-                          autoCorrect="off" />
-                      </HStack>
-                      <Input
-                        placeholder="Email Address"
-                        type="email"
-                        name="email" />
-                      <Input
-                        placeholder="Password"
-                        type="password"
-                        name="password"
-                        autoComplete="off" />
-                      <Input
-                        placeholder="Confirm Password"
-                        type="password"
-                        name="confirmpassword"
-                        autoComplete="off" />
-                    </VStack>
-                    <Button
-                      variant="primary"
-                      onClick={handleRegister}>
-                        Register
-                    </Button>
-                  </Flex>
-                </form>
+                <VStack spacing="6" my="2rem">
+                  <Button
+                    colorScheme="red"
+                    size="lg"
+                    variant="outline" 
+                    leftIcon={<FaGoogle />}
+                    width="20rem"
+                    onClick={handleRegister}>
+                      Register with Google
+                  </Button>
+                  <Button 
+                    colorScheme="linkedin"
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaFacebook />}
+                    width="20rem"
+                    onClick={handleRegister}>
+                      Register with Facebook
+                  </Button>
+                  <Button 
+                    colorScheme="teal"
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaGithub />}
+                    width="20rem"
+                    onClick={handleRegister}>
+                      Register with GitHub
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaApple />}
+                    width="20rem"
+                    onClick={handleRegister}>
+                      Register with Apple
+                  </Button>
+                </VStack>
             </Flex>
         </Flex>
     </Flex>
