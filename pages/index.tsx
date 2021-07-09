@@ -5,7 +5,8 @@ import {
   Flex, 
   Spacer, 
   Grid, 
-  Image } from '@chakra-ui/react';
+  Image, 
+  useColorModeValue} from '@chakra-ui/react';
 import { createIcon } from '@chakra-ui/icon';
 import { TimeIcon, CheckCircleIcon } from '@chakra-ui/icons';
 import SplashNavBar from '../widgets/SplashNavBar';
@@ -58,13 +59,15 @@ export default function Home() {
       cardIcon = <CheckCircleIcon h={7} w={7} m={2} />;
     }
 
+    const bg = useColorModeValue("whiteAlpha.900", "blackAlpha.700");
+
     return (
       <Flex
         direction="column"
         justifyContent="space-between"
         alignItems="center"
         maxW="80"
-        bg="whiteAlpha.900"
+        bg={bg}
         padding="6"
         margin="4"
         borderRadius="xl"

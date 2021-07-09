@@ -11,6 +11,10 @@ body {
   background-repeat: no-repeat !important;
 }
 
+body.chakra-ui-dark {
+  background-image: url('../public/backgroundDark.svg') !important;
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
     display: none;

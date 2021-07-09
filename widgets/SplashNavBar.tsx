@@ -1,5 +1,12 @@
 import { useRouter } from 'next/router';
-import { Flex, Button, ButtonGroup, Image } from '@chakra-ui/react';
+import { 
+  Flex, 
+  Button, 
+  ButtonGroup,
+  Switch, 
+  Image, 
+  useColorModeValue,
+  useColorMode} from '@chakra-ui/react';
 import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
@@ -30,12 +37,15 @@ const SplashNavBar = (props: Props) => {
     router.push('/register');
   }
 
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "gray.700");
+
   return (
     <Flex
       justifyContent="space-between"
       padding="1rem 4rem" 
       w="100%"
-      background="white"
+      bg={bg}
       boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
       position="fixed" >
         <Image 
@@ -44,7 +54,8 @@ const SplashNavBar = (props: Props) => {
           h="3rem"
           cursor="pointer" 
           onClick={handleHomeClick} />
-        <ButtonGroup>
+        <ButtonGroup alignItems="center">
+          <Switch colorScheme="red" isChecked={colorMode === "light"} onChange={toggleColorMode} />
           <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
           <Button variant="ghost" onClick={handleAboutClick}>About</Button>
           <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>

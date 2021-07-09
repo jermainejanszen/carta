@@ -5,7 +5,8 @@ import {
   Box,
   Text,
   VStack,
-  Image, } from '@chakra-ui/react';
+  Image,
+  useColorModeValue, } from '@chakra-ui/react';
 import SplashNavBar from '../../widgets/SplashNavBar';
 
 
@@ -14,6 +15,10 @@ interface Props {
 }
 
 const About = (props: Props) => {
+
+  const cardTitleColor = useColorModeValue("gray.700", "white");
+  const cardBg = useColorModeValue("whiteAlpha.700", "blackAlpha.700");
+
   return (
     <Flex
       direction="column"
@@ -48,12 +53,12 @@ const About = (props: Props) => {
         <VStack spacing="4rem">
           <Grid id="keep-track"
             templateColumns="1fr 1fr"
-            bg="whiteAlpha.700"
+            bg={cardBg}
             borderRadius="xl"
             padding="2rem"
             boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
             <Box>
-              <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+              <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
                 Keep Track
               </Text>
               <Text fontSize="xl">
@@ -64,13 +69,13 @@ const About = (props: Props) => {
           </Grid>
           <Grid id="collaborate"
             templateColumns="1fr 1fr"
-            bg="whiteAlpha.700"
+            bg={cardBg}
             borderRadius="xl"
             padding="2rem"
             boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
             <Image src="scrum.svg" alt="scrum" height="10rem" margin="auto" />
             <Box>
-              <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+              <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
                 Collaborate
               </Text>
               <Text fontSize="xl">
@@ -80,12 +85,12 @@ const About = (props: Props) => {
           </Grid>
           <Grid id="stay-on-top"
             templateColumns="1fr 1fr"
-            bg="whiteAlpha.700"
+            bg={cardBg}
             borderRadius="xl"
             padding="2rem"
             boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
             <Box>
-              <Text fontSize="4xl" fontWeight="bold" color="gray.700">
+              <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
                 Stay On Top
               </Text>
               <Text fontSize="xl">
