@@ -36,7 +36,8 @@ const SplashNavBar = (props: Props) => {
       padding="1rem 4rem" 
       w="100%"
       background="white"
-      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)" >
+      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
+      position="fixed" >
         <Image 
           src="/logo.svg" 
           alt="logo"

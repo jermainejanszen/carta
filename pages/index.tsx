@@ -144,12 +144,6 @@ export default function Home() {
           </Grid>
         </Flex>
       </Flex>
-
-      <footer className={styles.footer}>
-        <p>
-          Alex and Jermaine
-        </p>
-      </footer>
     </Flex>
   )
 }
