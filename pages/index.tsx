@@ -113,7 +113,7 @@ export default function Home() {
             </Text>
           </Flex>
           <Spacer />
-          <Image src="/study.svg" alt="study" />
+          <Image src="/study.svg" alt="study" height="14rem" margin="auto" />
         </Flex>
 
         <Flex direction="column">
