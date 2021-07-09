@@ -8,8 +8,6 @@ import {
   Box, 
   Image, 
   useColorModeValue} from '@chakra-ui/react';
-import { createIcon } from '@chakra-ui/icon';
-import { TimeIcon, CheckCircleIcon } from '@chakra-ui/icons';
 import { FiUsers, FiClock, FiCheckCircle } from 'react-icons/fi';
 import SplashNavBar from '../widgets/SplashNavBar';
 

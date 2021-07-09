@@ -3,7 +3,7 @@ import {
   Flex,
   HStack, 
   Avatar,
-  Switch, 
+  Box, 
   Image, 
   useColorModeValue,
   useColorMode,
@@ -73,30 +73,40 @@ const ProfileNavBar = (props: Props) => {
             cursor="pointer" 
             onClick={handleProfileClick} />
           <Menu>
-            <MenuButton
-              as={IconButton}
-              aria-label="Profile"
-              icon={<ChevronDownIcon w="2rem" h="2rem" />}
-              variant="ghost"
-              borderRadius="full"
-              mx="1rem" />
-            <MenuList>
-              <MenuGroup title="Jerchael">
-                <MenuItem onClick={handleProfileClick}>
-                  My Profile
-                </MenuItem>
-                <MenuItem onClick={handleHomeClick}>
-                  My Projects
-                </MenuItem>
-              </MenuGroup>
-              <MenuDivider />
-              <MenuItem>
-                Settings
-              </MenuItem>
-              <MenuItem>
-                Sign Out
-              </MenuItem>
-            </MenuList>
+            {({ isOpen }) => (
+              <Box>
+                <MenuButton
+                  isActive={isOpen}
+                  as={IconButton}
+                  aria-label="Profile"
+                  icon={
+                    <ChevronDownIcon 
+                      w="2rem" h="2rem"
+                      transition="all 0.3s ease" 
+                      transform={isOpen && "rotate(180deg)"} />
+                  }
+                  variant="ghost"
+                  borderRadius="full"
+                  mx="1rem" />
+                <MenuList>
+                  <MenuGroup title="Jerchael">
+                    <MenuItem onClick={handleProfileClick}>
+                      My Profile
+                    </MenuItem>
+                    <MenuItem onClick={handleHomeClick}>
+                      My Projects
+                    </MenuItem>
+                  </MenuGroup>
+                  <MenuDivider />
+                  <MenuItem>
+                    Settings
+                  </MenuItem>
+                  <MenuItem onClick={e => router.push('/')}>
+                    Sign Out
+                  </MenuItem>
+                </MenuList>
+              </Box>
+            )}
           </Menu>
         </Flex>
       </HStack>
