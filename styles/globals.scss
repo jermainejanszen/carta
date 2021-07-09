@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
 html,
 body {
   padding: 0;
@@ -6,18 +5,13 @@ body {
   font-family: 'Montserrat',-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scrollbar-width: none;
+  background-image: url('../public/background.svg') !important;
+  background-position: 0 30vh !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
     display: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }

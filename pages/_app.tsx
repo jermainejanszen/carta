@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from '../theme';
 
 import "@fontsource/montserrat";
-// import '../styles/globals.scss'
+import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
   return (

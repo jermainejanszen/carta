@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Flex, Button, ButtonGroup, Image } from '@chakra-ui/react';
 import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
@@ -31,19 +31,27 @@ const SplashNavBar = (props: Props) => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
-      </div>
-      <ButtonGroup>
-        <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
-        <Button variant="ghost" onClick={handleAboutClick}>About</Button>
-        <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
-        <Button variant="primary" onClick={handleRegisterClick} >
-          Register
-        </Button>
-      </ButtonGroup>
-    </div>
+    <Flex
+      justifyContent="space-between"
+      padding="1rem 4rem" 
+      w="100%"
+      background="white"
+      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)" >
+        <Image 
+          src="/logo.svg" 
+          alt="logo"
+          h="3rem"
+          cursor="pointer" 
+          onClick={handleHomeClick} />
+        <ButtonGroup>
+          <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
+          <Button variant="ghost" onClick={handleAboutClick}>About</Button>
+          <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
+          <Button variant="primary" onClick={handleRegisterClick} >
+            Register
+          </Button>
+        </ButtonGroup>
+    </Flex>
   )
 }
 
