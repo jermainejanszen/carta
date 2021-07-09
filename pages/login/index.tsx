@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { 
   Text, 
   Flex, 
-  VStack, 
-  Input,
-  InputGroup,
-  InputRightElement, 
+  VStack,
   Button,
-  useColorModeValue,
-  FormControl,
-  FormLabel,
-  FormHelperText} from '@chakra-ui/react';
+  useColorModeValue } from '@chakra-ui/react';
+import { FaGoogle, FaFacebook, FaGithub, FaApple } from 'react-icons/fa';
 import SplashNavBar from '../../widgets/SplashNavBar';
 
 interface Props {
@@ -20,7 +14,6 @@ interface Props {
 
 const Login = (props: Props) => {
 
-  const [showPass, setShowPass] = useState(false);
   const router = useRouter();
 
   const handleLogin = (e) => {
@@ -41,54 +34,54 @@ const Login = (props: Props) => {
           flexGrow={1}
           direction="column"
           justifyContent="center">
-            <Flex 
+            <Flex
               direction="column"
               alignItems="center"
               padding="10"
               border="1px solid gray"
               borderRadius="xl"
               bg={bg}>
-              <Text fontSize="5xl">
-                Log in
-              </Text>
-            
-              <form onSubmit={handleLogin}>
-            
-                <Flex direction="column">
-                  <VStack spacing="6" my="2rem">
-                    <FormControl>
-                      <FormLabel>Username</FormLabel>
-                      <Input placeholder="Username" />
-                    </FormControl>
-                    <FormControl>
-                      <FormLabel>Password</FormLabel>
-                      <InputGroup size="md">
-                        <Input
-                          pr="4.5rem"
-                          type={showPass ? "text" : "password"}
-                          placeholder="Enter password"
-                        />
-                        <InputRightElement width="4.5rem">
-                          <Button h="1.75rem" size="sm" onClick={() => setShowPass(!showPass)}>
-                            {showPass ? "Hide" : "Show"}
-                          </Button>
-                        </InputRightElement>
-                      </InputGroup>
-                      <FormHelperText 
-                        cursor="pointer">
-                          Forgot password?
-                      </FormHelperText>
-                    </FormControl>
-                  </VStack>
-
+                <Text fontSize="4xl">
+                  Log in
+                </Text>
+              
+                <VStack spacing="6" my="2rem">
                   <Button
-                    variant="primary"
-                    onClick={handleLogin}
-                    alignSelf="center">
-                      Log in
+                    colorScheme="red"
+                    size="lg"
+                    variant="outline" 
+                    leftIcon={<FaGoogle />}
+                    width="20rem"
+                    onClick={handleLogin}>
+                      Log in with Google
                   </Button>
-                </Flex>
-              </form>
+                  <Button 
+                    colorScheme="linkedin"
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaFacebook />}
+                    width="20rem"
+                    onClick={handleLogin}>
+                      Log in with Facebook
+                  </Button>
+                  <Button 
+                    colorScheme="teal"
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaGithub />}
+                    width="20rem"
+                    onClick={handleLogin}>
+                      Log in with GitHub
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    leftIcon={<FaApple />}
+                    width="20rem"
+                    onClick={handleLogin}>
+                      Log in with Apple
+                  </Button>
+                </VStack>
             </Flex>
         </Flex>
     </Flex>
