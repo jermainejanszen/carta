@@ -1,5 +1,23 @@
 import { useRouter } from 'next/router';
-import styles from '../styles/widgets/NavBar.module.scss';
+import { 
+  Flex,
+  HStack, 
+  Avatar,
+  Switch, 
+  Image, 
+  useColorModeValue,
+  useColorMode,
+  Input,
+  InputGroup,
+  Menu, 
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  MenuGroup, 
+  MenuDivider,
+  InputRightElement} from '@chakra-ui/react';
+import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 
 interface Props {
   hideSearch? : boolean,
@@ -19,33 +37,70 @@ const ProfileNavBar = (props: Props) => {
     router.push('/profile');
   }
 
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "gray.700");
+
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
-      </div>
-      <div className={styles.buttons}>
-        {props.hideSearch ?? <input type="text" placeholder="Search Projects..." />}
-        <div>
-          <img
-            src="/avatar.svg" 
-            alt="logo" 
+    <Flex
+      justifyContent="space-between"
+      padding="1rem 4rem" 
+      w="100%"
+      bg={bg}
+      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
+      position="fixed" >
+        <Image 
+            src="/logo.svg" 
+            alt="logo"
+            h="3rem"
+            cursor="pointer" 
+            onClick={handleHomeClick} />
+      <HStack spacing="8">
+        {props.hideSearch ?? 
+          <InputGroup>
+            <Input
+              type="text"
+              placeholder="Search projects..." />
+            <InputRightElement>
+              <IconButton 
+                aria-label="Search"
+                icon={<SearchIcon />} />
+            </InputRightElement>
+          </InputGroup>
+        }
+        <Flex alignItems="center">
+          <Avatar
+            bg="red.500"
+            cursor="pointer" 
             onClick={handleProfileClick} />
-          <div className={styles.dropdown}>
-            <img
-              src="/icons/expand-arrow.svg" 
-              alt="dropdown" />
-            <div className={styles.dropdownContent}>
-              <p>Jerchael</p>
-              <a href="/profile">My Profile</a>
-              <a href="/projects">My Projects</a>
-              <a href="/settings">Settings</a>
-              <a href="/">Sign Out</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Profile"
+              icon={<ChevronDownIcon w="2rem" h="2rem" />}
+              variant="ghost"
+              borderRadius="full"
+              mx="1rem" />
+            <MenuList>
+              <MenuGroup title="Jerchael">
+                <MenuItem onClick={handleProfileClick}>
+                  My Profile
+                </MenuItem>
+                <MenuItem onClick={handleHomeClick}>
+                  My Projects
+                </MenuItem>
+              </MenuGroup>
+              <MenuDivider />
+              <MenuItem>
+                Settings
+              </MenuItem>
+              <MenuItem>
+                Sign Out
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </HStack>
+    </Flex>
   )
 }
 
