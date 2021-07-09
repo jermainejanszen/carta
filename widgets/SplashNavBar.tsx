@@ -7,7 +7,6 @@ import {
   Image, 
   useColorModeValue,
   useColorMode} from '@chakra-ui/react';
-import styles from '../styles/widgets/NavBar.module.scss';
 
 interface Props {
     
@@ -59,7 +58,7 @@ const SplashNavBar = (props: Props) => {
           <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
           <Button variant="ghost" onClick={handleAboutClick}>About</Button>
           <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
-          <Button variant="primary" onClick={handleRegisterClick} >
+          <Button variant="primary" onClick={handleRegisterClick}>
             Register
           </Button>
         </ButtonGroup>
