@@ -13,7 +13,6 @@ import {
   FormLabel,
   FormHelperText} from '@chakra-ui/react';
 import SplashNavBar from '../../widgets/SplashNavBar';
-import styles from '../../styles/Login.module.scss';
 
 interface Props {
     
@@ -53,9 +52,7 @@ const Login = (props: Props) => {
                 Log in
               </Text>
             
-              <form
-                action=""
-                onSubmit={handleLogin}>
+              <form onSubmit={handleLogin}>
             
                 <Flex direction="column">
                   <VStack spacing="6" my="2rem">

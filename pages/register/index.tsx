@@ -1,6 +1,18 @@
+import { useState } from 'react';
+import { 
+  Text, 
+  Flex, 
+  VStack,
+  HStack, 
+  Input,
+  InputGroup,
+  InputRightElement, 
+  Button,
+  useColorModeValue,
+  FormControl,
+  FormLabel,
+  FormHelperText} from '@chakra-ui/react';
 import SplashNavBar from "../../widgets/SplashNavBar";
-import Button from "../../components/Button";
-import styles from "../../styles/Register.module.scss";
 
 interface Props {
     
@@ -8,63 +20,77 @@ interface Props {
 
 const Register = (props: Props) => {
 
+  const [showPass, setShowPass] = useState(false);
+
   const handleRegister = (e) => {
     e.preventDefault();
   }
 
+  const bg = useColorModeValue("whiteAlpha.900", "gray.700");
+
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
+    <Flex
+      direction="column"
+      alignItems="center"
+      minH="100vh">
         <SplashNavBar />
-      </header>
       
-      <div className={styles.card}>
-        <h2>Register</h2>
-        
-        <form 
-          className={styles.form} 
-          action="" 
-          id="register-form">
+        <Flex 
+          flexGrow={1}
+          direction="column"
+          justifyContent="center">
+            <Flex
+              direction="column"
+              alignItems="center"
+              padding="10"
+              border="1px solid gray"
+              borderRadius="xl"
+              bg={bg}>
+                <Text fontSize="5xl">
+                  Register
+                </Text>
+              
+                <form>
 
-          <div className={styles.formName}>
-            <input 
-              placeholder="First Name" 
-              type="text" 
-              name="firstname" 
-              autoCorrect="off" />
-            <input 
-              placeholder="Last Name" 
-              type="text" 
-              name="lastname" 
-              autoCorrect="off" />
-          </div>
-
-          <input 
-            placeholder="Email Address" 
-            type="email" 
-            name="email" />
-          <input 
-            placeholder="Password" 
-            type="password" 
-            name="password" 
-            autoComplete="off" />
-          <input 
-            placeholder="Confirm Password" 
-            type="password" 
-            name="confirmpassword" 
-            autoComplete="off" />
-        
-          <p className={styles.forgotPass}>forgot password?</p>
-
-          <Button
-            palette="primary"
-            onClick={handleRegister}>
-            Register
-          </Button>
-
-        </form>
-      </div>
-    </div>
+                  <Flex direction="column">
+                    <VStack spacing="6" my="2rem">
+                      <HStack>
+                        <Input
+                          placeholder="First Name"
+                          type="text"
+                          name="firstname"
+                          autoCorrect="off" />
+                        <Input
+                          placeholder="Last Name"
+                          type="text"
+                          name="lastname"
+                          autoCorrect="off" />
+                      </HStack>
+                      <Input
+                        placeholder="Email Address"
+                        type="email"
+                        name="email" />
+                      <Input
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        autoComplete="off" />
+                      <Input
+                        placeholder="Confirm Password"
+                        type="password"
+                        name="confirmpassword"
+                        autoComplete="off" />
+                    </VStack>
+                    <Button
+                      variant="primary"
+                      onClick={handleRegister}>
+                        Register
+                    </Button>
+                  </Flex>
+                </form>
+            </Flex>
+        </Flex>
+    </Flex>
   )
 }
 
