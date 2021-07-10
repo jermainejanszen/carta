@@ -16,7 +16,9 @@ import {
   IconButton,
   MenuGroup, 
   MenuDivider,
-  InputRightElement} from '@chakra-ui/react';
+  InputRightElement,
+  MenuItemOption,
+  MenuOptionGroup } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 
 interface Props {
@@ -38,6 +40,17 @@ const ProfileNavBar = (props: Props) => {
   }
 
   const { colorMode, toggleColorMode } = useColorMode();
+  const handleColorModeChange = (value : 'light' | 'dark') => {
+    if (value === 'light') {
+      if (colorMode === 'dark') {
+        toggleColorMode();
+      }
+    } else if (value === 'dark') {
+      if (colorMode === 'light') {
+        toggleColorMode();
+      }
+    }
+  }
   const bg = useColorModeValue("white", "gray.700");
 
   return (
@@ -63,7 +76,8 @@ const ProfileNavBar = (props: Props) => {
             <InputRightElement>
               <IconButton 
                 aria-label="Search"
-                icon={<SearchIcon />} />
+                icon={<SearchIcon />}
+                borderRightRadius="lg" />
             </InputRightElement>
           </InputGroup>
         }
@@ -72,7 +86,7 @@ const ProfileNavBar = (props: Props) => {
             bg="red.500"
             cursor="pointer" 
             onClick={handleProfileClick} />
-          <Menu>
+          <Menu closeOnSelect={false} >
             {({ isOpen }) => (
               <Box>
                 <MenuButton
@@ -97,6 +111,19 @@ const ProfileNavBar = (props: Props) => {
                       My Projects
                     </MenuItem>
                   </MenuGroup>
+                  <MenuDivider />
+                  <MenuOptionGroup 
+                    title="Color mode" 
+                    type="radio" 
+                    defaultValue={colorMode === 'light' ? 'light' : 'dark'}
+                    onChange={handleColorModeChange} >
+                      <MenuItemOption value="light">
+                        Light
+                      </MenuItemOption>
+                      <MenuItemOption value="dark">
+                        Dark
+                      </MenuItemOption>
+                  </MenuOptionGroup>
                   <MenuDivider />
                   <MenuItem>
                     Settings
