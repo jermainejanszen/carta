@@ -14,10 +14,10 @@ const mockData = [
     name: "Miscellaneous",
     hours: 43,
     tasks: 129,
-    description: "Anything and everything that isn't related to a specific project."
+    description: "Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project."
   },{
     id: "efgh",
-    name: "BIO 323 Lab",
+    name: "BIO 323 Lab With A Long Title Name That Just Keeps Going",
     hours: 5.8,
     tasks: 15,
     description: "Biology lab for enzyme denaturing."
@@ -61,7 +61,8 @@ const Projects = (props: Props) => {
           maxW="100rem"
           width="100%"
           padding="7rem">
-            <Text 
+            <Text
+              alignSelf="flex-start"
               fontSize="5xl"
               w="fit-content"
               p="4"
@@ -78,8 +79,10 @@ const Projects = (props: Props) => {
                 <VStack
                   spacing="1rem"
                   alignItems="center"
+                  justifyContent="center"
                   p="3rem"
                   borderRadius="xl"
+                  boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
                   cursor="pointer"
                   color="white"
                   bgGradient={newProjectBg}
