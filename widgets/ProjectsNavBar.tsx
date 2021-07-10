@@ -86,7 +86,7 @@ const ProfileNavBar = (props: Props) => {
             bg="red.500"
             cursor="pointer" 
             onClick={handleProfileClick} />
-          <Menu closeOnSelect={false} >
+          <Menu>
             {({ isOpen }) => (
               <Box>
                 <MenuButton
