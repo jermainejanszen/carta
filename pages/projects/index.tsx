@@ -75,6 +75,7 @@ const Projects = (props: Props) => {
             <Grid
               width="100%"
               templateColumns="repeat(auto-fill, 20rem)"
+              autoRows="1fr"
               gap="2rem" >
                 <VStack
                   spacing="1rem"

@@ -30,6 +30,7 @@ const ProjectCard = (props: Props) => {
   return (
     <Flex
       direction="column"
+      justifyContent="space-between"
       bg={bg}
       borderRadius="xl"
       boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
@@ -55,7 +56,7 @@ const ProjectCard = (props: Props) => {
               {props.data.name}
             </Text>
         </Box>
-        <Box p="6" flexGrow={1}>
+        <Box p="6">
           <Text fontSize="xl">{props.data.hours} hours</Text>
           <Text fontSize="xl">{props.data.tasks} tasks</Text>
           <Divider my="2" />
