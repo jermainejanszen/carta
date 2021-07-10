@@ -17,15 +17,20 @@ import {
   InputRightElement,
   IconButton,
   HStack, } from '@chakra-ui/react';
-import { FiCheckCircle, FiCalendar, FiClock } from 'react-icons/fi';
+import { FiCheckCircle, FiCalendar, FiClock, FiTwitter } from 'react-icons/fi';
+import { CgWebsite } from 'react-icons/cg';
+import { RiGroupLine } from 'react-icons/ri';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
-import styles from '../../styles/Profile.module.scss';
 
 interface Props {
     
 }
 
 const Profile = (props: Props) => {
+
+  const cardBg = useColorModeValue("whiteAlpha.400", "blackAlpha.400");
+  const psBg = useColorModeValue("gray.100", "blackAlpha.600");
+
   return (
     <Flex 
       direction="column"
@@ -58,77 +63,109 @@ const Profile = (props: Props) => {
             </Box>
 
             <Box
-              gridColumn="4 / span 2" >
-                <Text fontSize="2xl">
+              gridColumn="4 / span 2"
+              p="4"
+              borderRadius="xl"
+              bg={cardBg}
+              boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+                <Text fontSize="2xl" mb="3">
                   Personal statistics
                 </Text>
-                <VStack width="100%" alignItems="flex-start">
-                  <HStack>
-                    <FiCheckCircle size={42} />
-                    <Box>
-                      <Text fontSize="xl">
-                        15
-                      </Text>
-                      <Text>
-                        Tasks completed
-                      </Text>
-                    </Box>
-                  </HStack>
-                  <HStack>
-                    <FiCalendar size={42} />
-                    <Box>
-                      <Text fontSize="xl">
-                        23
-                      </Text>
-                      <Text>
-                        Projects completed
-                      </Text>
-                    </Box>
-                  </HStack>
-                  <HStack>
-                    <FiClock size={42} />
-                    <Box>
-                      <Text fontSize="xl">
-                        23hrs
-                      </Text>
-                      <Text>
-                        Total time spent
-                      </Text>
-                    </Box>
-                  </HStack>
-                </VStack>
+                <VStack
+                  spacing="3" 
+                  width="100%" 
+                  alignItems="flex-start">
+                    <HStack
+                      spacing="4"
+                      p="4"
+                      w="100%"
+                      borderRadius="xl"
+                      bg={psBg} >
+                      <FiCheckCircle size={42} />
+                      <Box>
+                        <Text fontSize="xl">
+                          15
+                        </Text>
+                        <Text>
+                          Tasks completed
+                        </Text>
+                      </Box>
+                    </HStack>
+                    <HStack
+                      spacing="4"
+                      p="4"
+                      w="100%"
+                      borderRadius="xl"
+                      bg={psBg} >
+                      <FiCalendar size={42} />
+                      <Box>
+                        <Text fontSize="xl">
+                          23
+                        </Text>
+                        <Text>
+                          Projects completed
+                        </Text>
+                      </Box>
+                    </HStack>
+                    <HStack
+                      spacing="4"
+                      p="4"
+                      w="100%"
+                      borderRadius="xl"
+                      bg={psBg} >
+                      <FiClock size={42} />
+                      <Box>
+                        <Text fontSize="xl">
+                          23hrs
+                        </Text>
+                        <Text>
+                          Total time spent
+                        </Text>
+                      </Box>
+                    </HStack>
+                  </VStack>
             </Box>
 
-              <div className={styles.row2}>
-                <div className={styles.userInfo}>
-                    <h3>
-                      Links
-                    </h3>
-                    <div className={styles.company}>
-                      <img src="/icons/job.svg" alt="company" />
-                      <h4>
-                        Carta
-                      </h4>
-                    </div>
-                    <div className={styles.website}>
-                      <img src="/icons/website.svg" alt="website" />
-                      <h4>
-                        Carta.co
-                      </h4>
-                    </div>
-                    <div className={styles.twitter}>
-                      <img src="/icons/twitter.svg" alt="website" />
-                    <h4>
-                      alexcrocrox@twitter.com
-                    </h4>
-                    </div>
-                  </div>
-                  <div className={styles.graph}>
-                    <h3>
-                      Insights
-                    </h3>
-                  </div>
-              </div>
+            <VStack
+              gridColumn="1 / span 2"
+              alignItems="flex-start"
+              p="4"
+              borderRadius="xl"
+              bg={cardBg}
+              boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+                <Text fontSize="2xl">
+                  Links
+                </Text>
+                <HStack>
+                  <RiGroupLine size={24} />
+                  <h4>
+                    Carta
+                  </h4>
+                </HStack>
+                <HStack>
+                  <CgWebsite size={24} />
+                  <h4>
+                    Carta.co
+                  </h4>
+                </HStack>
+                <HStack>
+                  <FiTwitter size={24} />
+                  <h4>
+                    alexcrocrox@twitter.com
+                  </h4>
+                </HStack>
+            </VStack>
+
+            <Box
+              gridColumn="3 / span 4"
+              p="4"
+              borderRadius="xl"
+              bg={cardBg}
+              boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+                <Text fontSize="2xl">
+                  Insights
+                </Text>
+            </Box>
         </Grid>
     </Flex>
   )
