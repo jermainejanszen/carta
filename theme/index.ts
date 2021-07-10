@@ -9,7 +9,6 @@ import Button from "./components/button";
 
 const themeConfig : ThemeConfig = {
   initialColorMode: "light",
-  useSystemColorMode: true,
 }
 
 const overrides = {
