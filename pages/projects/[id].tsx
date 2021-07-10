@@ -21,8 +21,6 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
 
-import styles from '../../styles/Project.module.scss';
-
 interface Props {
     
 }
@@ -108,7 +106,6 @@ const Project = (props: Props) => {
   }
 
   const titleBg = useColorModeValue("#D7FAFA", "gray.900");
-  const taskBg = useColorModeValue("white", "gray.900");
 
   return (
     <VStack
@@ -147,7 +144,7 @@ const Project = (props: Props) => {
             </Grid>
 
             <VStack w="100%">
-              <List spacing="0" w="100%">
+              <List spacing="2" w="100%">
                 {tasks.length === 0 && <Text fontSize="2xl">No Tasks</Text>}
                 {tasks.map((value, index) => {
                   return (
@@ -161,10 +158,11 @@ const Project = (props: Props) => {
                         editName={handleEditTaskName}
                         editTime={handleEditTaskTime}
                         setIsCounting={setIsCounting} />
-                        <Collapse in={isOpen} >
+                        <Collapse in={isOpen} animateOpacity >
                           <IconButton
                             aria-label="delete"
                             borderRadius="lg"
+                            ms="4"
                             onClick={(e) => handleDeleteItemClick(index)}>
                               <DeleteIcon />
                           </IconButton>
