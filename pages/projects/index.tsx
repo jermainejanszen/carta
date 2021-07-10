@@ -55,8 +55,7 @@ const Projects = (props: Props) => {
       minH="100vh">
         <ProfileNavBar />
 
-        <VStack 
-          direction="column"
+        <VStack
           maxW="100rem"
           width="100%"
           padding="7rem">
