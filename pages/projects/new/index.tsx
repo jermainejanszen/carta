@@ -45,7 +45,8 @@ const New = (props: Props) => {
     <Flex 
       direction="column"
       alignItems="center"
-      minH="100vh" >
+      minH="100vh"
+      bg={bg} >
         <ProfileNavBar hideSearch />
         
         <Flex 
@@ -53,9 +54,7 @@ const New = (props: Props) => {
           maxW="80rem"
           width="100%"
           px="7rem"
-          py="8rem"
-          bg={bg}
-          borderRadius="2xl" >
+          py="8rem" >
             <Box mb="2rem">
               <Text fontSize="4xl">
                 Create a new project
