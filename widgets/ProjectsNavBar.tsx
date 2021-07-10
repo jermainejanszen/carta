@@ -60,7 +60,8 @@ const ProfileNavBar = (props: Props) => {
       w="100%"
       bg={bg}
       boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
-      position="fixed" >
+      position="fixed"
+      zIndex="dropdown" >
         <Image 
             src="/logo.svg" 
             alt="logo"
