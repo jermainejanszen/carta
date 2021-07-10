@@ -51,7 +51,6 @@ const Projects = (props: Props) => {
 
   return (
     <VStack
-      direction="column"
       alignItems="center"
       minH="100vh">
         <ProfileNavBar />

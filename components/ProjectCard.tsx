@@ -3,9 +3,8 @@ import {
   Text, 
   Flex,
   Box,
-  VStack,
   useColorModeValue, 
-  Divider} from '@chakra-ui/react';
+  Divider } from '@chakra-ui/react';
 
 interface Data {
   id: string,
