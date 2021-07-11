@@ -19,6 +19,19 @@ const About = (props: Props) => {
   const cardTitleColor = useColorModeValue("gray.700", "white");
   const cardBg = useColorModeValue("whiteAlpha.700", "blackAlpha.700");
 
+  const ContentCard = (props) => {
+    return (
+      <Grid id="keep-track"
+        templateColumns="1fr 1fr"
+        bg={cardBg}
+        borderRadius="xl"
+        padding="2rem"
+        boxShadow="0 0 8px rgba(0, 0, 0, 0.2)" >
+          {props.children}
+      </Grid>
+    );
+  }
+
   return (
     <Flex
       direction="column"
@@ -51,12 +64,7 @@ const About = (props: Props) => {
         </Box>
 
         <VStack spacing="4rem">
-          <Grid id="keep-track"
-            templateColumns="1fr 1fr"
-            bg={cardBg}
-            borderRadius="xl"
-            padding="2rem"
-            boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+          <ContentCard>
             <Box>
               <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
                 Keep Track
@@ -66,13 +74,8 @@ const About = (props: Props) => {
               </Text>
             </Box>
             <Image src="survey.svg" alt="survey" height="10rem" margin="auto" />
-          </Grid>
-          <Grid id="collaborate"
-            templateColumns="1fr 1fr"
-            bg={cardBg}
-            borderRadius="xl"
-            padding="2rem"
-            boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+          </ContentCard>
+          <ContentCard>
             <Image src="scrum.svg" alt="scrum" height="10rem" margin="auto" />
             <Box>
               <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
@@ -82,13 +85,8 @@ const About = (props: Props) => {
                 Clearly view the time spent by yourself and other teammates on different tasks for a given project
               </Text>
             </Box>
-          </Grid>
-          <Grid id="stay-on-top"
-            templateColumns="1fr 1fr"
-            bg={cardBg}
-            borderRadius="xl"
-            padding="2rem"
-            boxShadow="0 0 8px rgba(0, 0, 0, 0.4)" >
+          </ContentCard>
+          <ContentCard>
             <Box>
               <Text fontSize="4xl" fontWeight="bold" color={cardTitleColor}>
                 Stay On Top
@@ -98,7 +96,7 @@ const About = (props: Props) => {
               </Text>
             </Box>
             <Image src="ontop.svg" alt="moon" height="10rem" margin="auto" />
-          </Grid>
+          </ContentCard>
         </VStack>
       </Flex>
     </Flex>
