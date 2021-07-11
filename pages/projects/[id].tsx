@@ -171,14 +171,17 @@ const Project = (props: Props) => {
                   )}
                 )}
               </List>
-              <HStack width="100%" justifyContent="space-between">
+              <HStack py="4" width="100%" justifyContent="space-between">
                 <Button
-                  variant="outline"
+                  size="lg"
+                  variant="primary"
                   onClick={handleAddTaskClick} >
                     Add Task
                 </Button>
                 <Button 
+                  size="lg"
                   variant="outline"
+                  colorScheme="green"
                   onClick={onToggle} >
                     {isOpen ? "Done" : "Edit"}
                 </Button>
