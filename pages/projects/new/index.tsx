@@ -17,7 +17,6 @@ import {
   IconButton } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import ProfileNavBar from '../../../widgets/ProjectsNavBar';
-import { FaLessThanEqual } from 'react-icons/fa';
 
 interface Props {
     

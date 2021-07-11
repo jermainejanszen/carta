@@ -1,84 +1,125 @@
+import { 
+  Text, 
+  Flex,
+  Box,
+  Button,
+  useColorModeValue,
+  useColorMode, 
+  Divider, 
+  Input,
+  FormLabel,
+  FormHelperText, 
+  FormControl,
+  Textarea, 
+  VStack,
+  InputGroup, 
+  InputRightElement,
+  IconButton, 
+  Heading, 
+  Switch } from '@chakra-ui/react';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
-import styles from '../../styles/Settings.module.scss';
 
 interface Props {
     
 }
 
 const Settings = (props: Props) => {
-  return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <ProfileNavBar hideSearch />
-      </header>
-      <main className={styles.main}>
-        
-        <div className={styles.accountsettings}>
-          <h1>
-            Account Settings
-          </h1>
-          <form className={styles.form} action="" >
-            <div className={`${styles.accounts} ${styles.formGroup}`}>
-              <label htmlFor="name">
-                Account Name
-              </label>
-              <input placeholder="Account Name" type="text" name="name" />
-              <p>
-                Your name will be visible to teamates and other collaborators.
-              </p>
-            </div>
-          
-          
-          
-            <div className={`${styles.bio} ${styles.formGroup}`}>
-              <label htmlFor="bio">
-                Bio
-              </label>
-              <textarea placeholder="I like turtles." name="bio" rows={5} cols={25}/>
-              <p>
-                Tell us a little bit about yourself! Passions, hobbies, and achievements.
-              </p>
-            </div>
-          
-          
-          
-            <div className={`${styles.url} ${styles.formGroup}`}>
-              <label htmlFor="URL">
-                URL
-              </label>
-              <input placeholder="myawsomewebsite.com" type="text" name="URL" />
-              <p>
-                Do you have a website? Drop it here so people can go visit it!
-              </p>
-            </div>
-          
-          
-            <div className={`${styles.twitter} ${styles.formGroup}`}>
-              <label htmlFor="Twitter">
-                Twitter
-              </label>
-              <input placeholder="" type="text" name="Twitter" />
-              <p>
-                Want some extra twitter followers?
-              </p>
-            </div>
-          
-          
-            <div className={`${styles.company} ${styles.formGroup}`}>
-              <label htmlFor="Company">
-                Company
-              </label>
-              <input placeholder="" type="text" name="Company" />
-              <p>
-                Are you using Carta for company work?
-              </p>
-            </div>
-            </form>
-          
-        </div>
 
-      </main>
-    </div>
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("whiteAlpha.800", "blackAlpha.500");
+
+  return (
+    <Flex 
+      direction="column"
+      alignItems="center"
+      minH="100vh"
+      bg={bg} >
+        <ProfileNavBar hideSearch />
+      
+        <VStack
+          spacing="8"
+          alignItems="flex-start"
+          maxW="80rem"
+          width="100%"
+          px="7rem"
+          py="8rem" >
+
+            <VStack spacing="4" alignItems="flex-start">
+              <Heading>
+                General Settings
+              </Heading>
+              <FormControl display="flex" alignItems="center">
+                <FormLabel htmlFor="color-mode" mb="0">
+                  Dark mode
+                </FormLabel>
+                <Switch 
+                  id="color-mode"
+                  colorScheme="red"
+                  isChecked={colorMode === "dark"}
+                  onChange={toggleColorMode} />
+              </FormControl>
+            </VStack>
+            <Divider />
+            <VStack spacing="4" alignItems="flex-start">
+              <Heading>
+                Account Settings
+              </Heading>
+              <form onSubmit={e => e.preventDefault()} >
+                <VStack spacing="6" alignItems="flex-start">
+                  <FormControl id="name">
+                    <FormLabel>
+                      Name
+                    </FormLabel>
+                    <Input placeholder="Jerchael" type="text" />
+                    <FormHelperText>
+                      Your name will be visible to teamates and other collaborators.
+                    </FormHelperText>
+                  </FormControl>
+
+                  <FormControl id="bio">
+                    <FormLabel>
+                      Bio
+                    </FormLabel>
+                    <Textarea placeholder="I like turtles" maxLength={300} />
+                    <FormHelperText>
+                      Tell us a little bit about yourself! Passions, hobbies, and achievements.
+                    </FormHelperText>
+                  </FormControl>
+
+                  <FormControl id="website">
+                    <FormLabel>
+                      Website
+                    </FormLabel>
+                    <Input placeholder="carta.com" type="text" />
+                    <FormHelperText>
+                      Do you have a website? Drop it here so people can go visit it!
+                    </FormHelperText>
+                  </FormControl>
+
+                  <FormControl id="twitter">
+                    <FormLabel>
+                      Twitter
+                    </FormLabel>
+                    <Input placeholder="Carta" type="text" />
+                    <FormHelperText>
+                      Want some extra twitter followers?
+                    </FormHelperText>
+                  </FormControl>
+
+                  <FormControl id="company">
+                    <FormLabel>
+                      Company
+                    </FormLabel>
+                    <Input placeholder="Carta" type="text" />
+                    <FormHelperText>
+                    Are you using Carta for company work?
+                    </FormHelperText>
+                  </FormControl>
+                </VStack>
+              </form>
+            </VStack>
+        </VStack>
+    </Flex>
   )
 }
 

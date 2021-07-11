@@ -87,7 +87,7 @@ const ProfileNavBar = (props: Props) => {
             bg="red.500"
             cursor="pointer" 
             onClick={handleProfileClick} />
-          <Menu>
+          <Menu isLazy>
             {({ isOpen }) => (
               <Box>
                 <MenuButton
@@ -126,7 +126,7 @@ const ProfileNavBar = (props: Props) => {
                       </MenuItemOption>
                   </MenuOptionGroup>
                   <MenuDivider />
-                  <MenuItem>
+                  <MenuItem onClick={e => router.push('/settings')}>
                     Settings
                   </MenuItem>
                   <MenuItem onClick={e => router.push('/')}>
