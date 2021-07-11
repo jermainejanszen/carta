@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { 
   Text, 
   Flex, 
@@ -28,6 +29,10 @@ const Register = (props: Props) => {
       direction="column"
       alignItems="center"
       minH="100vh">
+        <Head>
+          <title>Register | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <SplashNavBar />
       
         <Flex 

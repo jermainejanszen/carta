@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
+import Head from 'next/head';
 import { 
   Text, 
   Flex,
   Box,
   Button,
-  useColorModeValue, 
-  Divider, 
+  useColorModeValue,
   Input,
   FormLabel,
   FormHelperText, 
@@ -47,6 +47,10 @@ const New = (props: Props) => {
       alignItems="center"
       minH="100vh"
       bg={bg} >
+        <Head>
+          <title>New Project | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <ProfileNavBar hideSearch />
         
         <Flex 

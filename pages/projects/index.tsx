@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { 
   Text, 
   Grid,
@@ -53,6 +54,10 @@ const Projects = (props: Props) => {
     <VStack
       alignItems="center"
       minH="100vh">
+        <Head>
+          <title>Projects | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <ProfileNavBar />
 
         <VStack

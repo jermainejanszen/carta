@@ -1,27 +1,16 @@
+import Head from 'next/head';
 import { 
   Text, 
   Flex, 
   Grid,
   Box,
   Image,
-  Button,
-  useColorModeValue, 
-  Divider, 
-  Input,
-  FormLabel,
-  FormHelperText, 
-  FormControl,
-  Textarea, 
+  useColorModeValue,
   VStack,
-  InputGroup, 
-  InputRightElement,
-  IconButton,
   HStack,
   Stat,
   StatLabel,
-  StatNumber,
-  StatHelpText,
-  StatArrow, } from '@chakra-ui/react';
+  StatNumber } from '@chakra-ui/react';
 import { FiCheckCircle, FiCalendar, FiClock, FiTwitter } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import { RiGroupLine } from 'react-icons/ri';
@@ -41,6 +30,10 @@ const Profile = (props: Props) => {
       direction="column"
       alignItems="center"
       minH="100vh" >
+        <Head>
+          <title>Profile | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <ProfileNavBar hideSearch />
 
         <Grid

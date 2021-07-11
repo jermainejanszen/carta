@@ -25,7 +25,7 @@ const About = (props: Props) => {
       alignItems="center"
       minH="100vh">
       <Head>
-        <title>Carta</title>
+        <title>About | Carta</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
 

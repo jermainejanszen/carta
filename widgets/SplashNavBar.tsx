@@ -26,6 +26,11 @@ const SplashNavBar = (props: Props) => {
     router.push('/about');
   }
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    router.push('/contact');
+  }
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     router.push('/login');
@@ -53,10 +58,11 @@ const SplashNavBar = (props: Props) => {
           h="3rem"
           cursor="pointer" 
           onClick={handleHomeClick} />
-        <ButtonGroup alignItems="center">
-          <Switch colorScheme="red" isChecked={colorMode === "light"} onChange={toggleColorMode} />
+        <ButtonGroup spacing="4" alignItems="center">
+          <Switch colorScheme="red" isChecked={colorMode === "dark"} onChange={toggleColorMode} />
           <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
           <Button variant="ghost" onClick={handleAboutClick}>About</Button>
+          <Button variant="ghost" onClick={handleContactClick}>Contact</Button>
           <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
           <Button variant="primary" onClick={handleRegisterClick}>
             Register

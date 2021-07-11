@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { 
   Text, 
   Grid,
-  Flex,
   Box,
   VStack,
   Button,
@@ -112,6 +112,10 @@ const Project = (props: Props) => {
       alignItems="center"
       minH="100vh"
       width="100%">
+        <Head>
+          <title>{name} | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <ProjectsNavBar hideSearch />
 
         <VStack

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { 
+import Head from 'next/head';
+import {
   Text, 
   Flex, 
   VStack,
@@ -28,6 +29,10 @@ const Login = (props: Props) => {
       direction="column"
       alignItems="center"
       minH="100vh">
+        <Head>
+          <title>Login | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <SplashNavBar />
         
         <Flex 

@@ -1,8 +1,6 @@
+import Head from 'next/head';
 import { 
-  Text, 
   Flex,
-  Box,
-  Button,
   useColorModeValue,
   useColorMode, 
   Divider, 
@@ -12,9 +10,6 @@ import {
   FormControl,
   Textarea, 
   VStack,
-  InputGroup, 
-  InputRightElement,
-  IconButton, 
   Heading, 
   Switch } from '@chakra-ui/react';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
@@ -34,6 +29,10 @@ const Settings = (props: Props) => {
       alignItems="center"
       minH="100vh"
       bg={bg} >
+        <Head>
+          <title>Settings | Carta</title>
+          <link rel="icon" href="/logo.svg" />
+        </Head>
         <ProfileNavBar hideSearch />
       
         <VStack
