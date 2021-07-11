@@ -17,6 +17,7 @@ import {
   IconButton } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import ProfileNavBar from '../../../widgets/ProjectsNavBar';
+import { FaLessThanEqual } from 'react-icons/fa';
 
 interface Props {
     
@@ -63,7 +64,9 @@ const New = (props: Props) => {
                 A project tracks the various tasks that are involved and provides a breakdown of the time you've spent on each one.
               </Text>
             </Box>
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={e => {
+                e.preventDefault();
+              }}>
               <VStack spacing="12">
                 <FormControl id="name" isRequired>
                   <FormLabel
@@ -126,24 +129,26 @@ const New = (props: Props) => {
                       )
                     })}
                   </VStack>
-                  <form onSubmit={e => {
-                      e.preventDefault();
-                      handleAddTaskClick();
-                    }}>
-                    <InputGroup>
-                      <Input
-                        type="text"
-                        name="task"
-                        maxLength={300}
-                        ref={taskInput} />
-                      <InputRightElement w="fit-content">
-                        <Button
-                          onClick={handleAddTaskClick}>
-                            Add task
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
-                  </form>
+                  <Box>
+                      <InputGroup>
+                        <Input
+                          type="text"
+                          name="task"
+                          maxLength={300}
+                          ref={taskInput}
+                          onKeyUp={e => {
+                            if (e.code === 'Enter') {
+                              handleAddTaskClick();
+                            }
+                          }} />
+                        <InputRightElement w="fit-content">
+                          <Button
+                            onClick={handleAddTaskClick}>
+                              Add task
+                          </Button>
+                        </InputRightElement>
+                      </InputGroup>
+                  </Box>
                 </Box>
                 <Box alignSelf="flex-end">
                   <Button variant="primary" type="submit">
