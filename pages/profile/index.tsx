@@ -16,7 +16,12 @@ import {
   InputGroup, 
   InputRightElement,
   IconButton,
-  HStack, } from '@chakra-ui/react';
+  HStack,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow, } from '@chakra-ui/react';
 import { FiCheckCircle, FiCalendar, FiClock, FiTwitter } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import { RiGroupLine } from 'react-icons/ri';
@@ -44,23 +49,27 @@ const Profile = (props: Props) => {
           p="7rem"
           maxW="90rem"
           width="100%" >
-            <Box
-              gridColumn="1 / span 1" >
+            <Flex
+              gridColumn="1 / span 1"
+              direction="column"
+              justifyContent="center" >
               <Image
                 borderRadius="3xl"
                 src="/cofounder1.jpg" 
                 alt="pog" />
-            </Box>
+            </Flex>
 
-            <Box
-              gridColumn="2 / span 2" >
+            <Flex
+              gridColumn="2 / span 2"
+              direction="column"
+              justifyContent="center" >
                 <Text fontSize="3xl">
                   Jerchael
                 </Text>
                 <Text>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo maxime distinctio debitis voluptate incidunt corporis earum quod iure.
                 </Text>
-            </Box>
+            </Flex>
 
             <Box
               gridColumn="4 / span 2"
@@ -81,15 +90,15 @@ const Profile = (props: Props) => {
                       w="100%"
                       borderRadius="xl"
                       bg={psBg} >
-                      <FiCheckCircle size={42} />
-                      <Box>
-                        <Text fontSize="xl">
-                          15
-                        </Text>
-                        <Text>
-                          Tasks completed
-                        </Text>
-                      </Box>
+                        <FiCheckCircle size={42} />
+                        <Stat>
+                          <StatLabel>
+                            Tasks completed
+                          </StatLabel>
+                          <StatNumber>
+                            15
+                          </StatNumber>
+                        </Stat>
                     </HStack>
                     <HStack
                       spacing="4"
@@ -97,15 +106,15 @@ const Profile = (props: Props) => {
                       w="100%"
                       borderRadius="xl"
                       bg={psBg} >
-                      <FiCalendar size={42} />
-                      <Box>
-                        <Text fontSize="xl">
-                          23
-                        </Text>
-                        <Text>
-                          Projects completed
-                        </Text>
-                      </Box>
+                        <FiCalendar size={42} />
+                        <Stat>
+                          <StatLabel>
+                            Projects completed
+                          </StatLabel>
+                          <StatNumber>
+                            23
+                          </StatNumber>
+                        </Stat>
                     </HStack>
                     <HStack
                       spacing="4"
@@ -114,14 +123,14 @@ const Profile = (props: Props) => {
                       borderRadius="xl"
                       bg={psBg} >
                       <FiClock size={42} />
-                      <Box>
-                        <Text fontSize="xl">
-                          23hrs
-                        </Text>
-                        <Text>
-                          Total time spent
-                        </Text>
-                      </Box>
+                      <Stat>
+                          <StatLabel>
+                            Total time spent
+                          </StatLabel>
+                          <StatNumber>
+                            23hrs
+                          </StatNumber>
+                        </Stat>
                     </HStack>
                   </VStack>
             </Box>
@@ -138,21 +147,21 @@ const Profile = (props: Props) => {
                 </Text>
                 <HStack>
                   <RiGroupLine size={24} />
-                  <h4>
-                    Carta
-                  </h4>
+                    <Text fontSize="lg">
+                      Carta
+                    </Text>
                 </HStack>
                 <HStack>
                   <CgWebsite size={24} />
-                  <h4>
+                  <Text fontSize="lg">
                     Carta.co
-                  </h4>
+                  </Text>
                 </HStack>
                 <HStack>
                   <FiTwitter size={24} />
-                  <h4>
+                  <Text fontSize="lg">
                     alexcrocrox@twitter.com
-                  </h4>
+                  </Text>
                 </HStack>
             </VStack>
 
