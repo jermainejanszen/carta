@@ -1,6 +1,12 @@
 import { useRouter } from 'next/router';
-import Button from '../components/Button';
-import styles from '../styles/widgets/NavBar.module.scss';
+import { 
+  Flex, 
+  Button, 
+  ButtonGroup,
+  Switch, 
+  Image, 
+  useColorModeValue,
+  useColorMode} from '@chakra-ui/react';
 
 interface Props {
     
@@ -20,6 +26,11 @@ const SplashNavBar = (props: Props) => {
     router.push('/about');
   }
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    router.push('/contact');
+  }
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     router.push('/login');
@@ -30,18 +41,34 @@ const SplashNavBar = (props: Props) => {
     router.push('/register');
   }
 
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "gray.700");
+
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
-      </div>
-      <div className={styles.buttons}>
-        <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
-        <Button variant="ghost" onClick={handleAboutClick}>About</Button>
-        <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
-        <Button palette="primary" onClick={handleRegisterClick}>Register</Button>
-      </div>
-    </div>
+    <Flex
+      justifyContent="space-between"
+      padding="1rem 4rem" 
+      w="100%"
+      bg={bg}
+      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
+      position="fixed" >
+        <Image 
+          src="/logo.svg" 
+          alt="logo"
+          h="3rem"
+          cursor="pointer" 
+          onClick={handleHomeClick} />
+        <ButtonGroup spacing="4" alignItems="center">
+          <Switch colorScheme="red" isChecked={colorMode === "dark"} onChange={toggleColorMode} />
+          <Button variant="ghost" onClick={handleHomeClick}>Home</Button>
+          <Button variant="ghost" onClick={handleAboutClick}>About</Button>
+          <Button variant="ghost" onClick={handleContactClick}>Contact</Button>
+          <Button variant="ghost" onClick={handleLoginClick}>Log in</Button>
+          <Button variant="primary" onClick={handleRegisterClick}>
+            Register
+          </Button>
+        </ButtonGroup>
+    </Flex>
   )
 }
 

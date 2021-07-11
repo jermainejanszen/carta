@@ -52,20 +52,22 @@
 
 .grid{
   max-width: 80%;
-  .aboutSection{
-    padding: 2rem;
-    border-radius: 12px;
-    background-color: rgba($color: #ffffff, $alpha: .5);
-    box-shadow: 0 0 8px $beta400;
-    margin: 4rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    img {
-    height: 10rem;
-    }
-    > * {
-      flex-basis: 50%;
-    }
+  
+}
+
+.aboutSection{
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba($color: #ffffff, $alpha: .5);
+  box-shadow: 0 0 8px $beta400;
+  margin: 4rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+  height: 10rem;
+  }
+  > * {
+    flex-basis: 50%;
   }
 }

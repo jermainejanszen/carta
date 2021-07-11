@@ -1,5 +1,25 @@
 import { useRouter } from 'next/router';
-import styles from '../styles/widgets/NavBar.module.scss';
+import { 
+  Flex,
+  HStack, 
+  Avatar,
+  Box, 
+  Image, 
+  useColorModeValue,
+  useColorMode,
+  Input,
+  InputGroup,
+  Menu, 
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  MenuGroup, 
+  MenuDivider,
+  InputRightElement,
+  MenuItemOption,
+  MenuOptionGroup } from '@chakra-ui/react';
+import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 
 interface Props {
   hideSearch? : boolean,
@@ -19,33 +39,106 @@ const ProfileNavBar = (props: Props) => {
     router.push('/profile');
   }
 
+  const { colorMode, toggleColorMode } = useColorMode();
+  const handleColorModeChange = (value : 'light' | 'dark') => {
+    if (value === 'light') {
+      if (colorMode === 'dark') {
+        toggleColorMode();
+      }
+    } else if (value === 'dark') {
+      if (colorMode === 'light') {
+        toggleColorMode();
+      }
+    }
+  }
+  const bg = useColorModeValue("white", "gray.700");
+
   return (
-    <div className={styles.container}>
-      <div className={styles.logo}>
-        <img src="/logo.svg" alt="logo" onClick={handleHomeClick} />
-      </div>
-      <div className={styles.buttons}>
-        {props.hideSearch ?? <input type="text" placeholder="Search Projects..." />}
-        <div>
-          <img
-            src="/avatar.svg" 
-            alt="logo" 
+    <Flex
+      justifyContent="space-between"
+      padding="1rem 4rem" 
+      w="100%"
+      bg={bg}
+      boxShadow="0 0 12px rgba(0, 0, 0, 0.4)"
+      position="fixed"
+      zIndex="dropdown" >
+        <Image 
+            src="/logo.svg" 
+            alt="logo"
+            h="3rem"
+            cursor="pointer" 
+            onClick={handleHomeClick} />
+      <HStack spacing="8">
+        {props.hideSearch ?? 
+          <InputGroup>
+            <Input
+              type="text"
+              placeholder="Search projects..." />
+            <InputRightElement>
+              <IconButton 
+                aria-label="Search"
+                icon={<SearchIcon />}
+                borderRightRadius="lg" />
+            </InputRightElement>
+          </InputGroup>
+        }
+        <Flex alignItems="center">
+          <Avatar
+            bg="red.500"
+            cursor="pointer" 
             onClick={handleProfileClick} />
-          <div className={styles.dropdown}>
-            <img
-              src="/icons/expand-arrow.svg" 
-              alt="dropdown" />
-            <div className={styles.dropdownContent}>
-              <p>Jerchael</p>
-              <a href="/profile">My Profile</a>
-              <a href="/projects">My Projects</a>
-              <a href="/settings">Settings</a>
-              <a href="/">Sign Out</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Menu isLazy>
+            {({ isOpen }) => (
+              <Box>
+                <MenuButton
+                  isActive={isOpen}
+                  as={IconButton}
+                  aria-label="Profile"
+                  icon={
+                    <ChevronDownIcon 
+                      w="2rem" h="2rem"
+                      transition="all 0.3s ease" 
+                      transform={isOpen && "rotate(180deg)"} />
+                  }
+                  variant="ghost"
+                  borderRadius="full"
+                  mx="1rem" />
+                <MenuList>
+                  <MenuGroup title="Jerchael">
+                    <MenuItem onClick={handleProfileClick}>
+                      My Profile
+                    </MenuItem>
+                    <MenuItem onClick={handleHomeClick}>
+                      My Projects
+                    </MenuItem>
+                  </MenuGroup>
+                  <MenuDivider />
+                  <MenuOptionGroup 
+                    title="Color mode" 
+                    type="radio" 
+                    defaultValue={colorMode === 'light' ? 'light' : 'dark'}
+                    onChange={handleColorModeChange} >
+                      <MenuItemOption value="light">
+                        Light
+                      </MenuItemOption>
+                      <MenuItemOption value="dark">
+                        Dark
+                      </MenuItemOption>
+                  </MenuOptionGroup>
+                  <MenuDivider />
+                  <MenuItem onClick={e => router.push('/settings')}>
+                    Settings
+                  </MenuItem>
+                  <MenuItem onClick={e => router.push('/')}>
+                    Sign Out
+                  </MenuItem>
+                </MenuList>
+              </Box>
+            )}
+          </Menu>
+        </Flex>
+      </HStack>
+    </Flex>
   )
 }
 
