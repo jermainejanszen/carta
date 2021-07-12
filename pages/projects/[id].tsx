@@ -20,6 +20,7 @@ import {
 import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
+import PageContainer from '../../components/PageContainer';
 
 interface Props {
     
@@ -108,91 +109,88 @@ const Project = (props: Props) => {
   const titleBg = useColorModeValue("#D7FAFA", "gray.900");
 
   return (
-    <VStack
-      alignItems="center"
-      minH="100vh"
-      width="100%">
-        <Head>
-          <title>{name} | Carta</title>
-          <link rel="icon" href="/logo.svg" />
-        </Head>
-        <ProjectsNavBar hideSearch />
+    <PageContainer hasBg>
+      <Head>
+        <title>{name} | Carta</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <ProjectsNavBar hideSearch />
 
-        <VStack
-          maxW="100rem"
-          width="100%"
-          padding="7rem"
-          spacing="2rem">
-            <Box width="100%">
-              <Editable
-                defaultValue={name}
-                alignSelf="flex-start"
-                fontSize="4xl"
-                w="fit-content"
-                p="4"
-                mb="8"
-                borderRadius="xl"
-                bg={titleBg} >
-                  <EditablePreview />
-                  <EditableInput />
-              </Editable>
-              <Editable
-                defaultValue={description} >
-                  <EditablePreview />
-                  <EditableInput />
-              </Editable>
-            </Box>
+      <VStack
+        maxW="100rem"
+        width="100%"
+        padding="7rem"
+        spacing="2rem">
+          <Box width="100%">
+            <Editable
+              defaultValue={name}
+              alignSelf="flex-start"
+              fontSize="4xl"
+              w="fit-content"
+              p="4"
+              mb="8"
+              borderRadius="xl"
+              bg={titleBg} >
+                <EditablePreview />
+                <EditableInput />
+            </Editable>
+            <Editable
+              defaultValue={description} >
+                <EditablePreview />
+                <EditableInput />
+            </Editable>
+          </Box>
 
-            <Grid>
-              {/* Stats go here */}
-            </Grid>
+          <Grid>
+            {/* Stats go here */}
+          </Grid>
 
-            <VStack w="100%">
-              <List spacing="2" w="100%">
-                {tasks.length === 0 && <Text fontSize="2xl">No Tasks</Text>}
-                {tasks.map((value, index) => {
-                  return (
-                    <ListItem key={value.id}
-                      display="flex"
-                      alignItems="center">
-                      <TaskItem 
-                        name={value.name} 
-                        time={value.time}
-                        index={index} 
-                        editName={handleEditTaskName}
-                        editTime={handleEditTaskTime}
-                        setIsCounting={setIsCounting} />
-                        <Collapse in={isOpen} animateOpacity >
-                          <IconButton
-                            aria-label="delete"
-                            borderRadius="lg"
-                            ms="4"
-                            onClick={(e) => handleDeleteItemClick(index)}>
-                              <DeleteIcon />
-                          </IconButton>
-                        </Collapse>
-                    </ListItem>
-                  )}
+          <VStack w="100%">
+            <List spacing="2" w="100%">
+              {tasks.length === 0 && <Text fontSize="2xl">No Tasks</Text>}
+              {tasks.map((value, index) => {
+                return (
+                  <ListItem key={value.id}
+                    display="flex"
+                    alignItems="center">
+                    <TaskItem 
+                      name={value.name} 
+                      time={value.time}
+                      index={index} 
+                      editName={handleEditTaskName}
+                      editTime={handleEditTaskTime}
+                      setIsCounting={setIsCounting} />
+                      <Collapse in={isOpen} animateOpacity >
+                        <IconButton
+                          aria-label="delete"
+                          borderRadius="lg"
+                          ms="4"
+                          onClick={(e) => handleDeleteItemClick(index)}>
+                            <DeleteIcon />
+                        </IconButton>
+                      </Collapse>
+                  </ListItem>
                 )}
-              </List>
-              <HStack py="4" width="100%" justifyContent="space-between">
-                <Button
-                  size="lg"
-                  variant="primary"
-                  onClick={handleAddTaskClick} >
-                    Add Task
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  colorScheme="green"
-                  onClick={onToggle} >
-                    {isOpen ? "Done" : "Edit"}
-                </Button>
-              </HStack>
-            </VStack>
-        </VStack>
-    </VStack>
+              )}
+            </List>
+            <HStack py="4" width="100%" justifyContent="space-between">
+              <Button
+                size="lg"
+                variant="primary"
+                onClick={handleAddTaskClick} >
+                  Add Task
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                colorScheme="green"
+                onClick={onToggle} >
+                  {isOpen ? "Done" : "Edit"}
+              </Button>
+            </HStack>
+          </VStack>
+      </VStack>
+    </PageContainer>
   )
 }
 

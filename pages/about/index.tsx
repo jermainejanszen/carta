@@ -8,6 +8,7 @@ import {
   Image,
   useColorModeValue, } from '@chakra-ui/react';
 import SplashNavBar from '../../widgets/SplashNavBar';
+import PageContainer from '../../components/PageContainer';
 
 
 interface Props {
@@ -33,10 +34,7 @@ const About = (props: Props) => {
   }
 
   return (
-    <Flex
-      direction="column"
-      alignItems="center"
-      minH="100vh">
+    <PageContainer>
       <Head>
         <title>About | Carta</title>
         <link rel="icon" href="/logo.svg" />
@@ -99,7 +97,7 @@ const About = (props: Props) => {
           </ContentCard>
         </VStack>
       </Flex>
-    </Flex>
+    </PageContainer>
   )
 }
 

@@ -10,6 +10,7 @@ import {
   useColorModeValue} from '@chakra-ui/react';
 import { FiUsers, FiClock, FiCheckCircle } from 'react-icons/fi';
 import SplashNavBar from '../widgets/SplashNavBar';
+import PageContainer from '../components/PageContainer';
 
 interface CardProps {
   icon: string,
@@ -71,10 +72,7 @@ export default function Home() {
   }
 
   return (
-    <Flex 
-      direction="column"
-      alignItems="center"
-      minH="100vh">
+    <PageContainer>
       <Head>
         <title>Carta</title>
         <link rel="icon" href="/logo.svg" />
@@ -123,6 +121,6 @@ export default function Home() {
           </Grid>
         </Flex>
       </Flex>
-    </Flex>
+    </PageContainer>
   )
 }

@@ -8,6 +8,7 @@ import {
 import { FiPlusCircle } from 'react-icons/fi';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
+import PageContainer from '../../components/PageContainer';
 
 const mockData = [
   {
@@ -51,60 +52,58 @@ const Projects = (props: Props) => {
     "linear-gradient(to-r, cyan.800, blue.800)");
 
   return (
-    <VStack
-      alignItems="center"
-      minH="100vh">
-        <Head>
-          <title>Projects | Carta</title>
-          <link rel="icon" href="/logo.svg" />
-        </Head>
-        <ProfileNavBar />
+    <PageContainer>
+      <Head>
+        <title>Projects | Carta</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <ProfileNavBar />
 
-        <VStack
-          maxW="100rem"
-          width="100%"
-          padding="7rem">
-            <Text
-              alignSelf="flex-start"
-              fontSize="5xl"
-              w="fit-content"
-              p="4"
-              mb="8"
-              borderRadius="xl"
-              bg={titleBg} >
-                Projects
-            </Text>
+      <VStack
+        maxW="100rem"
+        width="100%"
+        padding="7rem">
+          <Text
+            alignSelf="flex-start"
+            fontSize="5xl"
+            w="fit-content"
+            p="4"
+            mb="8"
+            borderRadius="xl"
+            bg={titleBg} >
+              Projects
+          </Text>
 
-            <Grid
-              width="100%"
-              templateColumns="repeat(auto-fill, 20rem)"
-              autoRows="1fr"
-              gap="2rem" >
-                <VStack
-                  spacing="1rem"
-                  alignItems="center"
-                  justifyContent="center"
-                  p="3rem"
-                  borderRadius="xl"
-                  boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
-                  cursor="pointer"
-                  color="white"
-                  bgGradient={newProjectBg}
-                  transition="all 0.2s ease-in-out"
-                  onClick={() => router.push('/projects/new')}
-                  _hover={{
-                    transform: "scale(1.05)",
-                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)"
-                  }}>
-                    <Text fontSize="3xl">
-                      New Project
-                    </Text>
-                    <FiPlusCircle size="8rem" />
-                </VStack>
-                {mockData.map((value, index) => <ProjectCard data={value} color={index} key={index} />)}
-            </Grid>
-        </VStack>
-    </VStack>
+          <Grid
+            width="100%"
+            templateColumns="repeat(auto-fill, 20rem)"
+            autoRows="1fr"
+            gap="2rem" >
+              <VStack
+                spacing="1rem"
+                alignItems="center"
+                justifyContent="center"
+                p="3rem"
+                borderRadius="xl"
+                boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
+                cursor="pointer"
+                color="white"
+                bgGradient={newProjectBg}
+                transition="all 0.2s ease-in-out"
+                onClick={() => router.push('/projects/new')}
+                _hover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)"
+                }}>
+                  <Text fontSize="3xl">
+                    New Project
+                  </Text>
+                  <FiPlusCircle size="8rem" />
+              </VStack>
+              {mockData.map((value, index) => <ProjectCard data={value} color={index} key={index} />)}
+          </Grid>
+      </VStack>
+    </PageContainer>
   )
 }
 
