@@ -21,6 +21,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
 import PageContainer from '../../components/PageContainer';
+import PieGraph from '../../components/PieGraph';
 
 interface Props {
     
@@ -51,6 +52,26 @@ const mockData = {
   ],
   description: "Anything and everything that isn't related to a specific project."
 }
+
+const mockGraphData = [
+  {
+    id: 1,
+    name: "Tensor Flow",
+    value: 37368,
+  },{
+    id: 2,
+    name: "Integrating Matrix Solver",
+    value: 15132,
+  },{
+    id: 3,
+    name: "Writing Matrix Solver",
+    value: 10440,
+  },{
+    id: 4,
+    name: "UI Design",
+    value: 24408,
+  },
+];
 
 const Project = (props: Props) => {
 
@@ -142,7 +163,13 @@ const Project = (props: Props) => {
           </Box>
 
           <Grid>
-            {/* Stats go here */}
+            <Box w="300px" h="300px">
+              <PieGraph 
+                data={tasks}
+                dataKey="time"
+                innerRadius={10}
+                outerRadius={90} />
+            </Box>
           </Grid>
 
           <VStack w="100%">
