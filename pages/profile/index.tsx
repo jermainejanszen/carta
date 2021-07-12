@@ -10,7 +10,8 @@ import {
   HStack,
   Stat,
   StatLabel,
-  StatNumber } from '@chakra-ui/react';
+  StatNumber, 
+  Tooltip} from '@chakra-ui/react';
 import { FiCheckCircle, FiCalendar, FiClock, FiTwitter } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import { RiGroupLine } from 'react-icons/ri';
@@ -138,21 +139,27 @@ const Profile = (props: Props) => {
               </Text>
               <HStack>
                 <RiGroupLine size={24} />
+                <Tooltip hasArrow label="Company">
                   <Text fontSize="lg">
                     Carta
                   </Text>
+                </Tooltip>
               </HStack>
               <HStack>
                 <CgWebsite size={24} />
-                <Text fontSize="lg">
-                  Carta.co
-                </Text>
+                <Tooltip hasArrow label="Website">
+                  <Text fontSize="lg">
+                    Carta.co
+                  </Text>
+                </Tooltip>
               </HStack>
               <HStack>
                 <FiTwitter size={24} />
-                <Text fontSize="lg">
-                  alexcrocrox@twitter.com
-                </Text>
+                <Tooltip hasArrow label="Twitter">
+                  <Text fontSize="lg">
+                    @alexcrocrox
+                  </Text>
+                </Tooltip>
               </HStack>
           </VStack>
 
