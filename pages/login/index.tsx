@@ -76,14 +76,6 @@ const Login = (props: Props) => {
                   onClick={handleLogin}>
                     Log in with GitHub
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaApple />}
-                  width="20rem"
-                  onClick={handleLogin}>
-                    Log in with Apple
-                </Button>
               </VStack>
           </Flex>
       </Flex>

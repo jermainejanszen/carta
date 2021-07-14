@@ -76,14 +76,6 @@ const Register = (props: Props) => {
                   onClick={handleRegister}>
                     Register with GitHub
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaApple />}
-                  width="20rem"
-                  onClick={handleRegister}>
-                    Register with Apple
-                </Button>
               </VStack>
           </Flex>
       </Flex>
