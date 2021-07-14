@@ -1,5 +1,6 @@
 import initFirebase from '../firebase/initFirebase';
 import initAuth from '../firebase/initAuth';
+import firebase from 'firebase/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { 
@@ -22,6 +23,10 @@ interface CardProps {
 };
 
 initFirebase();
+
+var auth = firebase.auth();
+auth.useEmulator('http://localhost:9099');
+
 initAuth();
 
 export default function Home() {
