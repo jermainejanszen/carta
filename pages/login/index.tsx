@@ -3,12 +3,17 @@ import Head from 'next/head';
 import {
   Text, 
   Flex, 
-  VStack,
+  SimpleGrid,
+  VisuallyHidden,
   Button,
-  useColorModeValue } from '@chakra-ui/react';
-import { FaGoogle, FaFacebook, FaGithub, FaApple } from 'react-icons/fa';
+  useColorModeValue, 
+  Heading,
+  Link} from '@chakra-ui/react';
+import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
+import { DividerWithText } from '../../components/DividerWithText';
+import { LoginForm } from '../../components/login/LoginForm';
 
 interface Props {
     
@@ -17,11 +22,6 @@ interface Props {
 const Login = (props: Props) => {
 
   const router = useRouter();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    router.push('/projects');
-  }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");
 
@@ -40,43 +40,36 @@ const Login = (props: Props) => {
           <Flex
             direction="column"
             alignItems="center"
-            padding="10"
-            border="1px solid gray"
+            py="8"
+            px={{ base: '4', md: '10' }}
             borderRadius="xl"
-            bg={bg}>
-              <Text fontSize="4xl">
+            bg={bg}
+            shadow="xl" >
+              <Heading size="xl" fontWeight="normal">
                 Log in
+              </Heading>
+              <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
+                <Text as="span">Don&apos;t have an account? </Text>
+                <Link href="#">Register</Link>
               </Text>
+              <LoginForm />
             
-              <VStack spacing="6" my="2rem">
-                <Button
-                  colorScheme="red"
-                  size="lg"
-                  variant="outline" 
-                  leftIcon={<FaGoogle />}
-                  width="20rem"
-                  onClick={handleLogin}>
-                    Log in with Google
+              <DividerWithText mt="6">or continue with</DividerWithText>
+
+              <SimpleGrid mt="6" columns={3} spacing="3">
+                <Button color="currentColor" variant="outline" disabled>
+                  <VisuallyHidden>Login with Facebook</VisuallyHidden>
+                  <FaFacebook />
                 </Button>
-                <Button 
-                  colorScheme="linkedin"
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaFacebook />}
-                  width="20rem"
-                  onClick={handleLogin}>
-                    Log in with Facebook
+                <Button color="currentColor" variant="outline" disabled>
+                  <VisuallyHidden>Login with Google</VisuallyHidden>
+                  <FaGoogle />
                 </Button>
-                <Button 
-                  colorScheme="teal"
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaGithub />}
-                  width="20rem"
-                  onClick={handleLogin}>
-                    Log in with GitHub
+                <Button color="currentColor" variant="outline" disabled>
+                  <VisuallyHidden>Login with Github</VisuallyHidden>
+                  <FaGithub />
                 </Button>
-              </VStack>
+              </SimpleGrid>
           </Flex>
       </Flex>
     </PageContainer>
