@@ -1,4 +1,5 @@
-import firebase from '../firebase/initFirebase';
+import initFirebase from '../firebase/initFirebase';
+import initAuth from '../firebase/initAuth';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { 
@@ -20,7 +21,8 @@ interface CardProps {
   description: string,
 };
 
-firebase();
+initFirebase();
+initAuth();
 
 export default function Home() {
 

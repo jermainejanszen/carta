@@ -6,7 +6,7 @@ const initAuth = () => {
     appPageURL: '/projects',
     loginAPIEndpoint: '/api/login', // required
     logoutAPIEndpoint: '/api/logout', // required
-    firebaseAuthEmulatorHost: 'localhost:9099',
+    // firebaseAuthEmulatorHost: 'localhost:9099',
     // Required in most cases.
     firebaseAdminInitConfig: {
       credential: {
