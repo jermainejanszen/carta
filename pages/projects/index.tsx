@@ -9,6 +9,8 @@ import { FiPlusCircle } from 'react-icons/fi';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
 import PageContainer from '../../components/PageContainer';
+import { useSession } from 'next-auth/client';
+import { useEffect } from 'react';
 
 const mockData = [
   {
@@ -43,8 +45,14 @@ interface Props {
 }
 
 const Projects = (props: Props) => {
-
   const router = useRouter();
+  const [session, loading] = useSession();
+
+  useEffect(() => {
+    if (!loading) {
+      if (!session) router.push('/');
+    }
+  }, [loading, session]);
 
   const titleBg = useColorModeValue("#D7FAFA", "gray.900");
   const newProjectBg = useColorModeValue(

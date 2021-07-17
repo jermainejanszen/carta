@@ -26,13 +26,13 @@ interface Props {
 }
 
 const Profile = (props: Props) => {
-  const [session] = useSession();
+  const [session, loading] = useSession();
 
   useEffect(() => {
-    if (!session) {
-      useRouter().push('/');
+    if (!loading) {
+      if (!session) useRouter().push('/');
     }
-  })
+  }, [loading, session]);
 
 
   const cardBg = useColorModeValue("whiteAlpha.400", "blackAlpha.400");
@@ -57,8 +57,8 @@ const Profile = (props: Props) => {
             direction="column"
             justifyContent="center" >
             <Image
-              borderRadius="3xl"
-              src="/cofounder1.jpg" 
+              borderRadius="full"
+              src={session.user.image ? session.user.image : "/logo.svg"} 
               alt="pog" />
           </Flex>
 
@@ -67,7 +67,7 @@ const Profile = (props: Props) => {
             direction="column"
             justifyContent="center" >
               <Text fontSize="3xl">
-                {session?.user.name}
+                {session.user.name}
               </Text>
               <Text>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo maxime distinctio debitis voluptate incidunt corporis earum quod iure.

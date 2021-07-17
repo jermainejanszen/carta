@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { 
@@ -21,6 +21,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
 import PageContainer from '../../components/PageContainer';
+import { useSession } from 'next-auth/client';
 
 interface Props {
     
@@ -53,8 +54,14 @@ const mockData = {
 }
 
 const Project = (props: Props) => {
-
   const router = useRouter();
+  const [session, loading] = useSession();
+
+  useEffect(() => {
+    if (!loading) {
+      if (!session) router.push('/');
+    }
+  }, [loading, session]);
 
   const id = router.query.id;
   const [name, setName] = useState(mockData.name);
