@@ -18,17 +18,6 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// // Initializes Firebase
-// const initFirebase = () => {
-//   if (!firebase.apps.length) {
-//     firebase.initializeApp(firebaseConfig);
-
-//     
-
-//     console.log('Firebase was successfully initialised');
-//   }
-// };
-
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
@@ -44,5 +33,6 @@ var auth = firebase.auth();
 auth.useEmulator("http://localhost:9099");
 
 const db = app.firestore();
+db.useEmulator("http://localhost:8080");
 
 export { db };
