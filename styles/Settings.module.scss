@@ -32,9 +32,9 @@
 }
 
 .accountsettings{
-  border: 1px solid $beta400;
   border-radius: 8px;
-  background-color: rgba($color: $beta600, $alpha: .6);
+  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba($color: $beta600, $alpha: .2);
   padding: 2rem;
   width: 100%;
 }
