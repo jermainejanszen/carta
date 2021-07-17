@@ -40,6 +40,9 @@ if (typeof window !== 'undefined') {
   }
 }
 
+var auth = firebase.auth();
+auth.useEmulator("http://localhost:9099");
+
 const db = app.firestore();
 
 export { db };

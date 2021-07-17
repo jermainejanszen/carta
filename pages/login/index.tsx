@@ -13,7 +13,7 @@ import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
 import { DividerWithText } from '../../components/DividerWithText';
-import { LoginForm } from '../../components/login/LoginForm';
+import { LoginForm } from '../../components/auth/LoginForm';
 import { signIn } from 'next-auth/client';
 
 interface Props {
@@ -56,7 +56,7 @@ const Login = (props: Props) => {
               </Heading>
               <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
                 <Text as="span">Don&apos;t have an account? </Text>
-                <Link href="#">Register</Link>
+                <Link href="#" color="blue">Register</Link>
               </Text>
               <LoginForm />
             

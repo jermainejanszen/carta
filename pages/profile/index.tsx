@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import { 
   Text, 
@@ -12,17 +14,26 @@ import {
   StatLabel,
   StatNumber, 
   Tooltip} from '@chakra-ui/react';
-import { FiCheckCircle, FiCalendar, FiClock, FiTwitter } from 'react-icons/fi';
+import { FiCheckCircle, FiCalendar, FiClock, FiMail } from 'react-icons/fi';
 import { CgWebsite } from 'react-icons/cg';
 import { RiGroupLine } from 'react-icons/ri';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import PageContainer from '../../components/PageContainer';
+import { useRouter } from 'next/router';
 
 interface Props {
     
 }
 
 const Profile = (props: Props) => {
+  const [session] = useSession();
+
+  useEffect(() => {
+    if (!session) {
+      useRouter().push('/');
+    }
+  })
+
 
   const cardBg = useColorModeValue("whiteAlpha.400", "blackAlpha.400");
   const psBg = useColorModeValue("gray.100", "blackAlpha.600");
@@ -56,7 +67,7 @@ const Profile = (props: Props) => {
             direction="column"
             justifyContent="center" >
               <Text fontSize="3xl">
-                Jerchael
+                {session?.user.name}
               </Text>
               <Text>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo maxime distinctio debitis voluptate incidunt corporis earum quod iure.
@@ -154,10 +165,10 @@ const Profile = (props: Props) => {
                 </Tooltip>
               </HStack>
               <HStack>
-                <FiTwitter size={24} />
-                <Tooltip hasArrow label="Twitter">
+                <FiMail size={24} />
+                <Tooltip hasArrow label="Email">
                   <Text fontSize="lg">
-                    @alexcrocrox
+                    {session?.user.email}
                   </Text>
                 </Tooltip>
               </HStack>

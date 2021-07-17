@@ -1,14 +1,20 @@
 import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/client';
 import Head from 'next/head';
-import { 
+import {
   Text, 
   Flex, 
-  VStack,
+  SimpleGrid,
+  VisuallyHidden,
   Button,
-  useColorModeValue} from '@chakra-ui/react';
-import { FaGoogle, FaFacebook, FaGithub, FaApple } from 'react-icons/fa';
-import SplashNavBar from "../../widgets/SplashNavBar";
+  useColorModeValue, 
+  Heading,
+  Link} from '@chakra-ui/react';
+import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
+import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
+import { DividerWithText } from '../../components/DividerWithText';
+import { RegisterForm } from '../../components/auth/RegisterForm';
 
 interface Props {
     
@@ -18,9 +24,9 @@ const Register = (props: Props) => {
 
   const router = useRouter();
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    router.push('/projects');
+  const signInCallbackURL : string = 'http://localhost:3000/projects';
+  const handleGoogleLogin = () => {
+    signIn('google', { callbackUrl: signInCallbackURL });
   }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");
@@ -28,11 +34,11 @@ const Register = (props: Props) => {
   return (
     <PageContainer>
       <Head>
-        <title>Register | Carta</title>
+        <title>Login | Carta</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <SplashNavBar />
-    
+      
       <Flex 
         flexGrow={1}
         direction="column"
@@ -40,43 +46,36 @@ const Register = (props: Props) => {
           <Flex
             direction="column"
             alignItems="center"
-            padding="10"
-            border="1px solid gray"
+            py="8"
+            px={{ base: '4', md: '10' }}
             borderRadius="xl"
-            bg={bg}>
-              <Text fontSize="4xl">
-                Welcome to Carta
+            bg={bg}
+            shadow="xl" >
+              <Heading size="xl" fontWeight="normal">
+                Log in
+              </Heading>
+              <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
+                <Text as="span">Don&apos;t have an account? </Text>
+                <Link href="#">Register</Link>
               </Text>
+              <RegisterForm />
             
-              <VStack spacing="6" my="2rem">
-                <Button
-                  colorScheme="red"
-                  size="lg"
-                  variant="outline" 
-                  leftIcon={<FaGoogle />}
-                  width="20rem"
-                  onClick={handleRegister}>
-                    Register with Google
+              <DividerWithText mt="6">or continue with</DividerWithText>
+
+              <SimpleGrid mt="6" columns={3} spacing="3">
+                <Button color="currentColor" variant="outline" disabled>
+                  <VisuallyHidden>Login with Facebook</VisuallyHidden>
+                  <FaFacebook />
                 </Button>
-                <Button 
-                  colorScheme="linkedin"
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaFacebook />}
-                  width="20rem"
-                  onClick={handleRegister}>
-                    Register with Facebook
+                <Button color="currentColor" variant="outline" onClick={handleGoogleLogin}>
+                  <VisuallyHidden>Login with Google</VisuallyHidden>
+                  <FaGoogle />
                 </Button>
-                <Button 
-                  colorScheme="teal"
-                  size="lg"
-                  variant="outline"
-                  leftIcon={<FaGithub />}
-                  width="20rem"
-                  onClick={handleRegister}>
-                    Register with GitHub
+                <Button color="currentColor" variant="outline" disabled>
+                  <VisuallyHidden>Login with Github</VisuallyHidden>
+                  <FaGithub />
                 </Button>
-              </VStack>
+              </SimpleGrid>
           </Flex>
       </Flex>
     </PageContainer>
@@ -84,4 +83,3 @@ const Register = (props: Props) => {
 }
 
 export default Register
-
