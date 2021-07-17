@@ -23,12 +23,7 @@ const firebaseConfig = {
 //   if (!firebase.apps.length) {
 //     firebase.initializeApp(firebaseConfig);
 
-//     if (typeof window !== 'undefined') {
-//       // Enable analytics
-//       if ('measurementId' in firebaseConfig) {
-//         firebase.analytics();
-//       }
-//     }
+//     
 
 //     console.log('Firebase was successfully initialised');
 //   }
@@ -37,6 +32,13 @@ const firebaseConfig = {
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
+
+if (typeof window !== 'undefined') {
+  // Enable analytics
+  if ('measurementId' in firebaseConfig) {
+    firebase.analytics();
+  }
+}
 
 const db = app.firestore();
 
