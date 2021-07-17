@@ -1,6 +1,4 @@
-import initFirebase from '../firebase/initFirebase';
-import initAuth from '../firebase/initAuth';
-import firebase from 'firebase/app';
+import 'firebase';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { 
@@ -14,7 +12,7 @@ import {
 import { FiUsers, FiClock, FiCheckCircle } from 'react-icons/fi';
 import SplashNavBar from '../widgets/SplashNavBar';
 import PageContainer from '../components/PageContainer';
-import { getSession, useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/client';
 
 interface CardProps {
   icon: string,
@@ -22,8 +20,6 @@ interface CardProps {
   title: string,
   description: string,
 };
-
-initFirebase();
 
 export default function Home() {
   const router = useRouter();

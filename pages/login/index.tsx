@@ -24,8 +24,9 @@ const Login = (props: Props) => {
 
   const router = useRouter();
 
+  const signInCallbackURL : string = 'http://localhost:3000/projects';
   const handleGoogleLogin = () => {
-    signIn('google');
+    signIn('google', { callbackUrl: signInCallbackURL });
   }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");

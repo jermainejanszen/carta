@@ -1,22 +1,18 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { db } from '../../../firebase/initFirebase';
 
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     // ...add more providers here
   ],
 
   // Adapters
-  adapter: FirebaseAdapter(firebase.app?.firestore()),
-
-  // A database is optional, but required to persist accounts in a database
-  database: process.env.DATABASE_URL,
+  adapter: FirebaseAdapter(db),
 });

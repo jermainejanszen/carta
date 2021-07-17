@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { 
   Flex,
@@ -20,14 +21,15 @@ import {
   MenuItemOption,
   MenuOptionGroup } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
+import { useSession, signOut } from 'next-auth/client';
 
 interface Props {
   hideSearch? : boolean,
 }
 
 const ProfileNavBar = (props: Props) => {
-
   const router = useRouter();
+  const [session] = useSession();
 
   const handleHomeClick = (e) => {
       e.preventDefault();
@@ -37,6 +39,11 @@ const ProfileNavBar = (props: Props) => {
   const handleProfileClick = (e) => {
     e.preventDefault();
     router.push('/profile');
+  }
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    signOut({ callbackUrl: 'http://localhost:3000'});
   }
 
   const { colorMode, toggleColorMode } = useColorMode();
@@ -86,6 +93,8 @@ const ProfileNavBar = (props: Props) => {
           <Avatar
             bg="red.500"
             cursor="pointer" 
+            name={session && session.user.name}
+            src={session?.user.image}
             onClick={handleProfileClick} />
           <Menu isLazy>
             {({ isOpen }) => (
@@ -104,7 +113,7 @@ const ProfileNavBar = (props: Props) => {
                   borderRadius="full"
                   mx="1rem" />
                 <MenuList>
-                  <MenuGroup title="Jerchael">
+                  <MenuGroup title={session ? session.user.name : "Error"}>
                     <MenuItem onClick={handleProfileClick}>
                       My Profile
                     </MenuItem>
@@ -129,7 +138,7 @@ const ProfileNavBar = (props: Props) => {
                   <MenuItem onClick={e => router.push('/settings')}>
                     Settings
                   </MenuItem>
-                  <MenuItem onClick={e => router.push('/')}>
+                  <MenuItem onClick={handleSignOut}>
                     Sign Out
                   </MenuItem>
                 </MenuList>

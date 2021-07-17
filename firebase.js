@@ -37,7 +37,13 @@ const firebaseConfig = {
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
-
+if (typeof window !== 'undefined') {
+  // Enable analytics
+  if ('measurementId' in firebaseConfig) {
+    firebase.analytics();
+  }
+}
+console.log("Firebase initialised.");
 const db = app.firestore();
 
 export { db };
