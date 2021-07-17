@@ -14,6 +14,7 @@ import {
 import { FiUsers, FiClock, FiCheckCircle } from 'react-icons/fi';
 import SplashNavBar from '../widgets/SplashNavBar';
 import PageContainer from '../components/PageContainer';
+import { getSession, useSession } from 'next-auth/client';
 
 interface CardProps {
   icon: string,
@@ -24,14 +25,12 @@ interface CardProps {
 
 initFirebase();
 
-var auth = firebase.auth();
-auth.useEmulator('http://localhost:9099');
-
-initAuth();
-
 export default function Home() {
-
   const router = useRouter();
+
+  const [session] = useSession();
+  if (session) router.replace('/projects');
+
 
   const FeatureCard = (props : CardProps) => {
     let cardIcon;
