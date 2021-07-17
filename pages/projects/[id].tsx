@@ -1,10 +1,26 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { 
+  Text, 
+  Grid,
+  Box,
+  VStack,
+  Button,
+  useColorModeValue, 
+  Editable,
+  EditablePreview,
+  EditableInput, 
+  List,
+  ListItem,
+  HStack,
+  Collapse, 
+  useDisclosure, 
+  IconButton} from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
-import Button from '../../components/Button';
-
-import styles from '../../styles/Project.module.scss';
+import PageContainer from '../../components/PageContainer';
 
 interface Props {
     
@@ -44,8 +60,9 @@ const Project = (props: Props) => {
   const [name, setName] = useState(mockData.name);
   const [description, setDescription] = useState(mockData.description);
   const [tasks, setTasks] = useState(mockData.tasks);
-  const [editMode, setEditMode] = useState(false);
   const [isCounting, setIsCounting] = useState(false);
+
+  const { isOpen, onToggle } = useDisclosure();
 
   const nameRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -83,88 +100,97 @@ const Project = (props: Props) => {
     setTasks(newTasks);
   }
 
-  const handleEditModeClick = (e) => {
-    if (editMode) {
-      setName(name.trim());
-      setDescription(description.trim());
-    }
-    setEditMode(!editMode);
-  }
-
   const handleDeleteItemClick = (index: number) => {
     let newTasks = [...tasks];
     newTasks.splice(index, 1)
     setTasks(newTasks);
   }
 
+  const titleBg = useColorModeValue("#D7FAFA", "gray.900");
+
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <ProjectsNavBar hideSearch />
-      </header>
+    <PageContainer hasBg>
+      <Head>
+        <title>{name} | Carta</title>
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <ProjectsNavBar hideSearch />
 
-      <main className={styles.main}>
-        {!editMode ? 
-        <div className={styles.titleContainer}>
-          <h1 className={styles.title}>{name}</h1>
-          <p>{description}</p>
-        </div> :
-        <div className={styles.titleContainer}>
-          <input 
-            className={styles.title}
-            type="text"
-            value={name}
-            ref={nameRef}
-            onChange={handleNameChange} />
-          <textarea 
-            value={description}
-            ref={descriptionRef}
-            onChange={handleDescriptionChange} />
-        </div> 
-        }
-        
-        <div>
+      <VStack
+        maxW="100rem"
+        width="100%"
+        padding="7rem"
+        spacing="2rem">
+          <Box width="100%">
+            <Editable
+              defaultValue={name}
+              alignSelf="flex-start"
+              fontSize="4xl"
+              w="fit-content"
+              p="4"
+              mb="8"
+              borderRadius="xl"
+              bg={titleBg} >
+                <EditablePreview />
+                <EditableInput />
+            </Editable>
+            <Editable
+              defaultValue={description} >
+                <EditablePreview />
+                <EditableInput />
+            </Editable>
+          </Box>
 
-        </div>
-        
-        <div className={styles.taskContainer}>
-          <div className={styles.taskList}>
-            {tasks.length === 0 && <h3>No Tasks</h3>}
-            {tasks.map((value, index) => {
-              return (
-              <div key={value.id} >
-                <TaskItem 
-                  name={value.name} 
-                  time={value.time}
-                  index={index} 
-                  editName={handleEditTaskName}
-                  editTime={handleEditTaskTime}
-                  setIsCounting={setIsCounting} />
-                  {editMode && 
-                    <img 
-                      src="/icons/cancel.svg" 
-                      alt="cancel"
-                      onClick={(e) => handleDeleteItemClick(index)} />}
-              </div>
+          <Grid>
+            {/* Stats go here */}
+          </Grid>
+
+          <VStack w="100%">
+            <List spacing="2" w="100%">
+              {tasks.length === 0 && <Text fontSize="2xl">No Tasks</Text>}
+              {tasks.map((value, index) => {
+                return (
+                  <ListItem key={value.id}
+                    display="flex"
+                    alignItems="center">
+                    <TaskItem 
+                      name={value.name} 
+                      time={value.time}
+                      index={index} 
+                      editName={handleEditTaskName}
+                      editTime={handleEditTaskTime}
+                      setIsCounting={setIsCounting} />
+                      <Collapse in={isOpen} animateOpacity >
+                        <IconButton
+                          aria-label="delete"
+                          borderRadius="lg"
+                          ms="4"
+                          onClick={(e) => handleDeleteItemClick(index)}>
+                            <DeleteIcon />
+                        </IconButton>
+                      </Collapse>
+                  </ListItem>
+                )}
               )}
-            )}
-          </div>
-          <div className={styles.taskActions}>
-            <Button 
-              onClick={handleAddTaskClick} 
-              palette="secondary" 
-              variant="outlined">
-                Add Task
-            </Button>
-            <Button 
-              onClick={handleEditModeClick}
-              variant="outlined">
-                {editMode ? "Done" : "Edit"}
-            </Button>
-          </div>
-        </div>
-      </main>
-    </div>
+            </List>
+            <HStack py="4" width="100%" justifyContent="space-between">
+              <Button
+                size="lg"
+                variant="primary"
+                onClick={handleAddTaskClick} >
+                  Add Task
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                colorScheme="green"
+                onClick={onToggle} >
+                  {isOpen ? "Done" : "Edit"}
+              </Button>
+            </HStack>
+          </VStack>
+      </VStack>
+    </PageContainer>
   )
 }
 
