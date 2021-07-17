@@ -4,11 +4,13 @@ import {
   Text, 
   Grid,
   VStack,
+  useDisclosure,
   useColorModeValue } from '@chakra-ui/react';
 import { FiPlusCircle } from 'react-icons/fi';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
 import PageContainer from '../../components/PageContainer';
+import NewProjectModal from '../../components/NewProjectModal';
 
 const mockData = [
   {
@@ -45,6 +47,7 @@ interface Props {
 const Projects = (props: Props) => {
 
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const titleBg = useColorModeValue("#D7FAFA", "gray.900");
   const newProjectBg = useColorModeValue(
@@ -90,7 +93,7 @@ const Projects = (props: Props) => {
                 color="white"
                 bgGradient={newProjectBg}
                 transition="all 0.2s ease-in-out"
-                onClick={() => router.push('/projects/new')}
+                onClick={onOpen}
                 _hover={{
                   transform: "scale(1.05)",
                   boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)"
@@ -103,6 +106,7 @@ const Projects = (props: Props) => {
               {mockData.map((value, index) => <ProjectCard data={value} color={index} key={index} />)}
           </Grid>
       </VStack>
+      <NewProjectModal isOpen={isOpen} onClose={onClose} />
     </PageContainer>
   )
 }
