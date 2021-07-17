@@ -13,8 +13,6 @@ import {
 import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
-import { DividerWithText } from '../../components/DividerWithText';
-import { RegisterForm } from '../../components/auth/RegisterForm';
 
 interface Props {
     
@@ -24,7 +22,7 @@ const Register = (props: Props) => {
 
   const router = useRouter();
 
-  const signInCallbackURL : string = 'http://localhost:3000/projects';
+  const signInCallbackURL : string = 'http://localhost:3000/profile/create/';
   const handleGoogleLogin = () => {
     signIn('google', { callbackUrl: signInCallbackURL });
   }
@@ -34,7 +32,7 @@ const Register = (props: Props) => {
   return (
     <PageContainer>
       <Head>
-        <title>Login | Carta</title>
+        <title>Register | Carta</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <SplashNavBar />
@@ -52,15 +50,8 @@ const Register = (props: Props) => {
             bg={bg}
             shadow="xl" >
               <Heading size="xl" fontWeight="normal">
-                Log in
+                Register
               </Heading>
-              <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-                <Text as="span">Don&apos;t have an account? </Text>
-                <Link href="#">Register</Link>
-              </Text>
-              <RegisterForm />
-            
-              <DividerWithText mt="6">or continue with</DividerWithText>
 
               <SimpleGrid mt="6" columns={3} spacing="3">
                 <Button color="currentColor" variant="outline" disabled>

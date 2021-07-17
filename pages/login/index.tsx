@@ -54,13 +54,6 @@ const Login = (props: Props) => {
               <Heading size="xl" fontWeight="normal">
                 Log in
               </Heading>
-              <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
-                <Text as="span">Don&apos;t have an account? </Text>
-                <Link href="#" color="blue">Register</Link>
-              </Text>
-              <LoginForm />
-            
-              <DividerWithText mt="6">or continue with</DividerWithText>
 
               <SimpleGrid mt="6" columns={3} spacing="3">
                 <Button color="currentColor" variant="outline" disabled>

@@ -19,7 +19,7 @@ export const LoginForm = (props: HTMLChakraProps<'form'>) => {
     <chakra.form
       onSubmit={(e) => {
         e.preventDefault()
-        router.push('/projects');
+        // Handle login
       }}
       {...props}
     >
