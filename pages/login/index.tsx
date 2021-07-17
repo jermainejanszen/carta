@@ -14,6 +14,7 @@ import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
 import { DividerWithText } from '../../components/DividerWithText';
 import { LoginForm } from '../../components/login/LoginForm';
+import { signIn } from 'next-auth/client';
 
 interface Props {
     
@@ -22,6 +23,10 @@ interface Props {
 const Login = (props: Props) => {
 
   const router = useRouter();
+
+  const handleGoogleLogin = () => {
+    signIn('google');
+  }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");
 
@@ -61,7 +66,7 @@ const Login = (props: Props) => {
                   <VisuallyHidden>Login with Facebook</VisuallyHidden>
                   <FaFacebook />
                 </Button>
-                <Button color="currentColor" variant="outline" disabled>
+                <Button color="currentColor" variant="outline" onClick={handleGoogleLogin}>
                   <VisuallyHidden>Login with Google</VisuallyHidden>
                   <FaGoogle />
                 </Button>
