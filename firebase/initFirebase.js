@@ -1,11 +1,8 @@
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 
-// Firebase analytics
-import "firebase/analytics";
-
-// Firebase products
-import "firebase/auth";
-import "firebase/firestore";
+import { getAnalytics } from 'firebase/analytics';
+import { getAuth, useAuthEmulator } from 'firebase/auth';
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -25,14 +22,16 @@ const app = !firebase.apps.length
 if (typeof window !== 'undefined') {
   // Enable analytics
   if ('measurementId' in firebaseConfig) {
-    firebase.analytics();
+    const analytics = getAnalytics();
   }
 }
 
-var auth = firebase.auth();
-auth.useEmulator("http://localhost:9099");
+var auth = getAuth();
+useAuthEmulator(auth, "http://localhost:9099");
 
-const db = app.firestore();
-db.useEmulator("http://localhost:8080");
+var db = app.firestore();
+db.useEmulator("localhost", 8080);
 
+
+console.log("Firebase is initialised");
 export { db };
