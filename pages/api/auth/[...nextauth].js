@@ -2,10 +2,10 @@ import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/analytics';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from 'firebase/app';
+import 'firebase/analytics';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,

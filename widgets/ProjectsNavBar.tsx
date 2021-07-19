@@ -21,15 +21,16 @@ import {
   MenuItemOption,
   MenuOptionGroup } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
-import { useSession, signOut } from 'next-auth/client';
+import { AuthUser } from 'next-firebase-auth'
 
 interface Props {
   hideSearch? : boolean,
+  authUser: AuthUser,
 }
 
 const ProfileNavBar = (props: Props) => {
+  const { hideSearch, authUser } = props;
   const router = useRouter();
-  const [session] = useSession();
 
   const handleHomeClick = (e) => {
       e.preventDefault();
@@ -43,7 +44,7 @@ const ProfileNavBar = (props: Props) => {
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    signOut({ callbackUrl: 'http://localhost:3000'});
+    authUser.signOut();
   }
 
   const { colorMode, toggleColorMode } = useColorMode();
@@ -76,7 +77,7 @@ const ProfileNavBar = (props: Props) => {
             cursor="pointer" 
             onClick={handleHomeClick} />
       <HStack spacing="8">
-        {props.hideSearch ?? 
+        {hideSearch ?? 
           <InputGroup>
             <Input
               type="text"
@@ -93,8 +94,8 @@ const ProfileNavBar = (props: Props) => {
           <Avatar
             bg="red.500"
             cursor="pointer" 
-            name={session && session.user.name}
-            src={session?.user.image}
+            name={authUser.displayName}
+            src={authUser.photoURL}
             onClick={handleProfileClick} />
           <Menu isLazy>
             {({ isOpen }) => (
@@ -113,7 +114,7 @@ const ProfileNavBar = (props: Props) => {
                   borderRadius="full"
                   mx="1rem" />
                 <MenuList>
-                  <MenuGroup title={session ? session.user.name : "Error"}>
+                  <MenuGroup title={authUser.displayName}>
                     <MenuItem onClick={handleProfileClick}>
                       My Profile
                     </MenuItem>

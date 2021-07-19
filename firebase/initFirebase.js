@@ -1,8 +1,8 @@
-import firebase from "firebase/compat/app";
+import firebase from 'firebase/app';
 
-import { getAnalytics } from 'firebase/analytics';
-import { getAuth, useAuthEmulator } from 'firebase/auth';
-import "firebase/compat/firestore";
+import 'firebase/analytics';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = !firebase.apps.length
@@ -22,16 +22,15 @@ const app = !firebase.apps.length
 if (typeof window !== 'undefined') {
   // Enable analytics
   if ('measurementId' in firebaseConfig) {
-    const analytics = getAnalytics();
+    const analytics = firebase.analytics();
   }
 }
 
-var auth = getAuth();
-useAuthEmulator(auth, "http://localhost:9099");
+var auth = app.auth();
+auth.useEmulator('http://localhost:9099');
 
 var db = app.firestore();
-db.useEmulator("localhost", 8080);
+db.useEmulator('localhost', 8080);
 
-
-console.log("Firebase is initialised");
+console.log('Firebase is initialised');
 export { db };

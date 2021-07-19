@@ -1,18 +1,18 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { Provider } from 'next-auth/client';
+import { ChakraProvider } from '@chakra-ui/react';
+import { initAuth } from '../firebase/initAuth';
 import theme from '../theme';
 
-import "@fontsource/montserrat";
-import '../styles/globals.scss'
+import '@fontsource/montserrat';
+import '../styles/globals.scss';
+
+initAuth();
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Provider session={pageProps.session}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </ChakraProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
