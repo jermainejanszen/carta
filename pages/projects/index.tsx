@@ -106,5 +106,5 @@ const Projects = (props: Props) => {
 
 export default withAuthUser({
   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-  authPageURL: '/login',
+  authPageURL: '/',
 })(Projects);

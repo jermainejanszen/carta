@@ -2,20 +2,25 @@ import { init } from 'next-firebase-auth';
 import firebase from 'firebase/app';
 import 'firebase/auth'
 
+let privateKey;
+if (process.env.FIREBASE_PRIVATE_KEY) {
+  privateKey = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n');
+}
+
 const initAuth = () => {
   init({
     authPageURL: '/login',
     appPageURL: '/',
     loginAPIEndpoint: '/api/login', // required
     logoutAPIEndpoint: '/api/logout', // required
-    firebaseAuthEmulatorHost: process.env.FIREBASE_AUTH_EMULATOR_HOST,
+    // firebaseAuthEmulatorHost: process.env.FIREBASE_AUTH_EMULATOR_HOST,
     // Required in most cases.
     firebaseAdminInitConfig: {
       credential: {
         projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         // The private key must not be accesssible on the client side.
-        privateKey: process.env.FIREBASE_PRIVATE_KEY,
+        privateKey: privateKey,
       },
       databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
     },
@@ -44,6 +49,4 @@ const initAuth = () => {
   });
 };
 
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-
-export { initAuth, googleAuthProvider };
+export { initAuth };

@@ -12,7 +12,7 @@ import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
 import firebase from 'firebase/app';
-import { googleAuthProvider } from '../../firebase/initAuth';
+import 'firebase/auth';
 
 interface Props {}
 
@@ -22,7 +22,7 @@ const Login = (props: Props) => {
   const handleGoogleLogin = () => {
     firebase
       .auth()
-      .signInWithPopup(googleAuthProvider)
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
