@@ -5,13 +5,14 @@ import {
   Grid,
   VStack,
   useDisclosure,
+  Divider,
   useColorModeValue } from '@chakra-ui/react';
 import { FiPlusCircle } from 'react-icons/fi';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
 import PageContainer from '../../components/PageContainer';
 import NewProjectModal from '../../components/NewProjectModal';
-
+import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 const mockData = [
   {
     id: "abcd",
@@ -74,7 +75,7 @@ const Projects = (props: Props) => {
             mb="8"
             borderRadius="xl"
             bg={titleBg} >
-              Projects
+              Ongoing Projects
           </Text>
 
           <Grid
@@ -107,6 +108,58 @@ const Projects = (props: Props) => {
           </Grid>
       </VStack>
       <NewProjectModal isOpen={isOpen} onClose={onClose} />
+      
+      {/*Completed Projects Section*/}
+      <Text>
+        See Completed Projects
+      </Text>
+      <Divider />
+      <ChevronDownIcon 
+                      w="2rem" h="2rem"
+                      transition="all 0.3s ease" 
+                      transform={isOpen && "rotate(180deg)"} />
+      
+      {/*The completed Projects (to be changed)*/}
+      <VStack
+        maxW="100rem"
+        width="100%"
+        padding="7rem">
+          <Text
+            alignSelf="flex-start"
+            fontSize="5xl"
+            w="fit-content"
+            p="4"
+            mb="8"
+            borderRadius="xl"
+            bg={titleBg} >
+              Completed Projects
+          </Text>
+
+          <Grid
+            width="100%"
+            templateColumns="repeat(auto-fill, 20rem)"
+            autoRows="1fr"
+            gap="2rem" >
+              <VStack
+                spacing="1rem"
+                alignItems="center"
+                justifyContent="center"
+                p="3rem"
+                borderRadius="xl"
+                boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
+                cursor="pointer"
+                color="white"
+                
+                transition="all 0.2s ease-in-out"
+                onClick={onOpen}
+                _hover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)"
+                }}>
+              </VStack>
+              {mockData.map((value, index) => <ProjectCard data={value} color={index} key={index} />)}
+          </Grid>
+      </VStack>
     </PageContainer>
   )
 }
