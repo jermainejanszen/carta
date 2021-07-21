@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { signIn } from 'next-auth/client';
 import Head from 'next/head';
 import {
   Text, 
@@ -22,9 +21,8 @@ const Register = (props: Props) => {
 
   const router = useRouter();
 
-  const signInCallbackURL : string = 'http://localhost:3000/profile/create/';
   const handleGoogleLogin = () => {
-    signIn('google', { callbackUrl: signInCallbackURL });
+    // TODO
   }
 
   const bg = useColorModeValue("whiteAlpha.900", "gray.700");

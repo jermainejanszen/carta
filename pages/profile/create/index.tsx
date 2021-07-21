@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/client';
 import { 
   Flex,
   VStack,
@@ -12,7 +11,6 @@ import {
   FormLabel} from '@chakra-ui/react';
 import PageContainer from '../../../components/PageContainer';
 import { useRouter } from 'next/router';
-import { signOut } from 'next-auth/client';
 
 interface Props {
   
@@ -20,18 +18,7 @@ interface Props {
 
 const NewProfile = (props: Props) => {
   const router = useRouter();
-  const [session, loading] = useSession();
   const [name, setName] = useState("");
-
-  useEffect(() => {
-    if (!loading) {
-      if (!session) {
-        router.push('/');
-      } else {
-        setName(session.user.name);
-      }
-    }
-  }, [session, loading])
 
   const handleSave = () => {
     router.push('/projects');
@@ -39,7 +26,6 @@ const NewProfile = (props: Props) => {
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    signOut({ callbackUrl: 'http://localhost:3000'});
   }
   
   const cardBg = useColorModeValue("whiteAlpha.700", "blackAlpha.700");
