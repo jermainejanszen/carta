@@ -1,67 +1,64 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { 
-  Text, 
+import {
+  Text,
   Grid,
   Box,
   VStack,
   Button,
-  useColorModeValue, 
+  useColorModeValue,
   Editable,
   EditablePreview,
-  EditableInput, 
+  EditableInput,
   List,
   ListItem,
   HStack,
-  Collapse, 
-  useDisclosure, 
-  IconButton} from '@chakra-ui/react';
+  Collapse,
+  useDisclosure,
+  IconButton,
+} from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
 import PageContainer from '../../components/PageContainer';
-import { useSession } from 'next-auth/client';
+import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
 
-interface Props {
-    
-}
+interface Props {}
 
 const mockData = {
-  id: "abcd",
-  name: "Miscellaneous",
+  id: 'abcd',
+  name: 'Miscellaneous',
   hours: 43,
   tasks: [
     {
       id: 1,
-      name: "Tensor Flow",
+      name: 'Tensor Flow',
       time: 37368,
-    },{
+    },
+    {
       id: 2,
-      name: "Integrating Matrix Solver",
+      name: 'Integrating Matrix Solver',
       time: 15132,
-    },{
+    },
+    {
       id: 3,
-      name: "Writing Matrix Solver",
+      name: 'Writing Matrix Solver',
       time: 10440,
-    },{
+    },
+    {
       id: 4,
-      name: "UI Design",
+      name: 'UI Design',
       time: 24408,
     },
   ],
-  description: "Anything and everything that isn't related to a specific project."
-}
+  description:
+    "Anything and everything that isn't related to a specific project.",
+};
 
 const Project = (props: Props) => {
   const router = useRouter();
-  const [session, loading] = useSession();
-
-  useEffect(() => {
-    if (!loading) {
-      if (!session) router.push('/');
-    }
-  }, [loading, session]);
+  const authUser = useAuthUser();
 
   const id = router.query.id;
   const [name, setName] = useState(mockData.name);
@@ -71,134 +68,130 @@ const Project = (props: Props) => {
 
   const { isOpen, onToggle } = useDisclosure();
 
-  const nameRef = useRef(null);
-  const descriptionRef = useRef(null);
-
-  const handleNameChange = () => {
-    if (nameRef.current) {
-      setName(nameRef.current.value);
+  const handleNameChange = (e) => {
+    if (e) {
+      setName(e);
     }
-  }
+  };
 
-  const handleDescriptionChange = () => {
-    if (descriptionRef.current) {
-      setDescription(descriptionRef.current.value);
+  const handleDescriptionChange = (e) => {
+    if (e) {
+      setDescription(e);
     }
-  }
+  };
 
   const handleAddTaskClick = (e) => {
     e.preventDefault();
-    setTasks(tasks.concat([{
-      id: Date.now(), 
-      name: `Task ${tasks.length + 1}`, 
-      time: 0,
-    }]));
-  }
+    setTasks(
+      tasks.concat([
+        {
+          id: Date.now(),
+          name: `Task ${tasks.length + 1}`,
+          time: 0,
+        },
+      ])
+    );
+  };
 
   const handleEditTaskName = (index: number, newName: string) => {
     let newTasks = [...tasks];
-    newTasks[index] = {...newTasks[index], name: newName};
+    newTasks[index] = { ...newTasks[index], name: newName };
     setTasks(newTasks);
-  }
+  };
 
   const handleEditTaskTime = (index: number, newTime: number) => {
     let newTasks = [...tasks];
-    newTasks[index] = {...newTasks[index], time: newTime};
+    newTasks[index] = { ...newTasks[index], time: newTime };
     setTasks(newTasks);
-  }
+  };
 
   const handleDeleteItemClick = (index: number) => {
     let newTasks = [...tasks];
-    newTasks.splice(index, 1)
+    newTasks.splice(index, 1);
     setTasks(newTasks);
-  }
+  };
 
-  const titleBg = useColorModeValue("#D7FAFA", "gray.900");
+  const titleBg = useColorModeValue('#D7FAFA', 'gray.900');
 
   return (
     <PageContainer hasBg>
       <Head>
         <title>{name} | Carta</title>
-        <link rel="icon" href="/logo.svg" />
+        <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProjectsNavBar hideSearch />
+      <ProjectsNavBar authUser={authUser} hideSearch />
 
-      <VStack
-        maxW="100rem"
-        width="100%"
-        padding="7rem"
-        spacing="2rem">
-          <Box width="100%">
-            <Editable
-              defaultValue={name}
-              alignSelf="flex-start"
-              fontSize="4xl"
-              w="fit-content"
-              p="4"
-              mb="8"
-              borderRadius="xl"
-              bg={titleBg} >
-                <EditablePreview />
-                <EditableInput />
-            </Editable>
-            <Editable
-              defaultValue={description} >
-                <EditablePreview />
-                <EditableInput />
-            </Editable>
-          </Box>
+      <VStack maxW='100rem' width='100%' padding='7rem' spacing='2rem'>
+        <Box width='100%'>
+          <Editable
+            defaultValue={name}
+            onChange={handleNameChange}
+            alignSelf='flex-start'
+            fontSize='4xl'
+            w='fit-content'
+            p='4'
+            mb='8'
+            borderRadius='xl'
+            bg={titleBg}>
+            <EditablePreview />
+            <EditableInput />
+          </Editable>
+          <Editable
+            defaultValue={description}
+            onChange={handleDescriptionChange}>
+            <EditablePreview />
+            <EditableInput />
+          </Editable>
+        </Box>
 
-          <Grid>
-            {/* Stats go here */}
-          </Grid>
+        <Grid>{/* Stats go here */}</Grid>
 
-          <VStack w="100%">
-            <List spacing="2" w="100%">
-              {tasks.length === 0 && <Text fontSize="2xl">No Tasks</Text>}
-              {tasks.map((value, index) => {
-                return (
-                  <ListItem key={value.id}
-                    display="flex"
-                    alignItems="center">
-                    <TaskItem 
-                      name={value.name} 
-                      time={value.time}
-                      index={index} 
-                      editName={handleEditTaskName}
-                      editTime={handleEditTaskTime}
-                      setIsCounting={setIsCounting} />
-                      <Collapse in={isOpen} animateOpacity >
-                        <IconButton
-                          aria-label="delete"
-                          borderRadius="lg"
-                          ms="4"
-                          onClick={(e) => handleDeleteItemClick(index)}>
-                            <DeleteIcon />
-                        </IconButton>
-                      </Collapse>
-                  </ListItem>
-                )}
-              )}
-            </List>
-            <HStack py="4" width="100%" justifyContent="space-between">
-              <Button
-                size="lg"
-                variant="primary"
-                onClick={handleAddTaskClick} >
-                  Add Task
-              </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                colorScheme="green"
-                onClick={onToggle} >
-                  {isOpen ? "Done" : "Edit"}
-              </Button>
-            </HStack>
-          </VStack>
+        <VStack w='100%'>
+          <List spacing='2' w='100%'>
+            {tasks.length === 0 && <Text fontSize='2xl'>No Tasks</Text>}
+            {tasks.map((value, index) => {
+              return (
+                <ListItem key={value.id} display='flex' alignItems='center'>
+                  <TaskItem
+                    name={value.name}
+                    time={value.time}
+                    index={index}
+                    editName={handleEditTaskName}
+                    editTime={handleEditTaskTime}
+                    setIsCounting={setIsCounting}
+                  />
+                  <Collapse in={isOpen} animateOpacity>
+                    <IconButton
+                      aria-label='delete'
+                      borderRadius='lg'
+                      ms='4'
+                      onClick={(e) => handleDeleteItemClick(index)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Collapse>
+                </ListItem>
+              );
+            })}
+          </List>
+          <HStack py='4' width='100%' justifyContent='space-between'>
+            <Button size='lg' variant='primary' onClick={handleAddTaskClick}>
+              Add Task
+            </Button>
+            <Button
+              size='lg'
+              variant='outline'
+              colorScheme='green'
+              onClick={onToggle}>
+              {isOpen ? 'Done' : 'Edit'}
+            </Button>
+          </HStack>
+        </VStack>
       </VStack>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Project
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: '/',
+})(Project);
