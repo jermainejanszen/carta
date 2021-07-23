@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Text, Grid, VStack, useColorModeValue } from '@chakra-ui/react';
@@ -5,7 +6,11 @@ import { FiPlusCircle } from 'react-icons/fi';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import ProjectCard from '../../components/ProjectCard';
 import PageContainer from '../../components/PageContainer';
+import Loader from '../../components/Loader';
 import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import { useDocumentDataOnce } from 'react-firebase-hooks/firestore'
 
 const mockData = [
   {
@@ -44,6 +49,8 @@ interface Props {}
 const Projects = (props: Props) => {
   const router = useRouter();
   const authUser = useAuthUser();
+
+  const [projects, setProjects] = useState(mockData);
 
   const titleBg = useColorModeValue('#D7FAFA', 'gray.900');
   const newProjectBg = useColorModeValue(
@@ -95,7 +102,7 @@ const Projects = (props: Props) => {
             <Text fontSize='3xl'>New Project</Text>
             <FiPlusCircle size='8rem' />
           </VStack>
-          {mockData.map((value, index) => (
+          {projects.map((value, index) => (
             <ProjectCard data={value} color={index} key={index} />
           ))}
         </Grid>
@@ -106,5 +113,7 @@ const Projects = (props: Props) => {
 
 export default withAuthUser({
   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   authPageURL: '/',
+  LoaderComponent: Loader,
 })(Projects);
