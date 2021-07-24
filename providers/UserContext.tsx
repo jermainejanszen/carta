@@ -20,7 +20,7 @@ export const useUser = () => {
   return useContext(UserContext);
 };
 
-class Task {
+export class Task {
   name: string;
   time: number;
   completed: boolean;
@@ -32,7 +32,7 @@ class Task {
   }
 }
 
-class Project {
+export class Project {
   id: string;
   name: string;
   description: string;

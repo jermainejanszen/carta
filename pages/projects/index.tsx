@@ -8,9 +8,7 @@ import ProjectCard from '../../components/ProjectCard';
 import PageContainer from '../../components/PageContainer';
 import Loader from '../../components/Loader';
 import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import { useDocumentDataOnce } from 'react-firebase-hooks/firestore'
+import { useUser } from '../../providers/UserContext';
 
 const mockData = [
   {
@@ -49,8 +47,9 @@ interface Props {}
 const Projects = (props: Props) => {
   const router = useRouter();
   const authUser = useAuthUser();
+  const user = useUser();
 
-  const [projects, setProjects] = useState(mockData);
+  const [projects, setProjects] = useState(user.user ? user.user.projects : mockData);
 
   const titleBg = useColorModeValue('#D7FAFA', 'gray.900');
   const newProjectBg = useColorModeValue(

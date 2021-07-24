@@ -1,30 +1,31 @@
 import { useState, useRef, useEffect } from 'react';
-import { 
-  Text, 
+import {
+  Text,
   Flex,
   Box,
   HStack,
-  useColorModeValue, 
+  useColorModeValue,
   Editable,
   EditablePreview,
-  EditableInput, 
+  EditableInput,
   useEditableControls,
   Button,
   ButtonGroup,
-  IconButton } from '@chakra-ui/react';
+  IconButton,
+} from '@chakra-ui/react';
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
+import { secondsToHours } from '../utils/helpers';
 
 interface Props {
-  name: string,
-  time: number,
-  index: number,
-  editName: (index: number, newName: string) => void,
-  editTime: (index: number, newTime: number) => void,
-  setIsCounting: (isCounting: boolean) => void,
+  name: string;
+  time: number;
+  index: number;
+  editName: (index: number, newName: string) => void;
+  editTime: (index: number, newTime: number) => void;
+  setIsCounting: (isCounting: boolean) => void;
 }
 
 const TaskItem = (props: Props) => {
-
   const nameInput = useRef(null);
   const countRef = useRef(null);
 
@@ -36,21 +37,8 @@ const TaskItem = (props: Props) => {
   useEffect(() => {
     return () => {
       clearInterval(countRef.current);
-    }
-  }, [])
-
-  const secondsToHours = (time : number) : string => {
-      const hours = Math.floor(time / 3600);
-      let minutes = Math.floor((time % 3600) / 60).toString();
-      if (minutes.length < 2) {
-        minutes = '0' + minutes;
-      }
-      let seconds = Math.floor((time % 3600) % 60).toString();
-      if (seconds.length < 2) {
-        seconds = '0' + seconds;
-      }
-      return `${hours}:${minutes}:${seconds}`;
-  }
+    };
+  }, []);
 
   const handleEditClick = (e) => {
     setEditMode(!editMode);
@@ -58,29 +46,29 @@ const TaskItem = (props: Props) => {
       props.editName(props.index, name.trim());
       setName(name.trim());
     }
-  }
+  };
 
   const handleNameChange = () => {
     if (nameInput.current) {
       setName(nameInput.current.value);
     }
-  }
+  };
 
   const handleNameKeyUp = (e) => {
     if (e.key === 'Enter') {
       handleEditClick(null);
     }
-  }
+  };
 
   const handleTimeStartClick = (e) => {
     if (!isCounting) {
       setIsCounting(true);
       props.setIsCounting(true);
       countRef.current = setInterval(() => {
-        setTime((time) => time + 1)
+        setTime((time) => time + 1);
       }, 1000);
     }
-  }
+  };
 
   const handleTimeStopClick = (e) => {
     if (isCounting) {
@@ -89,7 +77,7 @@ const TaskItem = (props: Props) => {
       setIsCounting(false);
       props.setIsCounting(false);
     }
-  }
+  };
 
   const EditableControls = () => {
     const {
@@ -97,88 +85,88 @@ const TaskItem = (props: Props) => {
       getSubmitButtonProps,
       getCancelButtonProps,
       getEditButtonProps,
-    } = useEditableControls()
+    } = useEditableControls();
 
     return isEditing ? (
-      <ButtonGroup justifyContent="center" size="sm">
-        <IconButton 
-          aria-label="done" 
-          borderRadius="full"
-          icon={<CheckIcon />} 
-          {...getSubmitButtonProps()} />
+      <ButtonGroup justifyContent='center' size='sm'>
         <IconButton
-          aria-label="cancel"  
-          borderRadius="full"
-          icon={<CloseIcon />} 
-          {...getCancelButtonProps()} />
+          aria-label='done'
+          borderRadius='full'
+          icon={<CheckIcon />}
+          {...getSubmitButtonProps()}
+        />
+        <IconButton
+          aria-label='cancel'
+          borderRadius='full'
+          icon={<CloseIcon />}
+          {...getCancelButtonProps()}
+        />
       </ButtonGroup>
     ) : (
-      <Flex justifyContent="center">
+      <Flex justifyContent='center'>
         <IconButton
-          aria-label="edit" 
-          size="sm"  
-          borderRadius="full"
-          icon={<EditIcon />} 
-          {...getEditButtonProps()} />
+          aria-label='edit'
+          size='sm'
+          borderRadius='full'
+          icon={<EditIcon />}
+          {...getEditButtonProps()}
+        />
       </Flex>
-    )
-  }
+    );
+  };
 
-  const bg = useColorModeValue("gray.50", "gray.900");
+  const bg = useColorModeValue('gray.50', 'gray.900');
 
   return (
-    <Flex 
-      width="100%"
-      minHeight="4rem"
-      justifyContent="space-between"
-      alignItems="center"
-      px="4"
+    <Flex
+      width='100%'
+      minHeight='4rem'
+      justifyContent='space-between'
+      alignItems='center'
+      px='4'
       bg={bg}
-      borderRadius="xl" >
-        <Box>
-          <Editable
-            defaultValue={name}
-            fontSize="xl"
-            isPreviewFocusable={false}
-            display="flex" >
-              <EditablePreview me="4" />
-              <EditableInput me="4" />
-              <EditableControls />
-          </Editable>
-        </Box>
-        <HStack>
-          <ButtonGroup size="lg">
-            <Button
-              colorScheme={!isCounting ? "green" : ""}
-              disabled={isCounting}
-              variant="ghost"
-              onClick={handleTimeStartClick} >
-                Start
-            </Button>
-            <Button
-              colorScheme={isCounting ? "red" : ""}
-              disabled={!isCounting}
-              variant="ghost"
-              onClick={handleTimeStopClick} >
-                Stop
-            </Button>
-          </ButtonGroup>
-          <Flex
-            w="9rem"
-            h="2.5rem"
-            border="1px solid"
-            borderRadius="lg"
-            alignItems="center" >
-            <Text 
-              fontSize="lg"
-              w="100%"
-              textAlign="center" >
-                {secondsToHours(time)}
-            </Text>
-          </Flex>
-        </HStack>
+      borderRadius='xl'>
+      <Box>
+        <Editable
+          defaultValue={name}
+          fontSize='xl'
+          isPreviewFocusable={false}
+          display='flex'>
+          <EditablePreview me='4' />
+          <EditableInput me='4' />
+          <EditableControls />
+        </Editable>
+      </Box>
+      <HStack>
+        <ButtonGroup size='lg'>
+          <Button
+            colorScheme={!isCounting ? 'green' : ''}
+            disabled={isCounting}
+            variant='ghost'
+            onClick={handleTimeStartClick}>
+            Start
+          </Button>
+          <Button
+            colorScheme={isCounting ? 'red' : ''}
+            disabled={!isCounting}
+            variant='ghost'
+            onClick={handleTimeStopClick}>
+            Stop
+          </Button>
+        </ButtonGroup>
+        <Flex
+          w='9rem'
+          h='2.5rem'
+          border='1px solid'
+          borderRadius='lg'
+          alignItems='center'>
+          <Text fontSize='lg' w='100%' textAlign='center'>
+            {secondsToHours(time)}
+          </Text>
+        </Flex>
+      </HStack>
     </Flex>
-  )
-}
+  );
+};
 
-export default TaskItem
+export default TaskItem;

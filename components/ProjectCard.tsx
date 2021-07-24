@@ -5,22 +5,17 @@ import {
   Box,
   useColorModeValue, 
   Divider } from '@chakra-ui/react';
-
-interface Data {
-  id: string,
-  name: string,
-  hours: number,
-  tasks: number,
-  description: string,
-}
+import {Project} from '../providers/UserContext'
+import {secondsToHours} from '../utils/helpers'
 
 interface Props {
-  data: Data,
+  data: Project,
   color: number,
 }
 
 const ProjectCard = (props: Props) => {
-
+  const {data, color} = props;
+  const totalTime = props.data?.tasks.reduce((prev, cur) => prev + cur.time, 0)
   const router = useRouter();
   const colors = ["#BAE7ED", "#B0FF94", "#638695", "#F98E8E"];
 
@@ -35,7 +30,7 @@ const ProjectCard = (props: Props) => {
       boxShadow="0 0 8px rgba(0, 0, 0, 0.3)"
       cursor="pointer"
       transition="all 0.2s ease-in-out"
-      onClick={() => {router.push(`/projects/${props.data.id}`)}}
+      onClick={() => {router.push(`/projects/${data.id}`)}}
       _hover={{
         transform: "scale(1.05)",
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.4)"
@@ -46,21 +41,21 @@ const ProjectCard = (props: Props) => {
             <Box
               height="12"
               borderTopRadius="xl" 
-              bg={colors[props.color % colors.length]} />
+              bg={colors[color % colors.length]} />
             <Text 
               fontSize="2xl" 
               fontWeight="bold" 
               p="1rem 1rem 0 1rem"
               noOfLines={2} >
-              {props.data.name}
+              {data.name}
             </Text>
         </Box>
         <Box p="6">
-          <Text fontSize="xl">{props.data.hours} hours</Text>
-          <Text fontSize="xl">{props.data.tasks} tasks</Text>
+          <Text fontSize="xl">{secondsToHours(totalTime)} hours</Text>
+          <Text fontSize="xl">{data.tasks?.length} tasks</Text>
           <Divider my="2" />
           <Text noOfLines={5}>
-            {props.data.description}
+            {data.description}
           </Text>
         </Box>
     </Flex>
