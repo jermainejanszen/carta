@@ -64,7 +64,7 @@ const Projects = (props: Props) => {
         <title>Projects | Carta</title>
         <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProfileNavBar />
+      <ProfileNavBar authUser={authUser} />
 
       <VStack maxW='100rem' width='100%' padding='7rem'>
         <Text

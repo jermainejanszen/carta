@@ -119,7 +119,7 @@ const Project = (props: Props) => {
         <title>{name} | Carta</title>
         <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProjectsNavBar hideSearch />
+      <ProjectsNavBar authUser={authUser} hideSearch />
 
       <VStack maxW='100rem' width='100%' padding='7rem' spacing='2rem'>
         <Box width='100%'>

@@ -21,16 +21,18 @@ import {
   MenuOptionGroup } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 import { useUser } from '../providers/UserContext'
+import {AuthUser} from 'next-firebase-auth'
 
 interface Props {
   hideSearch? : boolean,
+  authUser: AuthUser,
 }
 
 const ProfileNavBar = (props: Props) => {
-  const { hideSearch } = props;
+  const { hideSearch, authUser } = props;
   const router = useRouter();
   const user = useUser();
-
+  console.log(user);
   const handleHomeClick = (e) => {
       e.preventDefault();
       router.push('/projects');
@@ -93,8 +95,8 @@ const ProfileNavBar = (props: Props) => {
           <Avatar
             bg="red.500"
             cursor="pointer" 
-            name={user.user?.displayName}
-            src={user.user?.photoURL}
+            name={authUser.displayName}
+            src={authUser.photoURL}
             onClick={handleProfileClick} />
           <Menu isLazy>
             {({ isOpen }) => (
@@ -113,7 +115,7 @@ const ProfileNavBar = (props: Props) => {
                   borderRadius="full"
                   mx="1rem" />
                 <MenuList>
-                  <MenuGroup title={user.user?.displayName}>
+                  <MenuGroup title={authUser.displayName}>
                     <MenuItem onClick={handleProfileClick}>
                       My Profile
                     </MenuItem>

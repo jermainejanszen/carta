@@ -19,11 +19,13 @@ import { RiGroupLine } from 'react-icons/ri';
 import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import PageContainer from '../../components/PageContainer';
 import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
+import { useUser } from '../../providers/UserContext'
 
 interface Props {}
 
 const Profile = (props: Props) => {
   const authUser = useAuthUser();
+  const user = useUser();
 
   const cardBg = useColorModeValue('whiteAlpha.400', 'blackAlpha.400');
   const psBg = useColorModeValue('gray.100', 'blackAlpha.600');
@@ -34,7 +36,7 @@ const Profile = (props: Props) => {
         <title>Profile | Carta</title>
         <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProfileNavBar hideSearch />
+      <ProfileNavBar authUser={authUser} hideSearch />
 
       <Grid
         templateColumns='repeat(5, minmax(0, 1fr))'
@@ -59,9 +61,7 @@ const Profile = (props: Props) => {
           justifyContent='center'>
           <Text fontSize='3xl'>{authUser.displayName}</Text>
           <Text>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo
-            maxime distinctio debitis voluptate incidunt corporis earum quod
-            iure.
+            {user.user?.bio}
           </Text>
         </Flex>
 
@@ -79,21 +79,21 @@ const Profile = (props: Props) => {
               <FiCheckCircle size={42} />
               <Stat>
                 <StatLabel>Tasks completed</StatLabel>
-                <StatNumber>15</StatNumber>
+                <StatNumber>{user.user?.stats?.tasksCompleted}</StatNumber>
               </Stat>
             </HStack>
             <HStack spacing='4' p='4' w='100%' borderRadius='xl' bg={psBg}>
               <FiCalendar size={42} />
               <Stat>
                 <StatLabel>Projects completed</StatLabel>
-                <StatNumber>23</StatNumber>
+                <StatNumber>{user.user?.stats?.projectsCompleted}</StatNumber>
               </Stat>
             </HStack>
             <HStack spacing='4' p='4' w='100%' borderRadius='xl' bg={psBg}>
               <FiClock size={42} />
               <Stat>
                 <StatLabel>Total time spent</StatLabel>
-                <StatNumber>23hrs</StatNumber>
+                <StatNumber>{user.user?.stats?.totalTime} seconds</StatNumber>
               </Stat>
             </HStack>
           </VStack>
@@ -110,13 +110,13 @@ const Profile = (props: Props) => {
           <HStack>
             <RiGroupLine size={24} />
             <Tooltip hasArrow label='Company'>
-              <Text fontSize='lg'>Carta</Text>
+              <Text fontSize='lg'>{user.user?.company}</Text>
             </Tooltip>
           </HStack>
           <HStack>
             <CgWebsite size={24} />
             <Tooltip hasArrow label='Website'>
-              <Text fontSize='lg'>Carta.co</Text>
+              <Text fontSize='lg'>{user.user?.website}</Text>
             </Tooltip>
           </HStack>
           <HStack>
