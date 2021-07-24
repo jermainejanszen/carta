@@ -30,7 +30,7 @@ const Settings = (props: Props) => {
         <title>Settings | Carta</title>
         <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProfileNavBar authUser={authUser} hideSearch />
+      <ProfileNavBar hideSearch />
 
       <VStack
         spacing='8'

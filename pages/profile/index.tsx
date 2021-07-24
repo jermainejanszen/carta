@@ -34,7 +34,7 @@ const Profile = (props: Props) => {
         <title>Profile | Carta</title>
         <link rel='icon' href='/logo.svg' />
       </Head>
-      <ProfileNavBar authUser={authUser} hideSearch />
+      <ProfileNavBar hideSearch />
 
       <Grid
         templateColumns='repeat(5, minmax(0, 1fr))'

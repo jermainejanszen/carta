@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { 
   Flex,
@@ -21,16 +20,16 @@ import {
   MenuItemOption,
   MenuOptionGroup } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
-import { AuthUser } from 'next-firebase-auth'
+import { useUser } from '../providers/UserContext'
 
 interface Props {
   hideSearch? : boolean,
-  authUser: AuthUser,
 }
 
 const ProfileNavBar = (props: Props) => {
-  const { hideSearch, authUser } = props;
+  const { hideSearch } = props;
   const router = useRouter();
+  const user = useUser();
 
   const handleHomeClick = (e) => {
       e.preventDefault();
@@ -44,7 +43,7 @@ const ProfileNavBar = (props: Props) => {
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    authUser.signOut();
+    user.signout();
   }
 
   const { colorMode, toggleColorMode } = useColorMode();
@@ -94,8 +93,8 @@ const ProfileNavBar = (props: Props) => {
           <Avatar
             bg="red.500"
             cursor="pointer" 
-            name={authUser.displayName}
-            src={authUser.photoURL}
+            name={user.user?.displayName}
+            src={user.user?.photoURL}
             onClick={handleProfileClick} />
           <Menu isLazy>
             {({ isOpen }) => (
@@ -114,7 +113,7 @@ const ProfileNavBar = (props: Props) => {
                   borderRadius="full"
                   mx="1rem" />
                 <MenuList>
-                  <MenuGroup title={authUser.displayName}>
+                  <MenuGroup title={user.user?.displayName}>
                     <MenuItem onClick={handleProfileClick}>
                       My Profile
                     </MenuItem>

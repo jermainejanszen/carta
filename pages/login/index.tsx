@@ -13,32 +13,19 @@ import SplashNavBar from '../../widgets/SplashNavBar';
 import PageContainer from '../../components/PageContainer';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {useUser} from '../../providers/UserContext'
 
 interface Props {}
 
 const Login = (props: Props) => {
   const router = useRouter();
+  const user = useUser()
 
-  const handleGoogleLogin = () => {
-    firebase
-      .auth()
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
-        // The signed-in user info.
-        var user = result.user;
-        router.push('/projects');
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-      });
+  const handleGoogleLogin = async () => {
+    const res = await user.signinWithGoogle();
+    if (res) {
+      router.push('/projects');
+    }
   };
 
   const bg = useColorModeValue('whiteAlpha.900', 'gray.700');
