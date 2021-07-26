@@ -20,6 +20,7 @@ import ProfileNavBar from '../../widgets/ProjectsNavBar';
 import PageContainer from '../../components/PageContainer';
 import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
 import { useUser } from '../../providers/UserContext'
+import {secondsToHours} from '../../utils/helpers'
 
 interface Props {}
 
@@ -93,7 +94,7 @@ const Profile = (props: Props) => {
               <FiClock size={42} />
               <Stat>
                 <StatLabel>Total time spent</StatLabel>
-                <StatNumber>{user.user?.stats?.totalTime} seconds</StatNumber>
+                <StatNumber>{secondsToHours(user.user?.stats?.totalTime)}</StatNumber>
               </Stat>
             </HStack>
           </VStack>

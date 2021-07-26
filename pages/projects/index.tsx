@@ -15,7 +15,28 @@ const mockData = [
     id: 'abcd',
     name: 'Miscellaneous',
     hours: 43,
-    tasks: 129,
+    tasks: [
+      {
+        id: 1,
+        name: 'Tensor Flow',
+        time: 37368,
+      },
+      {
+        id: 2,
+        name: 'Integrating Matrix Solver',
+        time: 15132,
+      },
+      {
+        id: 3,
+        name: 'Writing Matrix Solver',
+        time: 10440,
+      },
+      {
+        id: 4,
+        name: 'UI Design',
+        time: 24408,
+      },
+    ],
     description:
       "Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project. Anything and everything that isn't related to a specific project.",
   },
@@ -23,21 +44,84 @@ const mockData = [
     id: 'efgh',
     name: 'BIO 323 Lab With A Long Title Name That Just Keeps Going',
     hours: 5.8,
-    tasks: 15,
+    tasks: [
+      {
+        id: 1,
+        name: 'Tensor Flow',
+        time: 37368,
+      },
+      {
+        id: 2,
+        name: 'Integrating Matrix Solver',
+        time: 15132,
+      },
+      {
+        id: 3,
+        name: 'Writing Matrix Solver',
+        time: 10440,
+      },
+      {
+        id: 4,
+        name: 'UI Design',
+        time: 24408,
+      },
+    ],
     description: 'Biology lab for enzyme denaturing.',
   },
   {
     id: 'ijkl',
     name: 'Coding Project',
     hours: 28.4,
-    tasks: 34,
+    tasks: [
+      {
+        id: 1,
+        name: 'Tensor Flow',
+        time: 37368,
+      },
+      {
+        id: 2,
+        name: 'Integrating Matrix Solver',
+        time: 15132,
+      },
+      {
+        id: 3,
+        name: 'Writing Matrix Solver',
+        time: 10440,
+      },
+      {
+        id: 4,
+        name: 'UI Design',
+        time: 24408,
+      },
+    ],
     description: 'A program that can recognize handwriting and solve matrices.',
   },
   {
     id: 'mnop',
     name: 'UI Design',
     hours: 16.2,
-    tasks: 37,
+    tasks: [
+      {
+        id: 1,
+        name: 'Tensor Flow',
+        time: 37368,
+      },
+      {
+        id: 2,
+        name: 'Integrating Matrix Solver',
+        time: 15132,
+      },
+      {
+        id: 3,
+        name: 'Writing Matrix Solver',
+        time: 10440,
+      },
+      {
+        id: 4,
+        name: 'UI Design',
+        time: 24408,
+      },
+    ],
     description: 'Designing the UI for the Carta website.',
   },
 ];
@@ -48,8 +132,10 @@ const Projects = (props: Props) => {
   const router = useRouter();
   const authUser = useAuthUser();
   const user = useUser();
-
-  const [projects, setProjects] = useState(user.user ? user.user.projects : mockData);
+  
+  const [projects, setProjects] = useState(
+    user.user ? user.user.projects : mockData
+  );
 
   const titleBg = useColorModeValue('#D7FAFA', 'gray.900');
   const newProjectBg = useColorModeValue(

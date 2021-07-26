@@ -20,6 +20,14 @@ export const useUser = () => {
   return useContext(UserContext);
 };
 
+export const useProject = (id: string): Project => {
+  const user = useContext(UserContext);
+  if (user.user) {
+    return user.user.getProject(id);
+  }
+  return null;
+};
+
 export class Task {
   name: string;
   time: number;
@@ -127,6 +135,15 @@ class User {
       element.destroy();
     }
     this.unsubscribe();
+  };
+
+  getProject = (id: string): Project => {
+    for (let i = 0; i < this.projects.length; i++) {
+      const element = this.projects[i];
+      if (element.id === id) {
+        return element;
+      }
+    }
   };
 }
 

@@ -23,47 +23,25 @@ import ProjectsNavBar from '../../widgets/ProjectsNavBar';
 import TaskItem from '../../components/TaskItem';
 import PageContainer from '../../components/PageContainer';
 import { withAuthUser, AuthAction, useAuthUser } from 'next-firebase-auth';
+import { useProject, Project as ProjectType, Task } from '../../providers/UserContext';
 
 interface Props {}
 
-const mockData = {
-  id: 'abcd',
-  name: 'Miscellaneous',
-  hours: 43,
-  tasks: [
-    {
-      id: 1,
-      name: 'Tensor Flow',
-      time: 37368,
-    },
-    {
-      id: 2,
-      name: 'Integrating Matrix Solver',
-      time: 15132,
-    },
-    {
-      id: 3,
-      name: 'Writing Matrix Solver',
-      time: 10440,
-    },
-    {
-      id: 4,
-      name: 'UI Design',
-      time: 24408,
-    },
-  ],
-  description:
-    "Anything and everything that isn't related to a specific project.",
-};
+const mockData = new ProjectType('abcd', null);
+mockData.description = "mock mock mock mock mock"
+mockData.name = "mock data"
+mockData.tasks = [new Task("mock task", 2000, false)]
 
 const Project = (props: Props) => {
   const router = useRouter();
   const authUser = useAuthUser();
 
   const id = router.query.id;
-  const [name, setName] = useState(mockData.name);
-  const [description, setDescription] = useState(mockData.description);
-  const [tasks, setTasks] = useState(mockData.tasks);
+  const project = useProject(`${id}`);
+
+  const [name, setName] = useState(project? project.name : mockData.name);
+  const [description, setDescription] = useState(project? project.description : mockData.description);
+  const [tasks, setTasks] = useState(project? project.tasks : mockData.tasks);
   const [isCounting, setIsCounting] = useState(false);
 
   const { isOpen, onToggle } = useDisclosure();
@@ -83,12 +61,8 @@ const Project = (props: Props) => {
   const handleAddTaskClick = (e) => {
     e.preventDefault();
     setTasks(
-      tasks.concat([
-        {
-          id: Date.now(),
-          name: `Task ${tasks.length + 1}`,
-          time: 0,
-        },
+      tasks.concat([new Task(`Task ${tasks.length + 1}`, 0, false)
+        ,
       ])
     );
   };
@@ -151,7 +125,7 @@ const Project = (props: Props) => {
             {tasks.length === 0 && <Text fontSize='2xl'>No Tasks</Text>}
             {tasks.map((value, index) => {
               return (
-                <ListItem key={value.id} display='flex' alignItems='center'>
+                <ListItem key={`${value.name}${value.time}${index}`} display='flex' alignItems='center'>
                   <TaskItem
                     name={value.name}
                     time={value.time}
